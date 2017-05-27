@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="第一题 56 Merge Intervals算法先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。 123456789101112131415161718192021222324252627282930313233343536373839public class mergeintervals56 &amp;#123;    public">
+<meta name="description" content="第一题 56 Merge Intervals">
 <meta name="keywords" content="LeetCode,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="5.11号刷题">
 <meta property="og:url" content="http://yoursite.com/2017/05/11/5-11号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
-<meta property="og:description" content="第一题 56 Merge Intervals算法先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。 123456789101112131415161718192021222324252627282930313233343536373839public class mergeintervals56 &amp;#123;    public">
-<meta property="og:updated_time" content="2017-05-18T18:14:56.000Z">
+<meta property="og:description" content="第一题 56 Merge Intervals">
+<meta property="og:updated_time" content="2017-05-26T07:16:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5.11号刷题">
-<meta name="twitter:description" content="第一题 56 Merge Intervals算法先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。 123456789101112131415161718192021222324252627282930313233343536373839public class mergeintervals56 &amp;#123;    public">
+<meta name="twitter:description" content="第一题 56 Merge Intervals">
 
 
 
@@ -395,7 +395,8 @@
       
 
       
-        <h3 id="第一题-56-Merge-Intervals"><a href="#第一题-56-Merge-Intervals" class="headerlink" title="第一题 56 Merge Intervals"></a>第一题 <a href="https://leetcode.com/problems/merge-intervals/#/description" target="_blank" rel="external">56 Merge Intervals</a></h3><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。</p>
+        <h3 id="第一题-56-Merge-Intervals"><a href="#第一题-56-Merge-Intervals" class="headerlink" title="第一题 56 Merge Intervals"></a>第一题 <a href="https://leetcode.com/problems/merge-intervals/#/description" target="_blank" rel="external">56 Merge Intervals</a></h3><a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">mergeintervals56</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"><span class="comment">//        Collections.sort(intervals, new Comparator&lt;Interval&gt;()&#123;</span></div><div class="line"><span class="comment">//            @Override</span></div><div class="line"><span class="comment">//            public int compare(Interval obj0, Interval obj1) &#123;</span></div><div class="line"><span class="comment">//                return obj0.start - obj1.start;</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125;);</span></div><div class="line"></div><div class="line">        intervals.sort((i1, i2) -&gt; Integer.compare(i1.start, i2.start));</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> begin = intervals.get(<span class="number">0</span>).start;</div><div class="line">        <span class="keyword">int</span> end = intervals.get(<span class="number">0</span>).end;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (Interval interval : intervals) &#123;</div><div class="line">            <span class="keyword">if</span> (interval.start &lt;= end) &#123;</div><div class="line">                end = Math.max(end, interval.end);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                result.add(<span class="keyword">new</span> Interval(begin, end));</div><div class="line">                begin = interval.start;</div><div class="line">                end = interval.end;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        result.add(<span class="keyword">new</span> Interval(begin, end));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Interval</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> start;</div><div class="line">    <span class="keyword">int</span> end;</div><div class="line">    Interval() &#123; start = <span class="number">0</span>; end = <span class="number">0</span>; &#125;</div><div class="line">    Interval(<span class="keyword">int</span> s, <span class="keyword">int</span> e) &#123; start = s; end = e; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><h5 id="关于Java-List-的常见用法"><a href="#关于Java-List-的常见用法" class="headerlink" title="关于Java List 的常见用法:"></a>关于Java List 的常见用法:</h5><ul>
 <li>add(Object object)<br>在集合末尾加入元素<br>参数 object ： 要添加的值(Object类型)<br>例如 list.add(“abc”); 向原集合末尾添加新元素值为”abc”</li>
@@ -540,7 +541,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

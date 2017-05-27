@@ -1,0 +1,831 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 287. Find the Duplicate Number">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.26号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/05/26/5-26号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 287. Find the Duplicate Number">
+<meta property="og:updated_time" content="2017-05-26T12:24:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5.26号刷题">
+<meta name="twitter:description" content="第一题 287. Find the Duplicate Number">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/26/5-26号刷题/"/>
+
+
+
+
+
+  <title>5.26号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/readingresponse" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/travel" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/26/5-26号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">5.26号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T08:45:17+08:00">
+                2017-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-287-Find-the-Duplicate-Number"><a href="#第一题-287-Find-the-Duplicate-Number" class="headerlink" title="第一题 287. Find the Duplicate Number"></a>第一题 <a href="https://leetcode.com/problems/find-the-duplicate-number/#/description" target="_blank" rel="external">287. Find the Duplicate Number</a></h3><a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>这道题是非常有意思的一题，由于题目要求不能够改变Array本来的结构，相当于只是read形式的，所以另一道相似题目用的转负<a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/#/solutions" target="_blank" rel="external">442 Find All Duplicates in an Array</a>的方法就暂时用不了了。<br>在这道题中，我们要使用的在链表中求环的方式来进行这道题目的求解。由于题目中已经说明必定存在一个环，那么我们可以将环想象成以下样子的。</p>
+<pre><code>(Start)  (Circle-Entry)
+ |         |
+ -----&gt;----@----&gt;-----------
+           |               |
+           |               |
+           ^               |
+           |               |
+           |-------@--&lt;----|
+                   |
+              (Meet-Point)
+</code></pre><p>想要求得重复的数值，我们利用两个指示点(fast, slow)，通过两部来完成整个</p>
+<h5 id="第一步-检验是否为环形，并得到两个点相遇的位置"><a href="#第一步-检验是否为环形，并得到两个点相遇的位置" class="headerlink" title="第一步 检验是否为环形，并得到两个点相遇的位置"></a>第一步 检验是否为环形，并得到两个点相遇的位置</h5><p>我们首先获得两个指示点fast, slow。在这个Array中，每当slow走一步，fast走的总是他的两倍。这样当进入环形之后，就可以看做一个龟兔赛跑，快的兔子总会在某个点追上比较慢的乌龟，即slow == fast, 这个点我们叫相遇点(Meet-Point)。</p>
+<h5 id="第二步-找到进入圆环的那个点"><a href="#第二步-找到进入圆环的那个点" class="headerlink" title="第二步 找到进入圆环的那个点"></a>第二步 找到进入圆环的那个点</h5><p>为了找到进入圆环的点，我们需要进行一些数学推到。<br>令：</p>
+<ul>
+<li>L1: 开始(Start) 到进入圆圈的点(Circle-Entry)距离</li>
+<li>L2: 进入圆圈的点(Circle-Entry)到相遇点(Meet-Point)距离</li>
+<li>C: 圆环周长</li>
+<li>n: 当两个指示点相遇的时候，快的那个走的圈数</li>
+</ul>
+<p>根据我们的定义，我们可以知道:</p>
+<ul>
+<li>当相遇的时候，slow走的距离为L1 + L2</li>
+<li>当相遇的时候, fast走的距离为L1 + L2 + C*n</li>
+</ul>
+<p>由于我们知道，每当slow走一步，fast总是走两步的，所以<br>2 <em> (L1+L2) = L1 + L2 + n </em> C<br><br>=&gt; L1 + L2 = n <em> C<br><br>=&gt; L1 = (n - 1) </em> C + (C - L2)<br><br>当我们忽视n-1 * C的时候（走多少圈都不影响相遇点的位置(Meet-Point)）<br><br>我们得到了 L1 = C - L2<br>这意味着如果我们两个指针，一个从Start开始出发，另一点从相遇点（Meet-Point）开始出发，当行走相同的距离的时候(L1)。从Start开始那个点会到达圆圈起始点(Circle-Entry), 而从相遇点（Meet-Point）开始出发的那个点，也会刚好走完一整圈，到达圆圈起始点(Circle-Entry)。<br><br> 这个时候我们就得到了相遇点，以下是代码具体的实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findDuplicate287</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>, fast = <span class="number">0</span>, entry = <span class="number">0</span>;</div><div class="line">        <span class="keyword">do</span> &#123;</div><div class="line">            slow = nums[slow];</div><div class="line">            fast = nums[nums[fast]];</div><div class="line">        &#125; <span class="keyword">while</span> (fast != slow);</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (entry != slow) &#123;</div><div class="line">            entry = nums[entry];</div><div class="line">            slow = nums[slow];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> entry;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第二题-142-Linked-List-Cycle-II"><a href="#第二题-142-Linked-List-Cycle-II" class="headerlink" title="第二题 142. Linked List Cycle II"></a>第二题 <a href="https://leetcode.com/problems/linked-list-cycle-ii/#/description" target="_blank" rel="external">142. Linked List Cycle II</a></h3><h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>方法与第一题相似, 只不过这题是在一个链表的基础上求解问题<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">detectCycle142</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        ListNode fast = head, slow = head, entry = head;</div><div class="line">        <span class="keyword">do</span> &#123;</div><div class="line">            <span class="keyword">if</span> (fast.next == <span class="keyword">null</span> || fast.next.next == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            fast = fast.next.next;</div><div class="line">            slow = slow.next;</div><div class="line">        &#125; <span class="keyword">while</span> (!fast.equals(slow));</div><div class="line">        <span class="keyword">while</span>(!slow.equals(entry)) &#123;</div><div class="line">            entry = entry.next;</div><div class="line">            slow = slow.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> entry;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> val;</div><div class="line">  ListNode next;</div><div class="line">  ListNode(<span class="keyword">int</span> x) &#123;</div><div class="line">      val = x;</div><div class="line">      next = <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-141-Linked-List-Cycle"><a href="#第三题-141-Linked-List-Cycle" class="headerlink" title="第三题 141. Linked List Cycle"></a>第三题 <a href="https://leetcode.com/problems/linked-list-cycle/#/description" target="_blank" rel="external">141. Linked List Cycle</a></h3><h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>更为简单，只需要判断是否有circle即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        ListNode fast = head;</div><div class="line">        <span class="keyword">while</span>(fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">            fast = fast.next.next;</div><div class="line">            head = head.next;</div><div class="line">            <span class="keyword">if</span> (fast.equals(head)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;     </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第四题-189-Rotate-Array"><a href="#第四题-189-Rotate-Array" class="headerlink" title="第四题 189. Rotate Array"></a>第四题 <a href="https://leetcode.com/problems/rotate-array/#/description" target="_blank" rel="external">189. Rotate Array</a></h3><h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><h5 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h5><p>nums = [1,2,3,4,5,6,7] and k = 3</p>
+<ul>
+<li>首先旋转0 , length - k -1部分 [1,2,3,4] =&gt; [4,3,2,1]</li>
+<li>然后再旋转剩余部分 [5,6,7] =&gt; [7,6,5]</li>
+<li>之后旋转整个Array [4,3,2,1,7,6,5] =&gt; [5,6,7,1,2,3,4]<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">rotate189</span> </span>&#123;</div><div class="line">    <span class="comment">//方法2 O(n), O(1)</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate2</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">2</span> || nums ==  <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        k %= nums.length;</div><div class="line">        reverse(nums, <span class="number">0</span>, nums.length - k - <span class="number">1</span>);</div><div class="line">        reverse(nums, nums.length - k, nums.length - <span class="number">1</span>);</div><div class="line">        reverse(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span>(start &lt; end) &#123;</div><div class="line">            <span class="keyword">int</span> temp = nums[start];</div><div class="line">            nums[start] = nums[end];</div><div class="line">            nums[end] = temp;</div><div class="line">            start++; end--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><p>利用额外的存储空间进行存储<br><br>自己这个存储可以优化，实际上只需要k单位的存储空间就够了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">rotate189</span> </span>&#123;</div><div class="line">    <span class="comment">// 方法1 O(n), O(n)</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">2</span>) <span class="keyword">return</span>;</div><div class="line">        k = k % nums.length;</div><div class="line">        <span class="keyword">int</span>[] dupl = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        dupl = nums.clone();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</div><div class="line">            nums[i] = dupl[nums.length - k + i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k ; i &lt; nums.length; i++) &#123;</div><div class="line">            nums[i] = dupl[i-k];</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-151-Reverse-Words-in-a-String"><a href="#第五题-151-Reverse-Words-in-a-String" class="headerlink" title="第五题 151. Reverse Words in a String"></a>第五题 <a href="https://leetcode.com/problems/reverse-words-in-a-string/#/description" target="_blank" rel="external">151. Reverse Words in a String</a></h3><h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><h5 id="方法一-1"><a href="#方法一-1" class="headerlink" title="方法一"></a>方法一</h5><p>将String 劈开，然后从后向前你用String Builder存储结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String[] words = s.trim().split(<span class="string">"\\s+"</span>);</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = words.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">            result.append(words[i]);</div><div class="line">            result.append(<span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        result.append(words[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="方法二-1"><a href="#方法二-1" class="headerlink" title="方法二"></a>方法二</h5><p>你用Arrays.asList的颠倒功能，以及String.join, 完成倒序<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">reverseWords151</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverseWords2</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String[] words = s.trim().split(<span class="string">"\\s+"</span>);</div><div class="line">        Collections.reverse(Arrays.asList(words));</div><div class="line">        <span class="keyword">return</span> String.join(<span class="string">" "</span>, words);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><h5 id="String-join"><a href="#String-join" class="headerlink" title="String.join"></a>String.join</h5><p>String.join(“-“,”string”,”join”) =&gt; string-join,后面可以为一个Array</p>
+<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h5><p>去除String头和尾的空格，防止出现异常</p>
+<h5 id="Collections-reverse-Arrays-asList-words"><a href="#Collections-reverse-Arrays-asList-words" class="headerlink" title="Collections.reverse(Arrays.asList(words));"></a>Collections.reverse(Arrays.asList(words));</h5><p>除了reverse之外，还有sort等等很多的用法</p>
+<h3 id="第六题186-Reverse-Words-in-a-String-II"><a href="#第六题186-Reverse-Words-in-a-String-II" class="headerlink" title="第六题186. Reverse Words in a String II"></a>第六题<a href="https://leetcode.com/problems/reverse-words-in-a-string-ii/#/description" target="_blank" rel="external">186. Reverse Words in a String II</a></h3><h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>与第四题的思路相似，都是通过多次翻转，在不需要更多空间的情况下，完成整个数组的翻转。<br><br>可以先进行部分或者整体翻转，然后再进行多次翻转，看结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">reverseWords186</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseWords</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</div><div class="line">        reverse(s, <span class="number">0</span>, s.length - <span class="number">1</span>);</div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s[i] == <span class="string">' '</span>) &#123;</div><div class="line">                reverse(s, start, i - <span class="number">1</span>);</div><div class="line">                start = i + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        reverse(s, start, s.length - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span>[] s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span>(start &lt; end) &#123;</div><div class="line">            <span class="keyword">char</span> temp = s[start];</div><div class="line">            s[start] = s[end];</div><div class="line">            s[end] = temp;</div><div class="line">            start++; end--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第七题228-Summary-Ranges"><a href="#第七题228-Summary-Ranges" class="headerlink" title="第七题228. Summary Ranges"></a>第七题<a href="https://leetcode.com/problems/summary-ranges/#/description" target="_blank" rel="external">228. Summary Ranges</a></h3><h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>从头向后推进，然后看是不是满足递增1的情况，不是的话就进行输出。但是要注意最后结尾的特殊处理。时间复杂度为O(n)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">summaryRanges228</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">summaryRanges</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[i] != nums[i-<span class="number">1</span>] + <span class="number">1</span>) &#123;</div><div class="line">                StringBuilder temp = <span class="keyword">new</span> StringBuilder();</div><div class="line">                <span class="keyword">if</span> (i - start == <span class="number">1</span>) &#123;</div><div class="line">                    temp.append(nums[start]);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    temp.append(nums[start]);</div><div class="line">                    temp.append(<span class="string">"-&gt;"</span>);</div><div class="line">                    temp.append(nums[i-<span class="number">1</span>]);</div><div class="line">                &#125;</div><div class="line">                result.add(temp.toString());</div><div class="line">                start = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        StringBuilder temp = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">if</span> (nums.length - <span class="number">1</span> == start) &#123;</div><div class="line">            temp.append(nums[nums.length - <span class="number">1</span>]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            temp.append(nums[start]);</div><div class="line">            temp.append(<span class="string">"-&gt;"</span>);</div><div class="line">            temp.append(nums[nums.length - <span class="number">1</span>]);</div><div class="line">        &#125;</div><div class="line">        result.add(temp.toString());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/25/5-25号刷题/" rel="next" title="5.25号刷题">
+                <i class="fa fa-chevron-left"></i> 5.25号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E8%82%96-%E9%99%88-730149133/" target="_blank" title="Linkin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-287-Find-the-Duplicate-Number"><span class="nav-number">1.</span> <span class="nav-text">第一题 287. Find the Duplicate Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步-检验是否为环形，并得到两个点相遇的位置"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一步 检验是否为环形，并得到两个点相遇的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步-找到进入圆环的那个点"><span class="nav-number">1.1.2.</span> <span class="nav-text">第二步 找到进入圆环的那个点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-142-Linked-List-Cycle-II"><span class="nav-number">2.</span> <span class="nav-text">第二题 142. Linked List Cycle II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-141-Linked-List-Cycle"><span class="nav-number">3.</span> <span class="nav-text">第三题 141. Linked List Cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-189-Rotate-Array"><span class="nav-number">4.</span> <span class="nav-text">第四题 189. Rotate Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法一"><span class="nav-number">4.1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法二"><span class="nav-number">4.1.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-151-Reverse-Words-in-a-String"><span class="nav-number">5.</span> <span class="nav-text">第五题 151. Reverse Words in a String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法一-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法二-1"><span class="nav-number">5.1.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">5.2.</span> <span class="nav-text">学到的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String-join"><span class="nav-number">5.2.1.</span> <span class="nav-text">String.join</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trim"><span class="nav-number">5.2.2.</span> <span class="nav-text">trim()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Collections-reverse-Arrays-asList-words"><span class="nav-number">5.2.3.</span> <span class="nav-text">Collections.reverse(Arrays.asList(words));</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题186-Reverse-Words-in-a-String-II"><span class="nav-number">6.</span> <span class="nav-text">第六题186. Reverse Words in a String II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题228-Summary-Ranges"><span class="nav-number">7.</span> <span class="nav-text">第七题228. Summary Ranges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.1.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

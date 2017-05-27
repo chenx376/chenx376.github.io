@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="第一题 243 Shortest Word Distance算法分别记录下两个index的值，不断向前滚动。求最小值。1234567891011121314151617public class shortestDistance243 &amp;#123;    public int shortestDistance(String[] words, String word1, String word2) &amp;">
+<meta name="description" content="第一题 243 Shortest Word Distance">
 <meta name="keywords" content="LeetCode,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="5.17号刷题">
 <meta property="og:url" content="http://yoursite.com/2017/05/18/5-17号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
-<meta property="og:description" content="第一题 243 Shortest Word Distance算法分别记录下两个index的值，不断向前滚动。求最小值。1234567891011121314151617public class shortestDistance243 &amp;#123;    public int shortestDistance(String[] words, String word1, String word2) &amp;">
-<meta property="og:updated_time" content="2017-05-19T05:21:48.000Z">
+<meta property="og:description" content="第一题 243 Shortest Word Distance">
+<meta property="og:updated_time" content="2017-05-26T07:16:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5.17号刷题">
-<meta name="twitter:description" content="第一题 243 Shortest Word Distance算法分别记录下两个index的值，不断向前滚动。求最小值。1234567891011121314151617public class shortestDistance243 &amp;#123;    public int shortestDistance(String[] words, String word1, String word2) &amp;">
+<meta name="twitter:description" content="第一题 243 Shortest Word Distance">
 
 
 
@@ -395,7 +395,8 @@
       
 
       
-        <h3 id="第一题-243-Shortest-Word-Distance"><a href="#第一题-243-Shortest-Word-Distance" class="headerlink" title="第一题 243 Shortest Word Distance"></a>第一题 <a href="https://leetcode.com/problems/shortest-word-distance/#/description" target="_blank" rel="external">243 Shortest Word Distance</a></h3><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>分别记录下两个index的值，不断向前滚动。求最小值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">shortestDistance243</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shortestDistance</span><span class="params">(String[] words, String word1, String word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> word1_index = Integer.MAX_VALUE, word2_index = Integer.MAX_VALUE, distance = Integer.MAX_VALUE;;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length; i++) &#123;</div><div class="line">            String word = words[i];</div><div class="line">            <span class="keyword">if</span> (word.equals(word1)) &#123;</div><div class="line">                word1_index = i;</div><div class="line">                distance = Math.min(Math.abs(word1_index - word2_index), distance);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (word.equals(word2)) &#123;</div><div class="line">                word2_index = i;</div><div class="line">                distance = Math.min(Math.abs(word1_index - word2_index), distance);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> distance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h3 id="第一题-243-Shortest-Word-Distance"><a href="#第一题-243-Shortest-Word-Distance" class="headerlink" title="第一题 243 Shortest Word Distance"></a>第一题 <a href="https://leetcode.com/problems/shortest-word-distance/#/description" target="_blank" rel="external">243 Shortest Word Distance</a></h3><a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>分别记录下两个index的值，不断向前滚动。求最小值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">shortestDistance243</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shortestDistance</span><span class="params">(String[] words, String word1, String word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> word1_index = Integer.MAX_VALUE, word2_index = Integer.MAX_VALUE, distance = Integer.MAX_VALUE;;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length; i++) &#123;</div><div class="line">            String word = words[i];</div><div class="line">            <span class="keyword">if</span> (word.equals(word1)) &#123;</div><div class="line">                word1_index = i;</div><div class="line">                distance = Math.min(Math.abs(word1_index - word2_index), distance);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (word.equals(word2)) &#123;</div><div class="line">                word2_index = i;</div><div class="line">                distance = Math.min(Math.abs(word1_index - word2_index), distance);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> distance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -524,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
