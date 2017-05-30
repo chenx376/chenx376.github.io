@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,Java," />
+  <meta name="keywords" content="CloudComputing,CMU,15619," />
 
 
 
@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="第一题 56 Merge Intervals">
-<meta name="keywords" content="LeetCode,Java">
+<meta name="description" content="关于云计算距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。">
+<meta name="keywords" content="CloudComputing,CMU,15619">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.11号刷题">
-<meta property="og:url" content="http://yoursite.com/2017/05/11/5-11号刷题/index.html">
+<meta property="og:title" content="CloudComputing总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/CloudComputing总结/index.html">
 <meta property="og:site_name" content="陈浮云">
-<meta property="og:description" content="第一题 56 Merge Intervals">
-<meta property="og:updated_time" content="2017-05-26T07:16:09.000Z">
+<meta property="og:description" content="关于云计算距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。">
+<meta property="og:updated_time" content="2017-05-28T03:07:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5.11号刷题">
-<meta name="twitter:description" content="第一题 56 Merge Intervals">
+<meta name="twitter:title" content="CloudComputing总结">
+<meta name="twitter:description" content="关于云计算距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/11/5-11号刷题/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/28/CloudComputing总结/"/>
 
 
 
 
 
-  <title>5.11号刷题 | 陈浮云</title>
+  <title>CloudComputing总结 | 陈浮云</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -309,7 +309,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/11/5-11号刷题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/CloudComputing总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈肖">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">5.11号刷题</h1>
+          <h1 class="post-title" itemprop="name headline">CloudComputing总结</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:26:27+08:00">
-                2017-05-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T09:23:15+08:00">
+                2017-05-28
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
                   </a>
                 </span>
 
@@ -395,23 +395,38 @@
       
 
       
-        <h3 id="第一题-56-Merge-Intervals"><a href="#第一题-56-Merge-Intervals" class="headerlink" title="第一题 56 Merge Intervals"></a>第一题 <a href="https://leetcode.com/problems/merge-intervals/#/description" target="_blank" rel="external">56 Merge Intervals</a></h3><a id="more"></a>
-<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>先将全部的start进行排序，然后查看每一个的start和end，如果满足相连的要求。就在result中插入新的结果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">mergeintervals56</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"><span class="comment">//        Collections.sort(intervals, new Comparator&lt;Interval&gt;()&#123;</span></div><div class="line"><span class="comment">//            @Override</span></div><div class="line"><span class="comment">//            public int compare(Interval obj0, Interval obj1) &#123;</span></div><div class="line"><span class="comment">//                return obj0.start - obj1.start;</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125;);</span></div><div class="line"></div><div class="line">        intervals.sort((i1, i2) -&gt; Integer.compare(i1.start, i2.start));</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> begin = intervals.get(<span class="number">0</span>).start;</div><div class="line">        <span class="keyword">int</span> end = intervals.get(<span class="number">0</span>).end;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (Interval interval : intervals) &#123;</div><div class="line">            <span class="keyword">if</span> (interval.start &lt;= end) &#123;</div><div class="line">                end = Math.max(end, interval.end);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                result.add(<span class="keyword">new</span> Interval(begin, end));</div><div class="line">                begin = interval.start;</div><div class="line">                end = interval.end;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        result.add(<span class="keyword">new</span> Interval(begin, end));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Interval</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> start;</div><div class="line">    <span class="keyword">int</span> end;</div><div class="line">    Interval() &#123; start = <span class="number">0</span>; end = <span class="number">0</span>; &#125;</div><div class="line">    Interval(<span class="keyword">int</span> s, <span class="keyword">int</span> e) &#123; start = s; end = e; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><h5 id="关于Java-List-的常见用法"><a href="#关于Java-List-的常见用法" class="headerlink" title="关于Java List 的常见用法:"></a>关于Java List 的常见用法:</h5><ul>
-<li>add(Object object)<br>在集合末尾加入元素<br>参数 object ： 要添加的值(Object类型)<br>例如 list.add(“abc”); 向原集合末尾添加新元素值为”abc”</li>
-<li>add(int index, Object object)<br>在集合中指定位置插入指定元素。如果插入位置本身已经元素那么从这个位置开始(包括原元素)自动向后移位，对应的索引依次加1<br>参数 index: 索引 ， object: 要添加的值(Object类型)<br>例如集合中已有”a”,”b”,”c”三个元素索引分别对应 0 , 1 ,2 ，这时在第1个位置加入”d” ，list.add(0, “d”);<br>这时集合就变成了”d”,”a”,”b”,”c”， 原”a，b, c”对应的索引就从”0 ,1, 2” 就变成了 “1 ,2, 3”</li>
-<li>remove(int index)<br>从集合中删除指定位置的元素<br>参数 index： 目标元素的索引(最小从0开始)<br>例如 list.remove(1)， 删除索引为1的元素</li>
-<li>remove(Object object)<br>从集合中删除指定值的元素<br>参数 object： 目标元素的值<br>例如： list.remove(“hello”); 表示从集合中删除值为”hello”的元素， 如果多个元素具有相同的值则优先删除索引小的元素</li>
-<li>size()<br>返回当前集合列表的元素总数量， 返回值： int类型</li>
+        <h2 id="关于云计算"><a href="#关于云计算" class="headerlink" title="关于云计算"></a>关于云计算</h2><p>距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。<br><a id="more"></a></p>
+<p>回想自己学习这门课的整个经历</p>
+<ul>
+<li><p>花了很多时间，期中之后Team的Project开了再加上其他几门课的任务，连着熬夜也是有点吃不消；</p>
+</li>
+<li><p>踩了很多坑，这门课的特点是不会把所有的知识点都告诉你和步骤都告诉你。由于每一个项目步骤众多，如果不相信看漏一句话，或者漏了某个步骤，都会导致出现各种奇奇怪怪的问题，所以看writeup一定细心。重要的事情说三遍：细心，细心，细心。另外一些坑是人为设计的，这样的坑基本是要考摸索着踩的，如果有小伙伴一起踩坑的话，会省很多时间。当然在摸索的过程中，也是能学到很多东西的</p>
+</li>
+<li><p>最后收获也很丰富。对于转专业的同学或者之前对CS了解比较少的同学，还是强烈推荐这门课。通过这门课，一方面可以学到一些最新的技术Spark, Kafka等，另一方面对自己的基础也是一个很好的补充，对于我来说，补充对于各种数据库的了解，如何使用shell，如何用maven打包等等。</p>
+</li>
 </ul>
-<h5 id="List中根据Object的类型进行排序"><a href="#List中根据Object的类型进行排序" class="headerlink" title="List中根据Object的类型进行排序"></a>List中根据Object的类型进行排序</h5><ul>
-<li><p>方法一，java7之前利用collections 进行排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Collections.sort(OBJECT, Comparator&lt;Interval&gt;()&#123;</div><div class="line">     @Override</div><div class="line">     public int compare(OBJECT obj0, OBJECT obj1) &#123;</div><div class="line">          return obj0.start - obj1.start;</div><div class="line">     &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="关于这门课的设计"><a href="#关于这门课的设计" class="headerlink" title="关于这门课的设计"></a>关于这门课的设计</h2><p>这门课是无需去上课的，一切自学，然后做项目。<br><br>自学的话会有学习网页提供的，写的挺不错，与课程的Project基本是同步的，认真看的话，收获很大。每周五还有一次小测验，是对每章节知识点的考核，时间2小时，一般1个半小时能够完成。<br><br>Project的话，这门课主要是由5个大的Individual Project组成，然后再加上一个Team的Project。对于5个大的Project,又分为2-3个小的project，每周一个。<br><br>这门课每周的时间对于我来说大概在20-50个小时之间，对于在国内上本科的学生，觉得这门课的量实在是比较大的。所以如果选这门课，一定记住不要再选其他神课了</p>
+<h2 id="关于课程的Project"><a href="#关于课程的Project" class="headerlink" title="关于课程的Project"></a>关于课程的Project</h2><ul>
+<li><p>Project 0 —— Exploring the cloud：主要内容是介绍主流的3个云计算平台，Azure, AWS和GCP。个人觉得AWS和GCP要相对好用一些，而Azure的验证过程有些复杂，不是特别的好用。</p>
+<ol>
+<li>AWS playground —— AWS入门</li>
+<li>Azure playground —— Azure入门</li>
+<li>GCP playground —— GCP入门</li>
+</ol>
 </li>
-<li><p>方法二，你用java8进行排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">interval.sort((i1, i2) -&gt; (i1.start, i2.start))</div></pre></td></tr></table></figure>
+<li><p>Project 1 —— Big Data Analytics：主要内容为利用AWS的平台进行一些初步的ETL(Extract, Transform and Load) 过程，其中主要涉及到了ET的过程。</p>
+<ol>
+<li>Sequential analysis —— 使用普通的洗数据的办法，只是平台变为了AWS的instance</li>
+<li>Parallel analysis —— 使用AWS提供的MapReduce服务。对2016年11月的Wikipedia的数据(128个G)进行清洗(利用MapReduce), 然后分析整个搜索动向，最后可以选择进行数据可视化</li>
+</ol>
 </li>
+<li><p>Project 2 —— Automating and autoscaling distributed services：这个部分的知识点主要是和运维相关的，主要涉及的是对instance的操作，不包括Autoscaling和使用docker等。</p>
+<ol>
+<li>Horizontal Scaling and Advanced Resource Scaling —— 主要学习的内容是根据访问的RPS，对我们instance的数量进行控制，当RPS较高的时候，增加instance的数量，反之则减少。平台的话使用得是AWS的平台</li>
+<li>Containers: Docker and Kubernetes —— 主要学习的内容是对Docker的了解，并根据自己的要求创建所需要的image。Kubernete这部分比较复杂，需要在三个不同的平台上创建instance,使用Kubernete进行跨平台的管理，并按照要求设计成为一个能够在线运行python代码和mysql代码也网页。</li>
+</ol>
+</li>
+<li></li>
 </ul>
 
       
@@ -442,9 +457,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/CloudComputing/" rel="tag"># CloudComputing</a>
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/CMU/" rel="tag"># CMU</a>
+          
+            <a href="/tags/15619/" rel="tag"># 15619</a>
           
         </div>
       
@@ -457,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/10/5-10号刷题/" rel="next" title="5.10号刷题">
-                <i class="fa fa-chevron-left"></i> 5.10号刷题
+              <a href="/2017/05/27/5-27号刷题/" rel="next" title="5.27号刷题">
+                <i class="fa fa-chevron-left"></i> 5.27号刷题
               </a>
             
           </div>
@@ -467,8 +484,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/18/5-17号刷题/" rel="prev" title="5.17号刷题">
-                5.17号刷题 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/29/5-29号刷题/" rel="prev" title="5.29号刷题">
+                5.29号刷题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -618,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-56-Merge-Intervals"><span class="nav-number">1.</span> <span class="nav-text">第一题 56 Merge Intervals</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">1.2.</span> <span class="nav-text">学到的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于Java-List-的常见用法"><span class="nav-number">1.2.1.</span> <span class="nav-text">关于Java List 的常见用法:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List中根据Object的类型进行排序"><span class="nav-number">1.2.2.</span> <span class="nav-text">List中根据Object的类型进行排序</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于云计算"><span class="nav-number">1.</span> <span class="nav-text">关于云计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于这门课的设计"><span class="nav-number">2.</span> <span class="nav-text">关于这门课的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于课程的Project"><span class="nav-number">3.</span> <span class="nav-text">关于课程的Project</span></a></li></ol></div>
             
 
           </div>
