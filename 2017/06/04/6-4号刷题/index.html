@@ -80,6 +80,8 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="LeetCode,Java," />
+
 
 
 
@@ -95,12 +97,13 @@
 
 
 <meta name="description" content="第一题 357. Count Numbers with Unique Digits题目描述给定一个非负整数n，计算所有各位数字均不同的数字x的个数，其中0 ≤ x &amp;lt; 10^n。 算法对于n = 1，f(1) = 10 对于n = 2, f(2) = 9  9 (对于10位我们可以选择1 - 9九个数字，对于个位，我们可以选择0-9十个数字，但是需要与之前的个位数字不相同，所以为9) 同理，">
+<meta name="keywords" content="LeetCode,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6.4号刷题">
-<meta property="og:url" content="http://yoursite.com/2017/06/05/6-4号刷题/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/06/04/6-4号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
 <meta property="og:description" content="第一题 357. Count Numbers with Unique Digits题目描述给定一个非负整数n，计算所有各位数字均不同的数字x的个数，其中0 ≤ x &amp;lt; 10^n。 算法对于n = 1，f(1) = 10 对于n = 2, f(2) = 9  9 (对于10位我们可以选择1 - 9九个数字，对于个位，我们可以选择0-9十个数字，但是需要与之前的个位数字不相同，所以为9) 同理，">
-<meta property="og:updated_time" content="2017-06-04T16:00:41.000Z">
+<meta property="og:updated_time" content="2017-06-05T01:47:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6.4号刷题">
 <meta name="twitter:description" content="第一题 357. Count Numbers with Unique Digits题目描述给定一个非负整数n，计算所有各位数字均不同的数字x的个数，其中0 ≤ x &amp;lt; 10^n。 算法对于n = 1，f(1) = 10 对于n = 2, f(2) = 9  9 (对于10位我们可以选择1 - 9九个数字，对于个位，我们可以选择0-9十个数字，但是需要与之前的个位数字不相同，所以为9) 同理，">
@@ -131,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/05/6-4号刷题/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/04/6-4号刷题/"/>
 
 
 
@@ -306,7 +309,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/6-4号刷题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/04/6-4号刷题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈肖">
@@ -335,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T00:00:41+08:00">
-                2017-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-04T16:03:17+08:00">
+                2017-06-04
               </time>
             
 
@@ -401,7 +404,7 @@
 <p>给定分数数组，预测玩家1是否可以获胜。可以假设每一个玩家都采用最优策略游戏。</p>
 <h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><h5 id="简单的"><a href="#简单的" class="headerlink" title="简单的"></a>简单的</h5><p>利用回溯的方法，从(0, length - 1)开始遍历所有的可能性，然后求出后选的可能得到的最大值最后判断是否为一个正数，如果是一个正数则进行输出<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">PredictTheWinner</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> helper(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>) &gt;= <span class="number">0</span>;    </div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (low == high) &#123;</div><div class="line">    </div><div class="line">            <span class="keyword">return</span> nums[low];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">int</span> result = Math.max(nums[low] - helper(nums, low + <span class="number">1</span>, high), nums[high] - helper(nums, low, high - <span class="number">1</span>));</div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其中，对于player1，可以有两种选择，分别是low的和high的任选其一，选择完成之后。对于player2，其可以获得的最大收益可以遍历每一种可能性，并调用函数helper获得最后值。</p>
-<h5 id="DP方法"><a href="#DP方法" class="headerlink" title="DP方法"></a>DP方法</h5><p>还在研究</p>
+<h5 id="DP方法"><a href="#DP方法" class="headerlink" title="DP方法"></a>DP方法</h5><p>利用一个二维矩阵dp[i][j]存储当前选择的人从i到j可以获得的最大值(本题中，由于只需要胜负关系用差值计算)，之后不断更新，直到获得最终答案。<br><br>例子，例如[1, 5, 233, 7], 首先在第一次循环中，计算1-5,5-233,233-7可以获得的受益。之后不断扩大范围1-233,5-7,并利用之前的结果更新现在的收益，并最终更新到1-7可以获得的最大收益<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">PredictTheWinner</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = nums.length;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) dp[i][i] = nums[i];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - len; i++) &#123;</div><div class="line">                <span class="keyword">int</span> j = i + len;</div><div class="line">                dp[i][j] = Math.max(nums[i] - dp[i+<span class="number">1</span>][j], nums[j] - dp[i][j-<span class="number">1</span>]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n-<span class="number">1</span>] &gt;= <span class="number">0</span>;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -429,6 +432,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
         
@@ -447,6 +458,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/05/6-5号刷题/" rel="prev" title="6.5号刷题">
+                6.5号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
