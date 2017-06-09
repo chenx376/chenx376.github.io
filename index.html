@@ -396,9 +396,8 @@
 
       
         
-          
-          
-          
+          <h3 id="第一题-159-Longest-Substring-with-At-Most-Two-Distinct-Characters"><a href="#第一题-159-Longest-Substring-with-At-Most-Two-Distinct-Characters" class="headerlink" title="第一题 159. Longest Substring with At Most Two Distinct Characters"></a>第一题 <a href="https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/#/description" target="_blank" rel="external">159. Longest Substring with At Most Two Distinct Characters</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个String中找出一个Substring,使得Substring 最多包含2个不同的Char。</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用HashMap存储两个最新的位置，当有第三个加入HashMap的时候，说明已经多于两个，进行操作。注意不要使用for循环，用for循环后很多testcase会出现很难解决的逻辑问题。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/09/6-9号刷题/#more" rel="contents">
