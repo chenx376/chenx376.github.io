@@ -1,0 +1,829 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 358. Rearrange String k Distance Apart题目描述给定一个string和距离k。重新排列string中的所有character，使得它们至少相隔k。 算法首先使用HashMap存储所有的字符串和他们出现的频率，之后按照出现频率从高到底排列map中元素。之后利用贪婪搜索，依次将频率从高到低的字符插入空的String中">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.14号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/6-14号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 358. Rearrange String k Distance Apart题目描述给定一个string和距离k。重新排列string中的所有character，使得它们至少相隔k。 算法首先使用HashMap存储所有的字符串和他们出现的频率，之后按照出现频率从高到底排列map中元素。之后利用贪婪搜索，依次将频率从高到低的字符插入空的String中">
+<meta property="og:updated_time" content="2017-06-14T15:06:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.14号刷题">
+<meta name="twitter:description" content="第一题 358. Rearrange String k Distance Apart题目描述给定一个string和距离k。重新排列string中的所有character，使得它们至少相隔k。 算法首先使用HashMap存储所有的字符串和他们出现的频率，之后按照出现频率从高到底排列map中元素。之后利用贪婪搜索，依次将频率从高到低的字符插入空的String中">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/14/6-14号刷题/"/>
+
+
+
+
+
+  <title>6.14号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/readingresponse" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/travel" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/6-14号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.14号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T14:38:39+08:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-358-Rearrange-String-k-Distance-Apart"><a href="#第一题-358-Rearrange-String-k-Distance-Apart" class="headerlink" title="第一题 358. Rearrange String k Distance Apart"></a>第一题 <a href="https://leetcode.com/problems/rearrange-string-k-distance-apart/#/description" target="_blank" rel="external">358. Rearrange String k Distance Apart</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个string和距离k。重新排列string中的所有character，使得它们至少相隔k。</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>首先使用HashMap存储所有的字符串和他们出现的频率，之后按照出现频率从高到底排列map中元素。之后利用贪婪搜索，依次将频率从高到低的字符插入空的String中</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">rearrangeString</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        Map&lt;Character, Integer&gt; charStore = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) charStore.put(c, charStore.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">        Queue&lt;Map.Entry&lt;Character, Integer&gt;&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Map.Entry&lt;Character, Integer&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Map.Entry&lt;Character, Integer&gt; o1, Map.Entry&lt;Character, Integer&gt; o2)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> o2.getValue() - o1.getValue();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        Queue&lt;Map.Entry&lt;Character, Integer&gt;&gt; waitQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        maxHeap.addAll(charStore.entrySet());</div><div class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!maxHeap.isEmpty()) &#123;</div><div class="line">            Map.Entry&lt;Character, Integer&gt; cur = maxHeap.poll();</div><div class="line">            res.append(cur.getKey());</div><div class="line">            cur.setValue(cur.getValue() - <span class="number">1</span>);</div><div class="line">            waitQueue.offer(cur);</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (waitQueue.size() &lt; k) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            Map.Entry&lt;Character, Integer&gt; front = waitQueue.poll();</div><div class="line">            <span class="keyword">if</span> (front.getValue() &gt; <span class="number">0</span>) maxHeap.offer(front);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res.length() == s.length() ? res.toString() : <span class="string">""</span>;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><p>一个HashMap可以用Map.Entry进行遍历。Map.entry entry = map.entrySet()。然后可以用iteratory的方式进行遍历</p>
+<h3 id="第二题-565-Array-Nesting"><a href="#第二题-565-Array-Nesting" class="headerlink" title="第二题 565. Array Nesting"></a>第二题 <a href="https://leetcode.com/problems/array-nesting/#/description" target="_blank" rel="external">565. Array Nesting</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>索引从0开始的数组A包含N个不同的数字。每个数字范围[0, N - 1]</p>
+<p>定义集合S[K] 对于 0 &lt;= K &lt; N：</p>
+<p>S[K] = { A[K], A[A[K]], A[A[A[K]]], … }</p>
+<p>对于每一个K，S[K]是有限的，不包含重复。</p>
+<p>编写函数返回最大的S[K]的大小。</p>
+<p>注意：</p>
+<ol>
+<li>N是整数，范围[1, 20000]</li>
+<li>A中的元素各不相同</li>
+<li>A是整数，范围[0, N - 1]</li>
+</ol>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>题目可以转换为找到数组A中最长的那个圈，因此，当我们找到一个圈的时候，将圈中数字全部置为-1，表示已经找过了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrayNesting</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> length = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> cur = i;</div><div class="line">            <span class="keyword">while</span> (nums[cur] &gt;= <span class="number">0</span>) &#123;</div><div class="line">                length++;</div><div class="line">                <span class="keyword">int</span> temp = cur;</div><div class="line">                cur = nums[cur];</div><div class="line">                nums[temp] = -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            max = Math.max(max, length);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-39-Combination-Sum"><a href="#第三题-39-Combination-Sum" class="headerlink" title="第三题 39. Combination Sum"></a>第三题 <a href="https://leetcode.com/problems/combination-sum/#/description" target="_blank" rel="external">39. Combination Sum</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个Array和一个target，求Array中有多少组合的sum的和可以满足target的值。</p>
+<p>注意： 可以包含重复的值</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>回溯：注意开始和终止的条件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; curRes = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        backtrack(res, curRes, candidates, target, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; curRes, <span class="keyword">int</span>[] candidates, <span class="keyword">int</span> remain, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (remain &lt; <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (remain == <span class="number">0</span>) res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curRes));</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; candidates.length; i++) &#123;</div><div class="line">                curRes.add(candidates[i]);</div><div class="line">                backtrack(res, curRes, candidates, remain - candidates[i], i);</div><div class="line">                curRes.remove(curRes.size() - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第四题-40-Combination-Sum-II"><a href="#第四题-40-Combination-Sum-II" class="headerlink" title="第四题 40. Combination Sum II"></a>第四题 <a href="https://leetcode.com/problems/combination-sum-ii/#/description" target="_blank" rel="external">40. Combination Sum II</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>这一次不同的地方在于Array中的数字只能使用一次(注意可能包含相同的数字)</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>题目难点在于最后结果的list中不能包含重复的，但是Array中会有重复的数字，利用if (i &gt; start &amp;&amp; nums[i] == num[i-1])来判断是否是第一次进入循环，且跳过重复的可能性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; curRes = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        backtrack(res, curRes, candidates, target, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span> <span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; curRes, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> remain, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (remain &lt; <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (remain == <span class="number">0</span>) res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curRes));</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; nums.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (i &gt; start &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>;  <span class="comment">//What beautiful algorithm</span></div><div class="line">                curRes.add(nums[i]);</div><div class="line">                backtrack(res, curRes, nums, remain - nums[i], i + <span class="number">1</span>);</div><div class="line">                curRes.remove(curRes.size() - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-216-Combination-Sum-III"><a href="#第五题-216-Combination-Sum-III" class="headerlink" title="第五题 216. Combination Sum III"></a>第五题 <a href="https://leetcode.com/problems/combination-sum-iii/#/description" target="_blank" rel="external">216. Combination Sum III</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>寻找所有满足k个数之和等于n的组合，只允许使用数字1-9，并且每一种组合中的数字应该是唯一的。</p>
+<p>确保组合中的数字以递增顺序排列。</p>
+<p>测试样例见题目描述。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>与之前的方法相似，只是在判断回溯条件的时候，稍微有所不同<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">combinationSumIII216</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum3(<span class="keyword">int</span> k, <span class="keyword">int</span> n) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; curRes = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</div><div class="line">        backtrack(res, curRes, nums, n, <span class="number">0</span>, k);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; curRes, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> remain, <span class="keyword">int</span> start, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (remain &lt; <span class="number">0</span> || curRes.size() &gt; k) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (remain == <span class="number">0</span> &amp;&amp; curRes.size() == k) res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curRes));</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; nums.length; i++) &#123;</div><div class="line">                curRes.add(nums[i]);</div><div class="line">                backtrack(res, curRes, nums, remain - nums[i], i + <span class="number">1</span>, k);</div><div class="line">                curRes.remove(curRes.size() - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第六题-78-Subsets"><a href="#第六题-78-Subsets" class="headerlink" title="第六题 78. Subsets"></a>第六题 <a href="https://leetcode.com/problems/subsets/#/description" target="_blank" rel="external">78. Subsets</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组(不含重复)，求这个数组包含的所有子集</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>还是利用回溯的方法进行求解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">subsets78</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; curRes = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        res.add(curRes);</div><div class="line">        backtrack(res, curRes, nums, <span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; curRes, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; nums.length; i++) &#123;</div><div class="line">            curRes.add(nums[i]);</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curRes));</div><div class="line">            backtrack(res, curRes, nums, i + <span class="number">1</span>);</div><div class="line">            curRes.remove(curRes.size() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第七题-90-Subsets-II"><a href="#第七题-90-Subsets-II" class="headerlink" title="第七题 90. Subsets II"></a>第七题 <a href="https://leetcode.com/problems/subsets-ii/#/description" target="_blank" rel="external">90. Subsets II</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组(含重复)，求这个数组包含的所有子集</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用if (i &gt; start &amp;&amp; nums[i] == num[i-1])来判断是否是第一次进入循环，且跳过重复的可能性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">subsetsWithDup90</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; curRes = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        res.add(curRes);</div><div class="line">        Arrays.sort(nums);</div><div class="line">        backtrack(res, curRes, nums, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; curRes, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; nums[i] == nums[i-<span class="number">1</span>]) <span class="keyword">continue</span>;</div><div class="line">            curRes.add(nums[i]);</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curRes));</div><div class="line">            backtrack(res, curRes, nums, i + <span class="number">1</span>);</div><div class="line">            curRes.remove(curRes.size() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第八题-560-Subarray-Sum-Equals-K"><a href="#第八题-560-Subarray-Sum-Equals-K" class="headerlink" title="第八题 560. Subarray Sum Equals K"></a>第八题 <a href="https://leetcode.com/problems/subarray-sum-equals-k/#/description" target="_blank" rel="external">560. Subarray Sum Equals K</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定整数数组nums和整数k，寻找和等于k的连续子数组的个数。</p>
+<p>注意：</p>
+<ol>
+<li>数组长度为[1, 20000]</li>
+<li>数组元素范围[-1000, 1000]，整数k范围[-1e7, 1e7]</li>
+</ol>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>这题其实应该算在动态规划中。我们的目标是找出sum[i, j] 等于k，可以转化为求sum[0, j] - sum[0, i - 1] = k的问题。因此我们利用HashMap记录下所有的sum值，如果曾经出现了sum[0,j] - k的值包含在内，说明中间有一段的sum是等于k的，计数加1<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Map&lt;Integer, Integer&gt; preSum = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        preSum.put(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            <span class="keyword">if</span> (preSum.containsKey(sum - k)) &#123;</div><div class="line">                total += preSum.get(sum - k);</div><div class="line">            &#125;</div><div class="line">            preSum.put(sum, preSum.getOrDefault(sum, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> total;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第九题-533-Lonely-Pixel-II"><a href="#第九题-533-Lonely-Pixel-II" class="headerlink" title="第九题 533. Lonely Pixel II"></a>第九题 <a href="https://leetcode.com/problems/lonely-pixel-ii/#/description" target="_blank" rel="external">533. Lonely Pixel II</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个包含字符’W’（白色）和’B’（黑色）的像素矩阵picture，以及一个整数N。</p>
+<p>求所有同行同列恰好有N个’B’像素，并且这N行必须完全相同。</p>
+<p>注意：</p>
+<p>二维数组的宽度和高度在范围[1,500]之间。</p>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>这道题方法很巧妙，由于要求N行完全相同，因此可以用Map记录下相同的行，然后再对每列的黑点个数进行统计。如果相同的行数不等于N，或此行此列的黑点个数不等于N都可以被排除。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findBlackPixel</span><span class="params">(<span class="keyword">char</span>[][] picture, <span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = picture.length, m = picture[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span> || m &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="comment">//Row ; Frequency</span></div><div class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span>[] colCount = <span class="keyword">new</span> <span class="keyword">int</span>[m];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            StringBuilder rowString = <span class="keyword">new</span> StringBuilder();</div><div class="line">            <span class="keyword">int</span> rowCount = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</div><div class="line">                rowString.append(picture[i][j]);</div><div class="line">                <span class="keyword">if</span> (picture[i][j] == <span class="string">'B'</span>) &#123;</div><div class="line">                    colCount[j]++;</div><div class="line">                    rowCount++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (rowCount == N) map.put(rowString.toString(), map.getOrDefault(rowString.toString(), <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry: map.entrySet()) &#123;</div><div class="line">            String row = entry.getKey();</div><div class="line">            <span class="keyword">int</span> num = entry.getValue();</div><div class="line">            <span class="keyword">if</span> (num == N) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</div><div class="line">                    <span class="keyword">if</span> (colCount[j] == N &amp;&amp; row.charAt(j) == <span class="string">'B'</span>) &#123;</div><div class="line">                        result += N;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/12/6-12号刷题/" rel="next" title="6.12号刷题">
+                <i class="fa fa-chevron-left"></i> 6.12号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E8%82%96-%E9%99%88-730149133/" target="_blank" title="Linkin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-358-Rearrange-String-k-Distance-Apart"><span class="nav-number">1.</span> <span class="nav-text">第一题 358. Rearrange String k Distance Apart</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">1.3.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-565-Array-Nesting"><span class="nav-number">2.</span> <span class="nav-text">第二题 565. Array Nesting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-39-Combination-Sum"><span class="nav-number">3.</span> <span class="nav-text">第三题 39. Combination Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-40-Combination-Sum-II"><span class="nav-number">4.</span> <span class="nav-text">第四题 40. Combination Sum II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-216-Combination-Sum-III"><span class="nav-number">5.</span> <span class="nav-text">第五题 216. Combination Sum III</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-78-Subsets"><span class="nav-number">6.</span> <span class="nav-text">第六题 78. Subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-90-Subsets-II"><span class="nav-number">7.</span> <span class="nav-text">第七题 90. Subsets II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-560-Subarray-Sum-Equals-K"><span class="nav-number">8.</span> <span class="nav-text">第八题 560. Subarray Sum Equals K</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-533-Lonely-Pixel-II"><span class="nav-number">9.</span> <span class="nav-text">第九题 533. Lonely Pixel II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
