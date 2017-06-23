@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/19/6-17号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
 <meta property="og:description" content="第一题 75. Sort Colors题目描述有0,1,2三种数，将他们排序">
-<meta property="og:updated_time" content="2017-06-19T15:40:10.000Z">
+<meta property="og:updated_time" content="2017-06-21T00:47:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6.17号刷题">
 <meta name="twitter:description" content="第一题 75. Sort Colors题目描述有0,1,2三种数，将他们排序">
@@ -454,27 +454,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">2</span>) <span class="keyword">return</span> nums.length;</div><div class="line">        <span class="keyword">int</span> id = <span class="number">1</span>, duplic = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[i] != nums[i - <span class="number">1</span>]) &#123;</div><div class="line">                duplic = <span class="number">1</span>;</div><div class="line">                nums[id++] = nums[i];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (duplic == <span class="number">1</span>) &#123;</div><div class="line">                    nums[id++] = nums[i];</div><div class="line">                    duplic++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="第十题-611-Valid-Triangle-Number"><a href="#第十题-611-Valid-Triangle-Number" class="headerlink" title="第十题 611. Valid Triangle Number"></a>第十题 <a href="https://leetcode.com/problems/valid-triangle-number/#/description" target="_blank" rel="external">611. Valid Triangle Number</a></h3><h4 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定非负整数数组，求其中可以组成三角形的三元组的个数。</p>
 <h4 id="算法-9"><a href="#算法-9" class="headerlink" title="算法"></a>算法</h4><p>主要可以考察利用双向的指针遍历一个数组。</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">triangleNumber611</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">triangleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>{
-        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;
-        Arrays.sort(nums);
-
-        <span class="keyword">int</span> sum = <span class="number">0</span>;
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">1</span>; i &gt; <span class="number">1</span>; i--) {
-            <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>;
-            <span class="keyword">while</span> (low &lt; high) {
-                <span class="keyword">if</span> (nums[low] + nums[high] &gt; nums[i]) {
-                    sum += high - low;
-                    high--;
-                } <span class="keyword">else</span> {
-                    low++;
-                }
-            }
-        }
-        <span class="keyword">return</span> sum;
-    }
-}
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">triangleNumber611</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">triangleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Arrays.sort(nums);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">1</span>; i &gt; <span class="number">1</span>; i--) &#123;</div><div class="line">            <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[low] + nums[high] &gt; nums[i]) &#123;</div><div class="line">                    sum += high - low;</div><div class="line">                    high--;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    low++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -528,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/21/6-21号刷题/" rel="prev" title="6.21号刷题">
+                6.21号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -599,7 +583,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
