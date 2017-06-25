@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/23/6-23号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
 <meta property="og:description" content="第一题 592. Fraction Addition and Subtraction题目描述求分数加减法算式的值，结果化为最简分数。 注意：  输入字符串只包含0~9，+-/。输出亦然 每个分数之前包含±号，若第一个分数为正数，省去+ 输入只包含有效的最简分数，分子分母范围[1, 10]。若分母为1，表示该分数实际上是一个整数。 分数的个数范围[1, 10] 分子分母的结果在32位带符号整数范围之">
-<meta property="og:updated_time" content="2017-06-23T15:21:35.000Z">
+<meta property="og:updated_time" content="2017-06-24T02:01:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6.23号刷题">
 <meta name="twitter:description" content="第一题 592. Fraction Addition and Subtraction题目描述求分数加减法算式的值，结果化为最简分数。 注意：  输入字符串只包含0~9，+-/。输出亦然 每个分数之前包含±号，若第一个分数为正数，省去+ 输入只包含有效的最简分数，分子分母范围[1, 10]。若分母为1，表示该分数实际上是一个整数。 分数的个数范围[1, 10] 分子分母的结果在32位带符号整数范围之">
@@ -404,6 +404,7 @@
 <li>分数的个数范围[1, 10]</li>
 <li>分子分母的结果在32位带符号整数范围之内</li>
 </ol>
+<a id="more"></a>
 <h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><pre><code>a1/b1 + a2/b2 = (a1*b2 + a2 * b1) / (b1 * b2)
 </code></pre><p>根据这个公式进行计算，注意这里约分的方法，这个递归的求最大公约数的方法很好。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">fractionAddition</span><span class="params">(String expression)</span> </span>&#123;</div><div class="line">        String[] fraces = expression.split(<span class="string">"(?=[-, +])"</span>);</div><div class="line">        String res = <span class="string">"0/1"</span>;</div><div class="line">        <span class="keyword">for</span> (String frac : fraces) res = add(res, frac);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">(String frac1, String frac2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] f1 = Stream.of(frac1.split(<span class="string">"/"</span>)).mapToInt(Integer::parseInt).toArray(),</div><div class="line">                f2 = Stream.of(frac2.split(<span class="string">"/"</span>)).mapToInt(Integer::parseInt).toArray();</div><div class="line">        <span class="keyword">int</span> number = f1[<span class="number">0</span>] * f2[<span class="number">1</span>] + f1[<span class="number">1</span>] * f2[<span class="number">0</span>], demon = f1[<span class="number">1</span>] * f2[<span class="number">1</span>];</div><div class="line">        String sign = <span class="string">""</span>;</div><div class="line">        <span class="keyword">if</span> (number &lt; <span class="number">0</span>) &#123;sign = <span class="string">"-"</span>; number *= -<span class="number">1</span>;&#125;</div><div class="line">        <span class="keyword">return</span> sign + number/gcd(number, demon) + <span class="string">"/"</span> + demon/gcd(number, demon);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> x == <span class="number">0</span> || y == <span class="number">0</span> ? x + y : gcd(y, x % y);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -506,6 +507,10 @@ eight: Only digit with g
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/06/24/6-24号刷题/" rel="prev" title="6.24号刷题">
+                6.24号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -576,7 +581,7 @@ eight: Only digit with g
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
