@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 293. Flip Game题目描述在一个String中，将连续两个 ++ 换成 – 算法123456789101112131415public class Solution &amp;#123;    public List&amp;lt;String&amp;gt; generatePossibleNextMoves(String s) &amp;#123;        List&amp;lt;String&amp;gt; lis">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.2号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/02/7-2号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 293. Flip Game题目描述在一个String中，将连续两个 ++ 换成 – 算法123456789101112131415public class Solution &amp;#123;    public List&amp;lt;String&amp;gt; generatePossibleNextMoves(String s) &amp;#123;        List&amp;lt;String&amp;gt; lis">
+<meta property="og:updated_time" content="2017-07-03T01:47:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.2号刷题">
+<meta name="twitter:description" content="第一题 293. Flip Game题目描述在一个String中，将连续两个 ++ 换成 – 算法123456789101112131415public class Solution &amp;#123;    public List&amp;lt;String&amp;gt; generatePossibleNextMoves(String s) &amp;#123;        List&amp;lt;String&amp;gt; lis">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/02/7-2号刷题/"/>
+
+
+
+
+
+  <title>7.2号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/readingresponse" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/travel" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/02/7-2号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.2号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T09:58:17+08:00">
+                2017-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-293-Flip-Game"><a href="#第一题-293-Flip-Game" class="headerlink" title="第一题 293. Flip Game"></a>第一题 <a href="https://leetcode.com/problems/flip-game/#/description" target="_blank" rel="external">293. Flip Game</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个String中，将连续两个 ++ 换成 –</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">generatePossibleNextMoves</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span> list;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'+'</span> &amp;&amp; s.charAt(i + <span class="number">1</span>) == <span class="string">'+'</span>) &#123;</div><div class="line">                String str = <span class="keyword">new</span> String();</div><div class="line">                str = s.substring(<span class="number">0</span>, i) + <span class="string">"--"</span> + s.substring(i + <span class="number">2</span>, s.length());</div><div class="line">                list.add(str);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> list;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><p>substring这个函数如果越过边界的话，默认返回空，不需要做超过边界的处理</p>
+<h3 id="第二题-294-Flip-Game-II"><a href="#第二题-294-Flip-Game-II" class="headerlink" title="第二题 294. Flip Game II"></a>第二题 <a href="https://leetcode.com/problems/flip-game-ii/#/description" target="_blank" rel="external">294. Flip Game II</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>现在求第一个走的人是否能赢</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><h5 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h5><p>查看下一个选择的人是否能赢</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">canWin294</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">canWin2</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'+'</span> &amp;&amp; s.charAt(i + <span class="number">1</span>) == <span class="string">'+'</span>) &#123;</div><div class="line">                String str = s.substring(<span class="number">0</span>, i) + <span class="string">"--"</span> + s.substring(i + <span class="number">2</span>, s.length());</div><div class="line">                <span class="keyword">if</span> (!canWin2(str)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h5><p>把之前的状态进行存储，减少时间消耗</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canWin</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        Map&lt;String, Boolean&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">return</span> canWin(s, map);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canWin</span><span class="params">(String s, Map&lt;String, Boolean&gt; map)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (map.containsKey(s)) <span class="keyword">return</span> map.get(s);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'+'</span> &amp;&amp; s.charAt(i + <span class="number">1</span>) == <span class="string">'+'</span>) &#123;</div><div class="line">                String t = s.substring(<span class="number">0</span>, i) + <span class="string">"--"</span> + s.substring(i + <span class="number">2</span>, s.length());</div><div class="line">                <span class="keyword">if</span> (!canWin(t, map)) &#123;</div><div class="line">                    map.put(s, <span class="keyword">true</span>);</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        map.put(s, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-606-Construct-String-from-Binary-Tree"><a href="#第三题-606-Construct-String-from-Binary-Tree" class="headerlink" title="第三题 606. Construct String from Binary Tree"></a>第三题 <a href="https://leetcode.com/problems/construct-string-from-binary-tree/#/description" target="_blank" rel="external">606. Construct String from Binary Tree</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>将二叉树序列化为字符串，形式为”root(left)(right)”，空节点表示为”()”。所有不产生歧义的空括号可以省去。</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><h5 id="First-Version"><a href="#First-Version" class="headerlink" title="First Version"></a>First Version</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">tree2str606</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">tree2str</span><span class="params">(TreeNode t)</span> </span>&#123;</div><div class="line">        String s = <span class="string">""</span>;</div><div class="line">        <span class="keyword">return</span> backtrack(s, t);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">backtrack</span><span class="params">(String s, TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> s;</div><div class="line">        s += root.val;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) <span class="keyword">return</span> s;</div><div class="line"></div><div class="line">        <span class="comment">//only backtrack left part</span></div><div class="line">        <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</div><div class="line">            s += <span class="string">"("</span>;</div><div class="line">            s = backtrack(s, root.left);</div><div class="line">            s += <span class="string">")"</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            s += <span class="string">"("</span>;</div><div class="line">            s = backtrack(s, root.left);</div><div class="line">            s += <span class="string">")("</span>;</div><div class="line">            s = backtrack(s, root.right);</div><div class="line">            s += <span class="string">")"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Refactory"><a href="#Refactory" class="headerlink" title="Refactory"></a>Refactory</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">tree2str</span><span class="params">(TreeNode t)</span> </span>&#123;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        helper(sb, t);</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(StringBuilder sb, TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root != <span class="keyword">null</span>) &#123;</div><div class="line">            sb.append(root.val);</div><div class="line">            <span class="keyword">if</span> (root.left != <span class="keyword">null</span> || root.right != <span class="keyword">null</span>) &#123;</div><div class="line">                sb.append(<span class="string">"("</span>);</div><div class="line">                helper(sb, root.left);</div><div class="line">                sb.append(<span class="string">")"</span>);</div><div class="line">                <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) &#123;</div><div class="line">                    sb.append(<span class="string">"("</span>);</div><div class="line">                    helper(sb, root.right);</div><div class="line">                    sb.append(<span class="string">")"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-520-Detect-Capital"><a href="#第四题-520-Detect-Capital" class="headerlink" title="第四题 520. Detect Capital"></a>第四题 <a href="https://leetcode.com/problems/detect-capital/#/description" target="_blank" rel="external">520. Detect Capital</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>判断单词是否为首字母大写、全部大写或者全部小写</p>
+<p>注意：输入单词非空并且只包含大写或者小写字母</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><h5 id="统计法"><a href="#统计法" class="headerlink" title="统计法"></a>统计法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">detectCapitalUse520</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">detectCapitalUse2</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="string">'Z'</span> - word.charAt(i) &gt;= <span class="number">0</span>) count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (count == <span class="number">0</span> || count == word.length() || (count == <span class="number">1</span> &amp;&amp; <span class="string">'Z'</span> - word.charAt(<span class="number">0</span>) &gt;= <span class="number">0</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">detectCapitalUse520</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">detectCapitalUse</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> word.matches(<span class="string">"[A-Z]+|[a-z]+|[A-Z][a-z]+"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-383-Ransom-Note"><a href="#第五题-383-Ransom-Note" class="headerlink" title="第五题 383. Ransom Note"></a>第五题 <a href="https://leetcode.com/problems/ransom-note/#/description" target="_blank" rel="external">383. Ransom Note</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个字符串ransomNote和magazine，编写函数判断magazine中的字符是否可以完全包含ransomNote中的字符。</p>
+<p>注意：可以假设字符串中只包含小写字母。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">canConstruct383</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canConstruct</span><span class="params">(String ransomNote, String magazine)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] store = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : magazine.toCharArray()) store[<span class="string">'z'</span> - c]++;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : ransomNote.toCharArray()) &#123;</div><div class="line">            <span class="keyword">int</span> index = <span class="string">'z'</span> - c;</div><div class="line">            store[index]--;</div><div class="line">            <span class="keyword">if</span> (store[index] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-539-Minimum-Time-Difference"><a href="#第六题-539-Minimum-Time-Difference" class="headerlink" title="第六题 539. Minimum Time Difference"></a>第六题 <a href="https://leetcode.com/problems/minimum-time-difference/#/description" target="_blank" rel="external">539. Minimum Time Difference</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一组24小时制的时间，格式为“小时：分钟”，求任意两组时间中分钟数间隔的最小值。</p>
+<p>注意：</p>
+<ol>
+<li>给定时间至少2个，至多20000个。</li>
+<li>给定时间是合法的，范围在00:00到23:59之间。</li>
+</ol>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>利用bucket sort进行排序，然后找出最近的两个时间，时间复杂度O(n)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMinDifference</span><span class="params">(List&lt;String&gt; timePoints)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (timePoints.size() &gt;= <span class="number">1440</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">boolean</span>[] tag = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">1440</span>];</div><div class="line">        <span class="keyword">int</span> minNum = Integer.MAX_VALUE, maxNum = Integer.MIN_VALUE;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (String str : timePoints) &#123;</div><div class="line">            <span class="keyword">int</span> hour = Integer.valueOf(str.split(<span class="string">":"</span>)[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">int</span> minute = Integer.valueOf(str.split(<span class="string">":"</span>)[<span class="number">1</span>]);</div><div class="line">            <span class="keyword">if</span> (tag[hour * <span class="number">60</span> + minute]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            tag[hour * <span class="number">60</span> + minute] = <span class="keyword">true</span>;</div><div class="line">            minNum = Math.min(minNum, hour * <span class="number">60</span> + minute);</div><div class="line">            maxNum = Math.max(maxNum, hour * <span class="number">60</span> + minute);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> min = <span class="number">1440</span> - (maxNum - minNum);</div><div class="line">        <span class="keyword">int</span> pre = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1440</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (tag[i]) &#123;</div><div class="line">                <span class="keyword">if</span> (pre != -<span class="number">1</span>)</div><div class="line">                    min = Math.min(min, i - pre);</div><div class="line">                pre = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> min;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-22-Generate-Parentheses"><a href="#第七题-22-Generate-Parentheses" class="headerlink" title="第七题 22. Generate Parentheses"></a>第七题 <a href="https://leetcode.com/problems/generate-parentheses/#/description" target="_blank" rel="external">22. Generate Parentheses</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定n个括号()，找出这些括号所有的搭配方式</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>回溯，并计算左右括号的匹配情况</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">generateParenthesis22</span> </span>&#123;</div><div class="line">    List&lt;String&gt; res;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">generateParenthesis</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        helper(<span class="keyword">new</span> StringBuilder(), <span class="number">0</span>, <span class="number">0</span>, n);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(StringBuilder sb, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (left == n &amp;&amp; right == n) &#123;</div><div class="line">            res.add(sb.toString());</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (left &lt; n) &#123;</div><div class="line">            helper(sb.append(<span class="string">"("</span>), left + <span class="number">1</span>, right, n);</div><div class="line">            sb.deleteCharAt(sb.length() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (right &lt; left) &#123;</div><div class="line">            helper(sb.append(<span class="string">")"</span>), left, right + <span class="number">1</span>, n);</div><div class="line">            sb.deleteCharAt(sb.length() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-17-Letter-Combinations-of-a-Phone-Number"><a href="#第八题-17-Letter-Combinations-of-a-Phone-Number" class="headerlink" title="第八题 17. Letter Combinations of a Phone Number"></a>第八题 <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description" target="_blank" rel="external">17. Letter Combinations of a Phone Number</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>对于8字键盘格，一个数字将会对应多个号码，找出数字对应的所有的字母组合可能性</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><h5 id="回溯-1"><a href="#回溯-1" class="headerlink" title="回溯"></a>回溯</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">letterCombinations17</span> </span>&#123;</div><div class="line">    List&lt;String&gt; res;</div><div class="line">    String[] mapping = <span class="keyword">new</span> String[] &#123;<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</div><div class="line">        res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (digits.isEmpty()) <span class="keyword">return</span> res;</div><div class="line">        helper(<span class="keyword">new</span> StringBuilder(), <span class="number">0</span>, digits);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(StringBuilder sb, <span class="keyword">int</span> length, String digits)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (length == digits.length()) &#123;</div><div class="line">            res.add(sb.toString());</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> number = Character.getNumericValue(digits.charAt(length));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : mapping[number].toCharArray()) &#123;</div><div class="line">            sb.append(c);</div><div class="line">            helper(sb, length + <span class="number">1</span>, digits);</div><div class="line">            sb.deleteCharAt(sb.length() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="利用队列"><a href="#利用队列" class="headerlink" title="利用队列"></a>利用队列</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</div><div class="line">        LinkedList&lt;String&gt; ans = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (digits.isEmpty()) <span class="keyword">return</span> ans;</div><div class="line">        String[] mapping = <span class="keyword">new</span> String[] &#123;<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</div><div class="line">        ans.add(<span class="string">""</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; digits.length(); i++) &#123;</div><div class="line">            <span class="keyword">int</span> x = Character.getNumericValue(digits.charAt(i));</div><div class="line">            <span class="keyword">while</span> (ans.peek().length() == i) &#123;</div><div class="line">                String t = ans.poll();</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">char</span> c : mapping[x].toCharArray())</div><div class="line">                    ans.add(t + c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-20-Valid-Parentheses"><a href="#第九题-20-Valid-Parentheses" class="headerlink" title="第九题 20. Valid Parentheses"></a>第九题 <a href="https://leetcode.com/problems/valid-parentheses/#/description" target="_blank" rel="external">20. Valid Parentheses</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>将所有左括号和右括号匹配</p>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>利用Stack 判断是否所有括号都得到了相应的匹配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isValid20</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        String open = <span class="string">"(&#123;["</span>;</div><div class="line">        List&lt;Character&gt; store = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (open.indexOf(c) &gt;= <span class="number">0</span>) &#123;</div><div class="line">                store.add(c);</div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (store.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                <span class="keyword">char</span> last = store.get(store.size() - <span class="number">1</span>);</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (last == <span class="string">'('</span> &amp;&amp; c != <span class="string">')'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (last == <span class="string">'&#123;'</span> &amp;&amp; c != <span class="string">'&#125;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (last == <span class="string">'['</span> &amp;&amp; c != <span class="string">']'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">                store.remove(store.size() - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> store.isEmpty();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/27/6-27号刷题/" rel="next" title="6.27号刷题">
+                <i class="fa fa-chevron-left"></i> 6.27号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E8%82%96-%E9%99%88-730149133/" target="_blank" title="Linkin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-293-Flip-Game"><span class="nav-number">1.</span> <span class="nav-text">第一题 293. Flip Game</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">1.3.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-294-Flip-Game-II"><span class="nav-number">2.</span> <span class="nav-text">第二题 294. Flip Game II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回溯"><span class="nav-number">2.2.1.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态规划"><span class="nav-number">2.2.2.</span> <span class="nav-text">动态规划</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-606-Construct-String-from-Binary-Tree"><span class="nav-number">3.</span> <span class="nav-text">第三题 606. Construct String from Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#First-Version"><span class="nav-number">3.2.1.</span> <span class="nav-text">First Version</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Refactory"><span class="nav-number">3.2.2.</span> <span class="nav-text">Refactory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-520-Detect-Capital"><span class="nav-number">4.</span> <span class="nav-text">第四题 520. Detect Capital</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#统计法"><span class="nav-number">4.2.1.</span> <span class="nav-text">统计法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正则匹配"><span class="nav-number">4.2.2.</span> <span class="nav-text">正则匹配</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-383-Ransom-Note"><span class="nav-number">5.</span> <span class="nav-text">第五题 383. Ransom Note</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-539-Minimum-Time-Difference"><span class="nav-number">6.</span> <span class="nav-text">第六题 539. Minimum Time Difference</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-22-Generate-Parentheses"><span class="nav-number">7.</span> <span class="nav-text">第七题 22. Generate Parentheses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-17-Letter-Combinations-of-a-Phone-Number"><span class="nav-number">8.</span> <span class="nav-text">第八题 17. Letter Combinations of a Phone Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回溯-1"><span class="nav-number">8.2.1.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用队列"><span class="nav-number">8.2.2.</span> <span class="nav-text">利用队列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-20-Valid-Parentheses"><span class="nav-number">9.</span> <span class="nav-text">第九题 20. Valid Parentheses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="才疏学浅">
+<meta name="description" content="第一题 279. Perfect Squares 题目描述给定一个正整数n，求相加等于n的完全平方数（例如 1, 4, 9, 16, …）的最小个数。 例如，给定n = 12，返回3，因为12 = 4 + 4 + 4；给定n = 13，返回2，因为13 = 4 + 9。">
 <meta name="keywords" content="LeetCode,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6.25号刷题">
 <meta property="og:url" content="http://yoursite.com/2017/06/25/6-25号刷题/index.html">
 <meta property="og:site_name" content="陈浮云">
-<meta property="og:description" content="才疏学浅">
-<meta property="og:updated_time" content="2017-06-25T02:49:03.000Z">
+<meta property="og:description" content="第一题 279. Perfect Squares 题目描述给定一个正整数n，求相加等于n的完全平方数（例如 1, 4, 9, 16, …）的最小个数。 例如，给定n = 12，返回3，因为12 = 4 + 4 + 4；给定n = 13，返回2，因为13 = 4 + 9。">
+<meta property="og:updated_time" content="2017-06-26T15:58:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6.25号刷题">
-<meta name="twitter:description" content="才疏学浅">
+<meta name="twitter:description" content="第一题 279. Perfect Squares 题目描述给定一个正整数n，求相加等于n的完全平方数（例如 1, 4, 9, 16, …）的最小个数。 例如，给定n = 12，返回3，因为12 = 4 + 4 + 4；给定n = 13，返回2，因为13 = 4 + 9。">
 
 
 
@@ -395,7 +395,36 @@
       
 
       
-        
+        <p>第一题 <a href="https://leetcode.com/problems/perfect-squares/#/description" target="_blank" rel="external">279. Perfect Squares</a></p>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个正整数n，求相加等于n的完全平方数（例如 1, 4, 9, 16, …）的最小个数。</p>
+<p>例如，给定n = 12，返回3，因为12 = 4 + 4 + 4；给定n = 13，返回2，因为13 = 4 + 9。</p>
+<a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用动态规划的思想，由于需要求最小值，可以考虑保存之前的每一个状态。然后统计到现阶段的最小值，然后再不断循环更新。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">        Arrays.fill(res, Integer.MAX_VALUE);</div><div class="line">        res[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> min = Integer.MAX_VALUE;</div><div class="line">            <span class="keyword">while</span> (i &gt;= j * j) &#123;</div><div class="line">                min = Math.min(min, res[i - j * j] + <span class="number">1</span>);</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            res[i] = min;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res[n];        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-204-Count-Primes"><a href="#第二题-204-Count-Primes" class="headerlink" title="第二题 204. Count Primes"></a>第二题 <a href="https://leetcode.com/problems/count-primes/#/description" target="_blank" rel="external">204. Count Primes</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>统计小于非负整数n的素数的个数</p>
+<p>提示：n的范围是100,000到5,000,000</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>利用乘法，将所有之后不可能的都筛去，然后剩下的就是我们需要的答案。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">boolean</span>[] notPrime = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (!notPrime[i]) &#123;</div><div class="line">                count++;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j * i &lt; n; j++) &#123;</div><div class="line">                    notPrime[j * i] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-593-Valid-Square"><a href="#第三题-593-Valid-Square" class="headerlink" title="第三题 593. Valid Square"></a>第三题 <a href="https://leetcode.com/problems/valid-square/#/description" target="_blank" rel="external">593. Valid Square</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定平面上的4个点，判断是否围成一个正方形。</p>
+<p>注意：</p>
+<ol>
+<li>坐标的范围[-10000, 10000]</li>
+<li>有效的正方形有4条相等的长度为正数的边，并且四个内角为直角。</li>
+<li>输入点无序</li>
+</ol>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>查看边的长度是否只有两种，并且如果边长为0的话是无效的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">validSquare593</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validSquare</span><span class="params">(<span class="keyword">int</span>[] p1, <span class="keyword">int</span>[] p2, <span class="keyword">int</span>[] p3, <span class="keyword">int</span>[] p4)</span> </span>&#123;</div><div class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(dis(p1, p2), dis(p1, p3), dis(p1, p4), dis(p2, p3), dis(p2, p4), dis(p3, p4)));</div><div class="line"></div><div class="line">        <span class="keyword">return</span> !set.contains(<span class="number">0</span>) &amp;&amp; set.size() == <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dis</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span>[] b)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (a[<span class="number">0</span>] - b[<span class="number">0</span>]) * (a[<span class="number">0</span>] - b[<span class="number">0</span>]) + (a[<span class="number">1</span>] - b[<span class="number">1</span>]) * (a[<span class="number">1</span>] - b[<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-441-Arranging-Coins"><a href="#第四题-441-Arranging-Coins" class="headerlink" title="第四题 441. Arranging Coins"></a>第四题 <a href="https://leetcode.com/problems/arranging-coins/#/description" target="_blank" rel="external">441. Arranging Coins</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>你有n枚硬币，想要组成一个阶梯形状，其中第k行放置k枚硬币。</p>
+<p>给定n，计算可以形成的满阶梯的最大行数。</p>
+<p>n是非负整数，并且在32位带符号整数范围之内。</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><h5 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">arrangeCoins441</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrangeCoins2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n, ans = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">            <span class="keyword">long</span> mid = left + (right - left) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (mid + (mid - <span class="number">1</span>) * mid / <span class="number">2</span> &lt;= n ) &#123;</div><div class="line">                left = (<span class="keyword">int</span>) mid + <span class="number">1</span>;</div><div class="line">                ans = (<span class="keyword">int</span>) mid;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                right = (<span class="keyword">int</span>) mid - <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="解方程法"><a href="#解方程法" class="headerlink" title="解方程法"></a>解方程法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrangeCoins</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">double</span> temp = n;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (Math.sqrt(<span class="number">2</span> * temp + <span class="number">0.25</span>) - <span class="number">0.5</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-517-Super-Washing-Machines"><a href="#第五题-517-Super-Washing-Machines" class="headerlink" title="第五题 517. Super Washing Machines"></a>第五题 <a href="https://leetcode.com/problems/super-washing-machines/#/description" target="_blank" rel="external">517. Super Washing Machines</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个长度为n的整数数组nums，每一次选择m个数(1 ≤ m ≤ n)进行移动：将这m个数-1，同时令其相邻元素+1（这m个数同时可以是被加元素）</p>
+<p>求最少需要多少次移动，使得nums的所有元素均相等。如果不能，则返回-1</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>对于每一个数字，我们需要到达average 这个大小。为了达到这个大小，我们需要移出(正数)或者已入(负数)个数字，对于位置0的需求，肯定是1移动过来的。确定0的需求后，1的平衡后的需求(0的需求和1本身的需求)是由2来满足的。依次内推，可以写出DP的解</p>
+<h5 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMinMoves</span><span class="params">(<span class="keyword">int</span>[] machines)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : machines) sum += num;</div><div class="line">        <span class="keyword">if</span> (sum % machines.length != <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> avg = sum / machines.length, max = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[machines.length];</div><div class="line">        dp[<span class="number">0</span>] = machines[<span class="number">0</span>] - avg;</div><div class="line">        max = dp[<span class="number">0</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; machines.length; i++) &#123;</div><div class="line">            dp[i] = dp[i - <span class="number">1</span>] + machines[i] - avg;</div><div class="line">            max = Math.max(Math.abs(dp[i]), Math.max(max, machines[i] - avg));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findMinMoves517</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMinMoves</span><span class="params">(<span class="keyword">int</span>[] machines)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : machines) sum += num;</div><div class="line">        <span class="keyword">if</span> (sum % machines.length != <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> avg = sum / machines.length, cnt = <span class="number">0</span>, max = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : machines) &#123;</div><div class="line">            cnt += num - avg;</div><div class="line">            max = Math.max(Math.max(max, Math.abs(cnt)), num - avg);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -449,6 +478,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/06/27/6-26号刷题/" rel="prev" title="6.26号刷题">
+                6.26号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -494,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -510,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -577,6 +619,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-204-Count-Primes"><span class="nav-number"></span> <span class="nav-text">第二题 204. Count Primes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-593-Valid-Square"><span class="nav-number"></span> <span class="nav-text">第三题 593. Valid Square</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-441-Arranging-Coins"><span class="nav-number"></span> <span class="nav-text">第四题 441. Arranging Coins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分法"><span class="nav-number">2.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解方程法"><span class="nav-number">2.2.</span> <span class="nav-text">解方程法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-517-Super-Washing-Machines"><span class="nav-number"></span> <span class="nav-text">第五题 517. Super Washing Machines</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DP"><span class="nav-number">2.1.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简化"><span class="nav-number">2.2.</span> <span class="nav-text">简化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
