@@ -1,0 +1,841 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 130. Surrounded Regions题目描述将所有被环绕的’O’变为‘X’，被环绕的定义是，所有相邻的’O’周围不靠近边界 算法利用DFS对所有从边界开始的’O’进行探测，找出所有不环绕的’O’">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.18号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/26/7-18号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 130. Surrounded Regions题目描述将所有被环绕的’O’变为‘X’，被环绕的定义是，所有相邻的’O’周围不靠近边界 算法利用DFS对所有从边界开始的’O’进行探测，找出所有不环绕的’O’">
+<meta property="og:updated_time" content="2017-07-28T05:29:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.18号刷题">
+<meta name="twitter:description" content="第一题 130. Surrounded Regions题目描述将所有被环绕的’O’变为‘X’，被环绕的定义是，所有相邻的’O’周围不靠近边界 算法利用DFS对所有从边界开始的’O’进行探测，找出所有不环绕的’O’">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/26/7-18号刷题/"/>
+
+
+
+
+
+  <title>7.18号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/readingresponse" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/travel" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/7-18号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.18号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T16:05:25+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-130-Surrounded-Regions"><a href="#第一题-130-Surrounded-Regions" class="headerlink" title="第一题 130. Surrounded Regions"></a>第一题 <a href="https://leetcode.com/problems/surrounded-regions/#/description" target="_blank" rel="external">130. Surrounded Regions</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>将所有被环绕的’O’变为‘X’，被环绕的定义是，所有相邻的’O’周围不靠近边界</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用DFS对所有从边界开始的’O’进行探测，找出所有不环绕的’O’<br><a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">solve130</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (board.length == <span class="number">0</span> || board[<span class="number">0</span>].length == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> m = board.length, n = board[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (board[i][<span class="number">0</span>] == <span class="string">'O'</span>)</div><div class="line">                DFS(board, i, <span class="number">0</span>);</div><div class="line">            <span class="keyword">if</span> (board[i][n - <span class="number">1</span>] == <span class="string">'O'</span>)</div><div class="line">                DFS(board, i, n - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (board[<span class="number">0</span>][j] == <span class="string">'O'</span>)</div><div class="line">                DFS(board, <span class="number">0</span>, j);</div><div class="line">            <span class="keyword">if</span> (board[m - <span class="number">1</span>][j] == <span class="string">'O'</span>)</div><div class="line">                DFS(board, m - <span class="number">1</span>, j);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'O'</span>)</div><div class="line">                    board[i][j] = <span class="string">'X'</span>;</div><div class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'*'</span>)</div><div class="line">                    board[i][j] = <span class="string">'O'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt; board.length - <span class="number">1</span> || j &gt; board[<span class="number">0</span>].length - <span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (board[i][j] == <span class="string">'O'</span>)</div><div class="line">            board[i][j] = <span class="string">'*'</span>;</div><div class="line">        <span class="keyword">if</span> (i - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; board[i - <span class="number">1</span>][j] == <span class="string">'O'</span>)</div><div class="line">            DFS(board, i - <span class="number">1</span>, j);</div><div class="line">        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; board.length - <span class="number">1</span> &amp;&amp; board[i + <span class="number">1</span>][j] == <span class="string">'O'</span>)</div><div class="line">            DFS(board, i + <span class="number">1</span>, j);</div><div class="line">        <span class="keyword">if</span> (j - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; board[i][j - <span class="number">1</span>] == <span class="string">'O'</span>)</div><div class="line">            DFS(board, i, j - <span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> (j + <span class="number">1</span> &lt; board[<span class="number">0</span>].length - <span class="number">1</span> &amp;&amp; board[i][j + <span class="number">1</span>] == <span class="string">'O'</span>)</div><div class="line">            DFS(board, i, j + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-200-Number-of-Islands"><a href="#第二题-200-Number-of-Islands" class="headerlink" title="第二题 200. Number of Islands"></a>第二题 <a href="https://leetcode.com/problems/number-of-islands/#/description" target="_blank" rel="external">200. Number of Islands</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个由字符‘1’（陆地）和‘0’（水域）组成的二维网格地图，计算岛屿的个数。岛屿被水域环绕，由竖直或者水平方向邻接的陆地构成。你可以假设网格地图的四条边都被水域包围。</p>
+<p>测试样例见题目描述。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>与上题相似，DFS</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">numIslands200</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> m = grid.length;</div><div class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].length;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="string">'1'</span>) &#123;</div><div class="line">                    dfs(grid, i, j);</div><div class="line">                    count++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt; grid.length - <span class="number">1</span> || j &gt; grid[<span class="number">0</span>].length - <span class="number">1</span> || grid[i][j] != <span class="string">'1'</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        grid[i][j] = <span class="string">'0'</span>;</div><div class="line"></div><div class="line">        dfs(grid, i - <span class="number">1</span>, j);</div><div class="line">        dfs(grid, i + <span class="number">1</span>, j);</div><div class="line">        dfs(grid, i, j - <span class="number">1</span>);</div><div class="line">        dfs(grid, i, j + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-305-Number-of-Islands-II"><a href="#第三题-305-Number-of-Islands-II" class="headerlink" title="第三题 305. Number of Islands II"></a>第三题 <a href="https://leetcode.com/problems/number-of-islands-ii/#/description" target="_blank" rel="external">305. Number of Islands II</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>现在给定一个m * n的二维矩阵，和一系列的操作。具体操作是将一片海域变为陆地，并统计在每次操作后，岛屿的数量</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>利用数组来代表一个树，points[newOperation] = ?如果是新的岛屿，那么树的根就是自己。如果不是新的岛屿，那么就让现在的point[newOperation] = FirstAddPosition，这样可以非常快速的检查每次加入的岛屿是否属于之前加入的岛屿中。比每次加入后做深度遍历要快很多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">numIslands2305</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">numIslands2</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span>[][] positions)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (m &lt;= <span class="number">0</span> || n &lt;= <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">        <span class="keyword">int</span>[] points = <span class="keyword">new</span> <span class="keyword">int</span>[m * n];</div><div class="line">        Arrays.fill(points, -<span class="number">1</span>);</div><div class="line">        <span class="keyword">int</span>[][] dirs = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] point : positions) &#123;</div><div class="line">            <span class="keyword">int</span> root = n * point[<span class="number">0</span>] + point[<span class="number">1</span>];</div><div class="line">            points[root] = root;</div><div class="line">            count++;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : dirs) &#123;</div><div class="line">                <span class="keyword">int</span> x = dir[<span class="number">0</span>] + point[<span class="number">0</span>];</div><div class="line">                <span class="keyword">int</span> y = dir[<span class="number">1</span>] + point[<span class="number">1</span>];</div><div class="line">                <span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || x &gt;= m || y &gt;= n || points[n * x + y] == -<span class="number">1</span>)</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line"></div><div class="line">                <span class="keyword">int</span> rootNb = findRoot(points, n * x + y);</div><div class="line">                <span class="keyword">if</span> (root != rootNb) &#123;</div><div class="line">                    points[root] = rootNb;</div><div class="line">                    root = rootNb;</div><div class="line">                    count--;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            res.add(count);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span>[] points, <span class="keyword">int</span> newroot)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (newroot != points[newroot]) &#123;</div><div class="line">            points[newroot] = points[points[newroot]];</div><div class="line">            newroot = points[newroot];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> newroot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-261-Graph-Valid-Tree"><a href="#第四题-261-Graph-Valid-Tree" class="headerlink" title="第四题 261. Graph Valid Tree"></a>第四题 <a href="https://leetcode.com/problems/graph-valid-tree/tabs/description" target="_blank" rel="external">261. Graph Valid Tree</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定n个节点，以及他们之间边的关系（无向）,问是否这些节点能够组成一棵树</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>利用Union and Find 进行求解，将所有已经在一起的节点归并到一个Set中。然后用find查看新进来的节点是否会形成图</p>
+<p>关于<a href="https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf" target="_blank" rel="external">Union and Find</a> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">validTree261</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validTree</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edges)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] sets = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        Arrays.fill(sets, -<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] edge : edges) &#123;</div><div class="line">            <span class="keyword">int</span> x = findRoot(sets, edge[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">int</span> y = findRoot(sets, edge[<span class="number">1</span>]);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (x == y) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            sets[x] = y;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> edges.length == n - <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span>[] sets, <span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (sets[id] != -<span class="number">1</span>) <span class="keyword">return</span> findRoot(sets, sets[id]);</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-323-Number-of-Connected-Components-in-an-Undirected-Graph"><a href="#第五题-323-Number-of-Connected-Components-in-an-Undirected-Graph" class="headerlink" title="第五题 323. Number of Connected Components in an Undirected Graph"></a>第五题 <a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/tabs/description" target="_blank" rel="external">323. Number of Connected Components in an Undirected Graph</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>对于n个节点，我们有任意条无向的边缘，求整个图中有几个独立不联通的区域</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">countComponents323</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countComponents</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edges)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] sets = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        Arrays.fill(sets, -<span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] edge : edges) &#123;</div><div class="line">            <span class="keyword">int</span> x = findRoot(sets, edge[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">int</span> y = findRoot(sets, edge[<span class="number">1</span>]);</div><div class="line">            <span class="keyword">if</span> (x == y) <span class="keyword">continue</span>;</div><div class="line">            sets[x] = y;</div><div class="line">            n--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> n;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span>[] sets, <span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (sets[id] == -<span class="number">1</span>) <span class="keyword">return</span> id;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> findRoot(sets, sets[id]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="压缩路径后"><a href="#压缩路径后" class="headerlink" title="压缩路径后"></a>压缩路径后</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countComponents</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edges)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] sets = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) sets[i] = i;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] edge : edges) &#123;</div><div class="line">            <span class="keyword">int</span> rootF = findRoot(sets, edge[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">int</span> rootS = findRoot(sets, edge[<span class="number">1</span>]);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (rootF != rootS) &#123;</div><div class="line">                n--;</div><div class="line">                sets[rootF] = rootS;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> n;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span>[] sets, <span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (sets[id] != id) &#123;</div><div class="line">            sets[id] = sets[sets[id]];</div><div class="line">            id = sets[id];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-547-Friend-Circles"><a href="#第六题-547-Friend-Circles" class="headerlink" title="第六题 547. Friend Circles"></a>第六题 <a href="https://leetcode.com/problems/friend-circles/tabs/description" target="_blank" rel="external">547. Friend Circles</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定邻接矩阵M，求连通分量的个数。</p>
+<p>注意：</p>
+<ol>
+<li>N的范围[1, 200]</li>
+<li>M[i][i] = 1</li>
+<li>如果M[i][j] = 1，那么M[j][i] = 1</li>
+</ol>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>依然用Union Find的办法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">public class findCircleNum547 &#123;</div><div class="line">    public int findCircleNum(int[][] M) &#123;</div><div class="line">        int n = M.length, count = n;</div><div class="line">        int[] sets = new int[n];</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; n; i++) sets[i] = i;</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">            for (int j = i + 1; j &lt; n; j++) &#123;</div><div class="line">                if (M[i][j] == 1) &#123;</div><div class="line">                    int rootFirst = findRoot(sets, i);</div><div class="line">                    int rootSecond = findRoot(sets, j);</div><div class="line">                    if (rootFirst != rootSecond) &#123;</div><div class="line">                        sets[rootFirst] = rootSecond;</div><div class="line">                        count--;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int findRoot(int[] sets, int id) &#123;</div><div class="line">        while (sets[id] != id) &#123;</div><div class="line">            sets[id] = sets[sets[id]];</div><div class="line">            id = sets[id];</div><div class="line">        &#125;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```   </div><div class="line">    </div><div class="line">### 第七题 [133. Clone Graph](https://leetcode.com/problems/clone-graph/tabs/description)</div><div class="line"></div><div class="line">#### 题目描述</div><div class="line">复制整个无向图</div><div class="line"></div><div class="line">#### 算法</div><div class="line">利用BFS，一个HashMap和Queue进行复制</div><div class="line"></div><div class="line">如果是有向图，则需要两遍遍历，第一遍创建所有节点，第二遍复制。算法类似LinkedList</div><div class="line"></div><div class="line">```java</div><div class="line">public class Solution &#123;</div><div class="line">    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) &#123;</div><div class="line">        if (node == null) return null;</div><div class="line"></div><div class="line">        Map&lt;Integer, UndirectedGraphNode&gt; map = new HashMap&lt;&gt;();</div><div class="line">        UndirectedGraphNode newnode = new UndirectedGraphNode(node.label);</div><div class="line">        map.put(node.label, newnode);</div><div class="line"></div><div class="line">        Queue&lt;UndirectedGraphNode&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(node);</div><div class="line"></div><div class="line">        while (!queue.isEmpty()) &#123;</div><div class="line">            UndirectedGraphNode cur = queue.poll();</div><div class="line">            for (UndirectedGraphNode neighbor : cur.neighbors) &#123;</div><div class="line">                if (!map.containsKey(neighbor.label)) &#123;</div><div class="line">                    map.put(neighbor.label, new UndirectedGraphNode(neighbor.label));</div><div class="line">                    queue.offer(neighbor);</div><div class="line">                &#125;</div><div class="line">                map.get(cur.label).neighbors.add(map.get(neighbor.label));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return newnode;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-207-Course-Schedule"><a href="#第八题-207-Course-Schedule" class="headerlink" title="第八题 207. Course Schedule"></a>第八题 <a href="https://leetcode.com/problems/course-schedule/tabs/description" target="_blank" rel="external">207. Course Schedule</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>一共有n门需要选择的课程，标号为0到n-1。</p>
+<p>有些课程可能会有先修课程，例如想要选择课程0，必须首先选过课程1，可以表述为配对：[0,1]</p>
+<p>给定课程总数和一组先修课程配对，判断是否可以修完所有的课程。</p>
+<p>例如：</p>
+<p>2, [[1,0]]</p>
+<p>一共有2门备选课程。要选择课程1，必须先完成课程0。因此这是可能的。</p>
+<p>2, [[1,0],[0,1]]</p>
+<p>一共有2门备选课程。要选择课程1，必须先完成课程0，而要修课程0，必须修完课程1。因此这是不可能的。</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用拓扑排序解决这个问题</p>
+<p>两个链接帮助了解拓扑排序 <a href="https://baike.baidu.com/item/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F" target="_blank" rel="external">链接一</a>, <a href="http://songlee24.github.io/2015/05/07/topological-sorting/" target="_blank" rel="external">链接二</a></p>
+<p>简而言之拓扑排序有三步</p>
+<ol>
+<li>找寻入度为0的节点</li>
+<li>将这个节点所有的向外的连线都删除</li>
+<li>如果没有这样的节点，则返回，如果有则返回1循环</li>
+<li>最后查看图中是否有剩余的入度不为0的节点</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">canFinish207</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses][numCourses];</div><div class="line">        <span class="keyword">int</span>[] poinToIt = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prerequisites.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> pre = prerequisites[i][<span class="number">1</span>];</div><div class="line">            <span class="keyword">int</span> after = prerequisites[i][<span class="number">0</span>];</div><div class="line">            <span class="keyword">if</span> (matrix[pre][after] == <span class="number">0</span>)</div><div class="line">                poinToIt[after]++;</div><div class="line">            matrix[pre][after] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="comment">//Add all nodes that no node point to it</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (poinToIt[i] == <span class="number">0</span>)</div><div class="line">                queue.offer(i);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            <span class="keyword">int</span> cur = queue.poll();</div><div class="line">            count++;</div><div class="line">            <span class="comment">//Remove all out point</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[cur][i] == <span class="number">1</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (--poinToIt[i] == <span class="number">0</span>) &#123;  <span class="comment">// if there is no node point to it, add to queue</span></div><div class="line">                        queue.offer(i);</div><div class="line">                    &#125;</div><div class="line">                    matrix[cur][i] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count == numCourses;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-210-Course-Schedule-II"><a href="#第九题-210-Course-Schedule-II" class="headerlink" title="第九题 210. Course Schedule II"></a>第九题 <a href="https://leetcode.com/problems/course-schedule-ii/#/description" target="_blank" rel="external">210. Course Schedule II</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>一共有n门需要选择的课程，标号为0到n-1。</p>
+<p>有些课程可能会有先修课程，例如想要选择课程0，必须首先选过课程1，可以表述为配对：[0,1]</p>
+<p>给定课程总数和一组先修课程配对，返回可以完成所有课程的选课顺序。</p>
+<p>可能有多个正确的顺序，只需要任选其一即可。如果不可能完成所有的课程，返回一个空数组。</p>
+<p>例如：</p>
+<p>2, [[1,0]]</p>
+<p>一共有2门备选课程。要选择课程1，必须先完成课程0。因此正确的课程顺序是[0,1]。</p>
+<p>4, [[1,0],[2,0],[3,1],[3,2]]</p>
+<p>一共有4门备选课程。要选择课程3，必须先完成课程1和2。而课程1和2都需要先修完课程0才能选。因此一种正确的课程顺序是[0,1,2,3]。另一个正确的顺序是[0,2,1,3]。</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>仍然与前面的一题一样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findOrder210</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses], inDegree = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</div><div class="line">        <span class="keyword">int</span>[][] relationShip = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses][numCourses];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] prerequsite : prerequisites) &#123;</div><div class="line">            <span class="keyword">int</span> pre = prerequsite[<span class="number">1</span>];</div><div class="line">            <span class="keyword">int</span> next = prerequsite[<span class="number">0</span>];</div><div class="line">            <span class="keyword">if</span> (relationShip[pre][next] == <span class="number">0</span>) &#123;</div><div class="line">                inDegree[next]++;</div><div class="line">            &#125;</div><div class="line">            relationShip[pre][next] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>)</div><div class="line">                queue.offer(i);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            <span class="keyword">int</span> cur = queue.poll();</div><div class="line">            <span class="keyword">if</span> (count &gt; numCourses - <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</div><div class="line">            res[count++] = cur;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (relationShip[cur][i] == <span class="number">1</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (--inDegree[i] == <span class="number">0</span>) &#123;</div><div class="line">                        queue.offer(i);</div><div class="line">                    &#125;</div><div class="line">                    relationShip[cur][i] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count == numCourses ? res : <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/21/7-17号刷题/" rel="next" title="7.17号刷题">
+                <i class="fa fa-chevron-left"></i> 7.17号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E8%82%96-%E9%99%88-730149133/" target="_blank" title="Linkin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-130-Surrounded-Regions"><span class="nav-number">1.</span> <span class="nav-text">第一题 130. Surrounded Regions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-200-Number-of-Islands"><span class="nav-number">2.</span> <span class="nav-text">第二题 200. Number of Islands</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-305-Number-of-Islands-II"><span class="nav-number">3.</span> <span class="nav-text">第三题 305. Number of Islands II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-261-Graph-Valid-Tree"><span class="nav-number">4.</span> <span class="nav-text">第四题 261. Graph Valid Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-323-Number-of-Connected-Components-in-an-Undirected-Graph"><span class="nav-number">5.</span> <span class="nav-text">第五题 323. Number of Connected Components in an Undirected Graph</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#压缩路径后"><span class="nav-number">5.2.1.</span> <span class="nav-text">压缩路径后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-547-Friend-Circles"><span class="nav-number">6.</span> <span class="nav-text">第六题 547. Friend Circles</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-207-Course-Schedule"><span class="nav-number">7.</span> <span class="nav-text">第八题 207. Course Schedule</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-210-Course-Schedule-II"><span class="nav-number">8.</span> <span class="nav-text">第九题 210. Course Schedule II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
