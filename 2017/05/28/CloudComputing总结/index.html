@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/28/CloudComputing总结/index.html">
 <meta property="og:site_name" content="陈浮云">
 <meta property="og:description" content="关于云计算距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。">
-<meta property="og:updated_time" content="2017-05-28T03:07:07.000Z">
+<meta property="og:updated_time" content="2017-08-07T03:07:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CloudComputing总结">
 <meta name="twitter:description" content="关于云计算距离CMU神课15619-Cloud Computing 截课已经过去快一个月了。在刚结束的时候，一直想对这门课做个总结，主要总结这门课的内容，加强对所学到知识点的理解。">
@@ -406,28 +406,45 @@
 </li>
 </ul>
 <h2 id="关于这门课的设计"><a href="#关于这门课的设计" class="headerlink" title="关于这门课的设计"></a>关于这门课的设计</h2><p>这门课是无需去上课的，一切自学，然后做项目。<br><br>自学的话会有学习网页提供的，写的挺不错，与课程的Project基本是同步的，认真看的话，收获很大。每周五还有一次小测验，是对每章节知识点的考核，时间2小时，一般1个半小时能够完成。<br><br>Project的话，这门课主要是由5个大的Individual Project组成，然后再加上一个Team的Project。对于5个大的Project,又分为2-3个小的project，每周一个。<br><br>这门课每周的时间对于我来说大概在20-50个小时之间，对于在国内上本科的学生，觉得这门课的量实在是比较大的。所以如果选这门课，一定记住不要再选其他神课了</p>
-<h2 id="关于课程的Project"><a href="#关于课程的Project" class="headerlink" title="关于课程的Project"></a>关于课程的Project</h2><ul>
-<li><p>Project 0 —— Exploring the cloud：主要内容是介绍主流的3个云计算平台，Azure, AWS和GCP。个人觉得AWS和GCP要相对好用一些，而Azure的验证过程有些复杂，不是特别的好用。</p>
+<h2 id="关于课程的Projects"><a href="#关于课程的Projects" class="headerlink" title="关于课程的Projects"></a>关于课程的Projects</h2><h3 id="Project-0-——-Exploring-the-cloud"><a href="#Project-0-——-Exploring-the-cloud" class="headerlink" title="Project 0 —— Exploring the cloud"></a>Project 0 —— Exploring the cloud</h3><p>主要内容是介绍主流的3个云计算平台，Azure, AWS和GCP。个人觉得AWS和GCP要相对好用一些，而Azure的验证过程有些复杂，用户体验较差，个人觉得使用性较低。</p>
 <ol>
 <li>AWS playground —— AWS入门</li>
 <li>Azure playground —— Azure入门</li>
 <li>GCP playground —— GCP入门</li>
 </ol>
-</li>
-<li><p>Project 1 —— Big Data Analytics：主要内容为利用AWS的平台进行一些初步的ETL(Extract, Transform and Load) 过程，其中主要涉及到了ET的过程。</p>
+<h3 id="Project-1-——-Big-Data-Analytics"><a href="#Project-1-——-Big-Data-Analytics" class="headerlink" title="Project 1 —— Big Data Analytics"></a>Project 1 —— Big Data Analytics</h3><p>主要内容为利用AWS的平台进行一些初步的ETL(Extract, Transform and Load) 过程，其中主要涉及到了ET的过程。</p>
 <ol>
 <li>Sequential analysis —— 使用普通的洗数据的办法，只是平台变为了AWS的instance</li>
 <li>Parallel analysis —— 使用AWS提供的MapReduce服务。对2016年11月的Wikipedia的数据(128个G)进行清洗(利用MapReduce), 然后分析整个搜索动向，最后可以选择进行数据可视化</li>
 </ol>
-</li>
-<li><p>Project 2 —— Automating and autoscaling distributed services：这个部分的知识点主要是和运维相关的，主要涉及的是对instance的操作，不包括Autoscaling和使用docker等。</p>
+<h3 id="Project-2-——-Automating-and-autoscaling-distributed-services"><a href="#Project-2-——-Automating-and-autoscaling-distributed-services" class="headerlink" title="Project 2 —— Automating and autoscaling distributed services"></a>Project 2 —— Automating and autoscaling distributed services</h3><p>这个部分的知识点主要是和运维相关的，主要涉及的是对instance的操作，不包括Autoscaling和使用docker等。</p>
 <ol>
 <li>Horizontal Scaling and Advanced Resource Scaling —— 主要学习的内容是根据访问的RPS，对我们instance的数量进行控制，当RPS较高的时候，增加instance的数量，反之则减少。平台的话使用得是AWS的平台</li>
 <li>Containers: Docker and Kubernetes —— 主要学习的内容是对Docker的了解，并根据自己的要求创建所需要的image。Kubernete这部分比较复杂，需要在三个不同的平台上创建instance,使用Kubernete进行跨平台的管理，并按照要求设计成为一个能够在线运行python代码和mysql代码也网页。</li>
 </ol>
-</li>
-<li></li>
-</ul>
+<h3 id="Project-3-——-Storage-and-DBs-on-the-cloud"><a href="#Project-3-——-Storage-and-DBs-on-the-cloud" class="headerlink" title="Project 3 —— Storage and DBs on the cloud"></a>Project 3 —— Storage and DBs on the cloud</h3><p>顾名思义，这一节的内容主要是介绍了几个在云计算中主要使用的数据库及其概念。三个主流数据库的使用练习：1. 关系型数据库 : MySQl, 2. 非关系型数据库 : MongoDB 以及 HBase。另外，这整个大项目的最后一个小项目还介绍了多线程概念以及练习</p>
+<ol>
+<li>Files v/s DataBases —— 包含了对Flat Files 的基本提取操作，包裹grep和awk等；以及使用JDBC(Java DataBase Connectivity) API对MySQL数据库进行各种操作；最后一个部分是利用JAVA对Hbase数据库进行一些基本的操作</li>
+<li>Social Networking Timeline with Heterogeneous Backends —— 这个项目的基本要求是建立一个社交网站，社交网站后台数据使用多种数据库。(MongoDb, Hbase, MySQL)，并单独及复合的进行多种Query。对数据需要一些基本的ETL处理</li>
+<li>Multi-threading Programming and Consistency —— 这节的要求主要是学习多线程的处理，多线程中包含了几种多线程的情况，对这些情况都要求掌握。</li>
+</ol>
+<h3 id="Project-4-——-Parallel-processing-of-large-datasets"><a href="#Project-4-——-Parallel-processing-of-large-datasets" class="headerlink" title="Project 4 —— Parallel processing of large datasets"></a>Project 4 —— Parallel processing of large datasets</h3><p>这一节的主要内容是介绍了几种处理大数据的工具，并提供了项目进行练习。 MapReduce, Spark, Kafka, Samza等的工具</p>
+<ol>
+<li>Multi-threading Programming and Consistency —— 介绍了使用replication 在distributed key-value stores中的作用，同时介绍了sharding的作用。并在这两种情况下，对数据进行修改的时候需要考虑的Consistency的问题。</li>
+<li>Iterative Processing with Spark —— 这节主要介绍了Spark的用法，并提供了相应的项目进行练习。如果之前没学过java8或者Scala，那么用Scala做Spark的时候还是很恶心的。这节项目的场景是用Spark实现实时的PageRank，算法并不复杂。</li>
+<li>Stream Processing with Kafka and Samza —— 这节主要内容是教会我们使用Kafka，项目背景是类似Uber打车的实时监控调度问题，问题比较有意思。毕竟最后一个Project，做的时候压力也不算大</li>
+</ol>
+<h3 id="Twitter-Analytics-Web-Service-——-High-performance-multi-tier-web-service-on-the-cloud"><a href="#Twitter-Analytics-Web-Service-——-High-performance-multi-tier-web-service-on-the-cloud" class="headerlink" title="Twitter Analytics Web Service —— High-performance multi-tier web service on the cloud"></a>Twitter Analytics Web Service —— High-performance multi-tier web service on the cloud</h3><p>最后是Team的Project，折磨了所有人大概1个月，到Live Test之前基本大家都是要熬夜的，通宵也是蛮正常的。为了TeamProject都看了两次日出了</p>
+<p>TeamProject 的前两个Phases, Phase1 和 Phase2都要求Hbase和MySQL同时使用，MySQL的RPS(Request Per Second)还是很容易达标的，但是对于负责Hbase的同学，压力还是蛮大的。</p>
+<p>除了数据库的各种优化，TeamProject还需要对前端结构以及代码进行优化。</p>
+<ol>
+<li>Phase 1 —— 主要是使用Twitter中获得的数据，进行ETL之后，在数据库中进行各种Query。Twitter的数据大约1.4TB所有，如果ETL操作不对，由于Budget的预算问题，还是很紧张的。所以建议使用小号进行ETL，然后提交答案测试的时候再用小组的账户</li>
+<li>Phase 2 —— 加入了两个Query，并对Phase1的RPS提高了要求</li>
+<li>Phase 3 —— 加入最后一个Query，但只要求使用MySQL进行操作，因此难度不算太高。只是那个时候大家基本都在期末考的时间，各种其他课程的Projects，压力也还是蛮大的。</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>总的来说这门课压力还是非常大的，每周一个Project，下面好多个小的要求。另外周五还需要花几个小时进行知识点的学习和一个Quiz需要完成。同时，当其中过后Team的Project开了之后，基本上熬夜就停不下来了。每周都在做CloudComputing的作业</p>
+<p>课程个人认为还是一门非常好的课，可以总结为8个字：包罗万象，浅尝辄止。对于想要通过这门课达成专家级的成就，这门课远远是不够的。但是对于转专业的自己，这门课帮助是相当大的。当完成这门课之后，基本Linux和Shell的知识点可以达到一个不错的水平；MySQL及Hbase，MongoDB数据库的使用；Java 和 Python的熟练掌握；以及各种前端结构以及接口的掌握。还是算一门非常值得选的课程。</p>
+<p>再次感谢周围的同学们，特别舍友对自己的帮助。最后这门课拿了A，虽然压力很大，不过结果还是很满意的。收获也是非常大的。</p>
 
       
     </div>
@@ -558,7 +575,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -635,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于云计算"><span class="nav-number">1.</span> <span class="nav-text">关于云计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于这门课的设计"><span class="nav-number">2.</span> <span class="nav-text">关于这门课的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于课程的Project"><span class="nav-number">3.</span> <span class="nav-text">关于课程的Project</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于云计算"><span class="nav-number">1.</span> <span class="nav-text">关于云计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于这门课的设计"><span class="nav-number">2.</span> <span class="nav-text">关于这门课的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于课程的Projects"><span class="nav-number">3.</span> <span class="nav-text">关于课程的Projects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-0-——-Exploring-the-cloud"><span class="nav-number">3.1.</span> <span class="nav-text">Project 0 —— Exploring the cloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-1-——-Big-Data-Analytics"><span class="nav-number">3.2.</span> <span class="nav-text">Project 1 —— Big Data Analytics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-2-——-Automating-and-autoscaling-distributed-services"><span class="nav-number">3.3.</span> <span class="nav-text">Project 2 —— Automating and autoscaling distributed services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-3-——-Storage-and-DBs-on-the-cloud"><span class="nav-number">3.4.</span> <span class="nav-text">Project 3 —— Storage and DBs on the cloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-4-——-Parallel-processing-of-large-datasets"><span class="nav-number">3.5.</span> <span class="nav-text">Project 4 —— Parallel processing of large datasets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twitter-Analytics-Web-Service-——-High-performance-multi-tier-web-service-on-the-cloud"><span class="nav-number">3.6.</span> <span class="nav-text">Twitter Analytics Web Service —— High-performance multi-tier web service on the cloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
