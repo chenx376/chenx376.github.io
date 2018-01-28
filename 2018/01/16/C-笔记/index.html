@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/16/C-笔记/index.html">
 <meta property="og:site_name" content="陈浮云">
 <meta property="og:description" content="Vector相关攻略vector v; Vector 遍历可以直接用下标v[i]进行遍历或者 v.at(i)进行遍历或者 for (it = v.begin(); i != v.end(); i++) *i Vector 常用方法v.push_back(item) 将一个成员推进vector v.pop_back(item) 弹出一个成员 v.size() vector的大小 v.empty()">
-<meta property="og:updated_time" content="2018-01-22T23:55:48.000Z">
+<meta property="og:updated_time" content="2018-01-28T00:19:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++笔记">
 <meta name="twitter:description" content="Vector相关攻略vector v; Vector 遍历可以直接用下标v[i]进行遍历或者 v.at(i)进行遍历或者 for (it = v.begin(); i != v.end(); i++) *i Vector 常用方法v.push_back(item) 将一个成员推进vector v.pop_back(item) 弹出一个成员 v.size() vector的大小 v.empty()">
@@ -408,8 +408,8 @@
 <h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><a href="http://mropengate.blogspot.com/2015/12/cc-map-stl.html" target="_blank" rel="external">相关攻略</a></p>
 <p>map: 红黑树实现((查询、插入、删除都是O(logn))</p>
 <p>unordered_map: hash 结构， C++ 11 标准库</p>
-<h4 id="Map-申明"><a href="#Map-申明" class="headerlink" title="Map 申明"></a>Map 申明</h4><p>map<string, string=""> m;</string,></p>
-<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><ol>
+<h4 id="Map-申明"><a href="#Map-申明" class="headerlink" title="Map 申明"></a>Map 申明</h4><pre><code>map&lt;string, string&gt; m;
+</code></pre><h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><ol>
 <li><p>利用insert 函数进行插入 m.insert(pair<string, string="">(“cx”, “student1”));</string,></p>
 </li>
 <li><p>利用”array”进行插入 m[“cx”] = “student1”</p>
@@ -428,6 +428,30 @@ m.erase(iter);
 
 // 用关键词删除
 int n = m.erase(&quot;cx&quot;);
+</code></pre><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>有multiset即set中可以存在重复的元素，还有普通的hashset</p>
+<h4 id="Set-申明"><a href="#Set-申明" class="headerlink" title="Set 申明"></a>Set 申明</h4><pre><code>unordered_multiset&lt;int&gt; set1; 
+unordered_multiset&lt;int&gt; set2 ({1, 2, 3});
+set1 = {1, 2, 3};
+
+unordered_set&lt;int&gt; set3;
+</code></pre><h4 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a>插入</h4><pre><code>set1.insert(1);
+</code></pre><h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><pre><code>if (set3.find(key) == set3.end()) {
+    cout &lt;&lt; &quot;Not find&quot; &lt;&lt; endl;
+} else {
+    cout &lt;&lt; &quot;Find&quot; &lt;&lt; endl;
+}
+</code></pre><h3 id="Auto-遍历"><a href="#Auto-遍历" class="headerlink" title="Auto 遍历"></a>Auto 遍历</h3><p>遍历map时候， 可以使用auto 进行遍历，注意访问时候不再是map-&gt;first而变为map.first</p>
+<pre><code>for (auto it : map) {
+    int val = it.first;
+    int remain = value - val;
+    if ((val == remain &amp;&amp; it.second &gt; 1) || (val != remain &amp;&amp; map.find(remain) != map.end())) return true;
+}
+
+for (auto it = map.begin(); it != map.end(); it++) {
+    int val = it-&gt;first;
+    int remain = value - val;
+    if ((val == remain &amp;&amp; it-&gt;second &gt; 1) || (val != remain &amp;&amp; map.find(remain) != map.end())) return true;
+}
 </code></pre>
       
     </div>
@@ -629,7 +653,7 @@ int n = m.erase(&quot;cx&quot;);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector-遍历"><span class="nav-number">1.1.</span> <span class="nav-text">Vector 遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector-常用方法"><span class="nav-number">1.2.</span> <span class="nav-text">Vector 常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-申明"><span class="nav-number">2.1.</span> <span class="nav-text">Map 申明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.2.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找-find"><span class="nav-number">2.3.</span> <span class="nav-text">寻找 find()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">2.4.</span> <span class="nav-text">删除</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector-遍历"><span class="nav-number">1.1.</span> <span class="nav-text">Vector 遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector-常用方法"><span class="nav-number">1.2.</span> <span class="nav-text">Vector 常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-申明"><span class="nav-number">2.1.</span> <span class="nav-text">Map 申明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.2.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找-find"><span class="nav-number">2.3.</span> <span class="nav-text">寻找 find()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">2.4.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-申明"><span class="nav-number">3.1.</span> <span class="nav-text">Set 申明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入-1"><span class="nav-number">3.2.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找"><span class="nav-number">3.3.</span> <span class="nav-text">查找</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-遍历"><span class="nav-number">4.</span> <span class="nav-text">Auto 遍历</span></a></li></ol></div>
             
 
           </div>
