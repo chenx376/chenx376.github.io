@@ -1,0 +1,878 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 159. Longest Substring with At Most Two Distinct Characters题目描述在一个String中找出一个Substring,使得Substring 最多包含2个不同的Char。 算法利用HashMap存储两个最新的位置，当有第三个加入HashMap的时候，说明已经多于两个，进行操作。注意不要使用for循环，用for循环后很多testcase">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.9号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/09/6-9号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 159. Longest Substring with At Most Two Distinct Characters题目描述在一个String中找出一个Substring,使得Substring 最多包含2个不同的Char。 算法利用HashMap存储两个最新的位置，当有第三个加入HashMap的时候，说明已经多于两个，进行操作。注意不要使用for循环，用for循环后很多testcase">
+<meta property="og:updated_time" content="2017-06-09T16:38:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.9号刷题">
+<meta name="twitter:description" content="第一题 159. Longest Substring with At Most Two Distinct Characters题目描述在一个String中找出一个Substring,使得Substring 最多包含2个不同的Char。 算法利用HashMap存储两个最新的位置，当有第三个加入HashMap的时候，说明已经多于两个，进行操作。注意不要使用for循环，用for循环后很多testcase">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/09/6-9号刷题/"/>
+
+
+
+
+
+  <title>6.9号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/6-9号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.9号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T16:07:09-07:00">
+                2017-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/09/6-9号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/06/09/6-9号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-159-Longest-Substring-with-At-Most-Two-Distinct-Characters"><a href="#第一题-159-Longest-Substring-with-At-Most-Two-Distinct-Characters" class="headerlink" title="第一题 159. Longest Substring with At Most Two Distinct Characters"></a>第一题 <a href="https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/#/description" target="_blank" rel="external">159. Longest Substring with At Most Two Distinct Characters</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个String中找出一个Substring,使得Substring 最多包含2个不同的Char。</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用HashMap存储两个最新的位置，当有第三个加入HashMap的时候，说明已经多于两个，进行操作。注意不要使用for循环，用for循环后很多testcase会出现很难解决的逻辑问题。<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringTwoDistinct</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() &lt;= <span class="number">2</span>) <span class="keyword">return</span> s.length();</div><div class="line">        <span class="comment">// Key : Character, value : indexes</span></div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(high &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">if</span> (map.size() &lt;= <span class="number">2</span>) &#123;</div><div class="line">                map.put(s.charAt(high), high);</div><div class="line">                high++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (map.size() &gt; <span class="number">2</span>) &#123;</div><div class="line">                <span class="keyword">int</span> mostleft = s.length();</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> value : map.values()) mostleft = Math.min(mostleft, value);</div><div class="line"></div><div class="line">                map.remove(s.charAt(mostleft));</div><div class="line">                low = mostleft + <span class="number">1</span>;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            max = Math.max(max, high - low);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> max;      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第二题-340-Longest-Substring-with-At-Most-K-Distinct-Characters"><a href="#第二题-340-Longest-Substring-with-At-Most-K-Distinct-Characters" class="headerlink" title="第二题 340. Longest Substring with At Most K Distinct Characters"></a>第二题 <a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/#/description" target="_blank" rel="external">340. Longest Substring with At Most K Distinct Characters</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个String中找出一个Substring,使得Substring 最多包含k个不同的Char。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>算法与之前相同<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() &lt;= k) <span class="keyword">return</span> s.length();</div><div class="line">        </div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (high &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">if</span> (map.size() &lt;= k) &#123;</div><div class="line">                map.put(s.charAt(high), high);</div><div class="line">                high++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (map.size() &gt; k) &#123;</div><div class="line">                <span class="keyword">int</span> mostleft = s.length();</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> value : map.values()) mostleft = Math.min(mostleft, value);</div><div class="line">                </div><div class="line">                map.remove(s.charAt(mostleft));</div><div class="line">                low = mostleft + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            max = Math.max(max, high - low);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-249-Group-Shifted-Strings"><a href="#第三题-249-Group-Shifted-Strings" class="headerlink" title="第三题 249. Group Shifted Strings"></a>第三题 <a href="https://leetcode.com/problems/group-shifted-strings/#/description" target="_blank" rel="external">249. Group Shifted Strings</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定很多的String。对每一个String，其中的每一个char可以按照从a -&gt; z -&gt; a的方式循环移动。查看String中能否有相同的String可以通过其他String移动而来，将他们归并为机组。</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>这道题目我们可以转化成String中每个char的差值的问题。对于acd与bde，或者xza。我们发现，只要他们之间char的差值是一样的，那么他们必然是可以通过移动得到的，这样，我们就只需要将他们的差值作为map存储下来即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupStrings(String[] strings) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (String s : strings) &#123;</div><div class="line">            StringBuilder key = <span class="keyword">new</span> StringBuilder();</div><div class="line">            </div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;</div><div class="line">                <span class="keyword">int</span> temp = s.charAt(i) - s.charAt(i-<span class="number">1</span>);</div><div class="line">                temp = (temp + <span class="number">26</span>) % <span class="number">26</span>;</div><div class="line">                <span class="keyword">char</span> c = (<span class="keyword">char</span>) temp;</div><div class="line">                key.append(c);</div><div class="line">            &#125;</div><div class="line">            List&lt;String&gt; list;</div><div class="line">            <span class="keyword">if</span> (map.containsKey(key.toString())) &#123;</div><div class="line">                list = map.get(key.toString());</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            list.add(s);</div><div class="line">            map.put(key.toString(), list);</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (List&lt;String&gt; list : map.values()) result.add(list);</div><div class="line">        <span class="keyword">return</span> result;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第四题-246-Strobogrammatic-Number"><a href="#第四题-246-Strobogrammatic-Number" class="headerlink" title="第四题 246. Strobogrammatic Number"></a>第四题 <a href="https://leetcode.com/problems/strobogrammatic-number/#/description" target="_blank" rel="external">246. Strobogrammatic Number</a></h3><h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>3种算法，可以利用HashSet, HashMap, 或者直接进行String的比对<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isStrobogrammatic246</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isStrobogrammatic</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        set.add(<span class="string">'1'</span>); set.add(<span class="string">'6'</span>); set.add(<span class="string">'8'</span>); set.add(<span class="string">'9'</span>); set.add(<span class="string">'0'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (num.length() == <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">if</span> (num.equals(<span class="string">"1"</span>) || num.equals(<span class="string">"8"</span>) || num.equals(<span class="string">"0"</span>)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = num.charAt(i);</div><div class="line">            <span class="keyword">if</span> (!set.contains(c))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (c == <span class="string">'6'</span> &amp;&amp; i &lt; num.length() / <span class="number">2</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (num.charAt(num.length() - i - <span class="number">1</span>) != <span class="string">'9'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (c == <span class="string">'9'</span> &amp;&amp; i &lt; num.length() / <span class="number">2</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (num.charAt(num.length() - i - <span class="number">1</span>) != <span class="string">'6'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (c == <span class="string">'8'</span> || c == <span class="string">'1'</span> || c == <span class="string">'0'</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (num.charAt(num.length() - i - <span class="number">1</span>) != c) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isStrobogrammatic2</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Character&gt;();</div><div class="line">        map.put(<span class="string">'6'</span>, <span class="string">'9'</span>);</div><div class="line">        map.put(<span class="string">'9'</span>, <span class="string">'6'</span>);</div><div class="line">        map.put(<span class="string">'0'</span>, <span class="string">'0'</span>);</div><div class="line">        map.put(<span class="string">'1'</span>, <span class="string">'1'</span>);</div><div class="line">        map.put(<span class="string">'8'</span>, <span class="string">'8'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = num.length() - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</div><div class="line">            <span class="keyword">if</span> (!map.containsKey(num.charAt(l))) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span> (map.get(num.charAt(l)) != num.charAt(r))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isStrobogrammatic3</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j=num.length()-<span class="number">1</span>; i &lt;= j; i++, j--)</div><div class="line">            <span class="keyword">if</span> (!<span class="string">"00 11 88 696"</span>.contains(num.charAt(i) + <span class="string">""</span> + num.charAt(j)))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-594-Longest-Harmonious-Subsequence"><a href="#第五题-594-Longest-Harmonious-Subsequence" class="headerlink" title="第五题 594. Longest Harmonious Subsequence"></a>第五题 <a href="https://leetcode.com/problems/longest-harmonious-subsequence/#/description" target="_blank" rel="external">594. Longest Harmonious Subsequence</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定整数数组nums，求其中最大值与最小值相差恰好为1的子序列的长度的最大值。</p>
+<p>注意： 数组长度不超过20000</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>两种方法，一种用TreeMap(自带key排序)，一种用HashMap<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findLHS594</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLHS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> TreeMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</div><div class="line">            map.put(num, map.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> previous = Integer.MAX_VALUE, max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> key : map.keySet()) &#123;</div><div class="line">            <span class="keyword">if</span> (previous == Integer.MAX_VALUE) previous = key;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (key - previous == <span class="number">1</span>) &#123;</div><div class="line">                    max = Math.max(max, map.get(key) + map.get(previous));</div><div class="line">                &#125;</div><div class="line">                previous = key;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLHS2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) map.put(num, map.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> key : map.keySet()) &#123;</div><div class="line">            <span class="keyword">if</span> (map.containsKey(key + <span class="number">1</span>)) &#123;</div><div class="line">                max = Math.max(max,  map.get(key) + map.get(key + <span class="number">1</span>));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第六题-205-Isomorphic-Strings"><a href="#第六题-205-Isomorphic-Strings" class="headerlink" title="第六题 205. Isomorphic Strings"></a>第六题 <a href="https://leetcode.com/problems/isomorphic-strings/#/description" target="_blank" rel="external">205. Isomorphic Strings</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个字符串s和t，判断它们是否是同构的。</p>
+<p>如果字符串s可以通过字符替换的方式得到字符串t，则称s和t是同构的。</p>
+<p>字符的每一次出现都必须被其对应字符所替换，同时还需要保证原始顺序不发生改变。两个字符不能映射到同一个字符，但是字符可以映射到其本身。</p>
+<p>测试样例如题目描述。</p>
+<p>可以假设s和t等长。</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><h5 id="利用HashMap"><a href="#利用HashMap" class="headerlink" title="利用HashMap"></a>利用HashMap</h5><p>利用HashMap查看每次出现的值是否已经有正确的对应或者是否为第一次出现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isIsomorphic205</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() != t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> cA = s.charAt(i), cB = t.charAt(i);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(cA)) &#123;</div><div class="line">                <span class="keyword">if</span> (map.get(cA) != cB) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (map.containsValue(cB)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                map.put(cA, cB);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="利用数组存储"><a href="#利用数组存储" class="headerlink" title="利用数组存储"></a>利用数组存储</h5><p>由于ASC码中总共的character有256个，所以对于情况发生次数有限的情况，可以用数组进行存储。这样的话程序的效率会快得多<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isIsomorphic205</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic2</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() != t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">int</span>[] A = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> cA = s.charAt(i), cB = t.charAt(i);</div><div class="line">            <span class="keyword">if</span> (A[cA] != B[cB]) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            A[cA] = B[cB] = i + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/08/6-8号刷题/" rel="next" title="6.8号刷题">
+                <i class="fa fa-chevron-left"></i> 6.8号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/10/6-10号刷题/" rel="prev" title="6.10号刷题">
+                6.10号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/06/09/6-9号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-159-Longest-Substring-with-At-Most-Two-Distinct-Characters"><span class="nav-number">1.</span> <span class="nav-text">第一题 159. Longest Substring with At Most Two Distinct Characters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-340-Longest-Substring-with-At-Most-K-Distinct-Characters"><span class="nav-number">2.</span> <span class="nav-text">第二题 340. Longest Substring with At Most K Distinct Characters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-249-Group-Shifted-Strings"><span class="nav-number">3.</span> <span class="nav-text">第三题 249. Group Shifted Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-246-Strobogrammatic-Number"><span class="nav-number">4.</span> <span class="nav-text">第四题 246. Strobogrammatic Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-594-Longest-Harmonious-Subsequence"><span class="nav-number">5.</span> <span class="nav-text">第五题 594. Longest Harmonious Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-205-Isomorphic-Strings"><span class="nav-number">6.</span> <span class="nav-text">第六题 205. Isomorphic Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用HashMap"><span class="nav-number">6.2.1.</span> <span class="nav-text">利用HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用数组存储"><span class="nav-number">6.2.2.</span> <span class="nav-text">利用数组存储</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/09/6-9号刷题/';
+          this.page.identifier = '2017/06/09/6-9号刷题/';
+          this.page.title = '6.9号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

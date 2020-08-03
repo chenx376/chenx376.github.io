@@ -1,0 +1,939 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Github,Markdown,Godaddy," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言本篇文章的内容主要是为了分享自己如果搭建自己的博客，为了搭建出自己的博客，主要采用了两种方法：  JimDo Github Pages + Hexo(框架) + NexT(主题)  这两种方法，JimDo有免费方案可以选取，同时提供了模板。制作网页的过程非常简单，推荐不想折腾的同学使用。但是缺点是，使用模板后调整较为困难，不能拥有自己的域名，且不适合攻城狮分享代码。 采用Github Page">
+<meta name="keywords" content="Github,Markdown,Godaddy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速创建自己博客">
+<meta property="og:url" content="http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="前言本篇文章的内容主要是为了分享自己如果搭建自己的博客，为了搭建出自己的博客，主要采用了两种方法：  JimDo Github Pages + Hexo(框架) + NexT(主题)  这两种方法，JimDo有免费方案可以选取，同时提供了模板。制作网页的过程非常简单，推荐不想折腾的同学使用。但是缺点是，使用模板后调整较为困难，不能拥有自己的域名，且不适合攻城狮分享代码。 采用Github Page">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/github.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/result.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy8.png">
+<meta property="og:updated_time" content="2017-05-09T18:43:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速创建自己博客">
+<meta name="twitter:description" content="前言本篇文章的内容主要是为了分享自己如果搭建自己的博客，为了搭建出自己的博客，主要采用了两种方法：  JimDo Github Pages + Hexo(框架) + NexT(主题)  这两种方法，JimDo有免费方案可以选取，同时提供了模板。制作网页的过程非常简单，推荐不想折腾的同学使用。但是缺点是，使用模板后调整较为困难，不能拥有自己的域名，且不适合攻城狮分享代码。 采用Github Page">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/"/>
+
+
+
+
+
+  <title>快速创建自己博客 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">快速创建自己博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-08T20:54:48-07:00">
+                2017-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/08/7元3小时快速创建自己博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇文章的内容主要是为了分享自己如果搭建自己的博客，为了搭建出自己的博客，主要采用了两种方法：</p>
+<ul>
+<li><a href="https://www.jimdo.com/" target="_blank" rel="external">JimDo</a></li>
+<li><a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a> + <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo</a>(框架) + <a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="external">NexT</a>(主题)</li>
+</ul>
+<p>这两种方法，JimDo有免费方案可以选取，同时提供了模板。制作网页的过程非常简单，推荐不想折腾的同学使用。但是缺点是，使用模板后调整较为困难，不能拥有自己的域名，且不适合攻城狮分享代码。</p>
+<p>采用Github Pages，如果不需要拥有自己的域名，同样是免费的。域名的话，个人推荐<a href="https://www.godaddy.com" target="_blank" rel="external">GoDaddy</a>, 只需0.99刀便可以拥有.com 结尾的顶级域名，为期一年。如何解析域名，本篇文章中也会有说明。</p>
+<hr>
+<h2 id="JimDo-制作个人主页"><a href="#JimDo-制作个人主页" class="headerlink" title="JimDo 制作个人主页"></a>JimDo 制作个人主页</h2><h3 id="完成注册"><a href="#完成注册" class="headerlink" title="完成注册"></a>完成注册</h3><p>首先访问<a href="https://www.jimdo.com/" target="_blank" rel="external">JimDo</a>的主页，点击右上角完成注册。</p>
+<p><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo.png" alt="alt text"></p>
+<p><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo1.png" alt="alt text"><br>记住箭头所指的域名地址，此地址便是个人博客的地址</p>
+<h3 id="根据模板制作个人主页"><a href="#根据模板制作个人主页" class="headerlink" title="根据模板制作个人主页"></a>根据模板制作个人主页</h3><p>之后JimDo 会提供一个默认的模板给各位用户。如果大家需要进行更换的话，可以点击左上角的Menu进行更换。<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo2.png" alt="alt text"></p>
+<p><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo3.png" alt="alt text"></p>
+<p>如果点击Blog之后，可以对自己的Blog的内容和板式进行编辑。上传图片，内容更改的。如果使用过Bootstrap 的设计的话，会发现与之类似。<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo4.png" alt="alt text"></p>
+<h3 id="设计完成"><a href="#设计完成" class="headerlink" title="设计完成"></a>设计完成</h3><p> 通过一系列的排版，就完成了自己博客的设计，例如<a href="https://xiaochenxc.jimdo.com/" target="_blank" rel="external">我的</a>。<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo5.png" alt="alt text"></p>
+<p>制作的过程非常简单，并且有免费的账号提供，大家如果有兴趣可以进行尝试。</p>
+<hr>
+<h2 id="Github-io-制作个人主页"><a href="#Github-io-制作个人主页" class="headerlink" title="Github.io 制作个人主页"></a>Github.io 制作个人主页</h2><h3 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h3><ul>
+<li><p>在本地安装Node.js，并npm install 安装Hexo框架，并选择自己喜欢的主题，这里博主使用的是<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT</a>。</p>
+</li>
+<li><p>建立自己的Github账号，创建一个新的repository(仓库)，并将本地的内容推入自己的repository中。</p>
+</li>
+<li><p>如果需要自己的专属域名的话，购买自己的专属域名并进行解析。</p>
+</li>
+</ul>
+<h3 id="安装Node-js-与Hexo框架-以及-Github创建"><a href="#安装Node-js-与Hexo框架-以及-Github创建" class="headerlink" title="安装Node.js 与Hexo框架 以及 Github创建"></a>安装Node.js 与Hexo框架 以及 Github创建</h3><p>这一步在别人的博客中已经讲解的很明白和仔细，这里就不再多重复了。<a href="http://www.jianshu.com/p/0321cb243963" target="_blank" rel="external">链接1</a>, <a href="http://www.imooc.com/article/3423" target="_blank" rel="external">链接2</a>。</p>
+<p>如果在中间遇到有不太懂的地方，建议查找<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo</a> 和 <a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="external">NexT</a>的官方文档。</p>
+<h3 id="GoDaddy-购买域名"><a href="#GoDaddy-购买域名" class="headerlink" title="GoDaddy 购买域名"></a><a href="https://www.godaddy.com" target="_blank" rel="external">GoDaddy</a> 购买域名</h3><p>这里主要讲解下如果使用GoDaddy购买域名并进行解析，如果使用GoDaddy购买域名，每个Email账号注册后第一次购买只需花费0.99刀，为期一年。结尾是.com的顶级域名，操作简单，相较于国内的一些域名，强烈推荐。</p>
+<p>这里购买域名部分假设大家已经完成了yourweb.github.io的注册，之后为了解析<br>域名，还需要几个步骤。</p>
+<h4 id="1-购买域名"><a href="#1-购买域名" class="headerlink" title="1. 购买域名"></a>1. 购买域名</h4><p>进入<a href="https://www.godaddy.com" target="_blank" rel="external">GoDaddy</a>的官网按照如下的方式购买域名。</p>
+<ul>
+<li><p>注册<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy1.png" alt="alt text"></p>
+</li>
+<li><p>填写想要的域名<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy2.png" alt="alt text"></p>
+</li>
+<li><p>购买域名。<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy3.png" alt="alt text"><br>如果显示是10美元的话，需要到<a href="http://www.coupons.com/view/GoDaddy.com?d=298595" target="_blank" rel="external">优惠券</a>网站获得优惠券的号码。<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy4.png" alt="alt text"></p>
+</li>
+</ul>
+<h4 id="2-在Github的账号中创建CNAME文件"><a href="#2-在Github的账号中创建CNAME文件" class="headerlink" title="2.在Github的账号中创建CNAME文件"></a>2.在Github的账号中创建CNAME文件</h4><p> 在Github中创建一个文件名叫CNAME的，文件仅有一行，内容是自己的域名地址<br> <img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/github.png" alt="alt text"></p>
+<h4 id="3-获得DNS-provider的地址，并修改配置文件"><a href="#3-获得DNS-provider的地址，并修改配置文件" class="headerlink" title="3. 获得DNS provider的地址，并修改配置文件"></a>3. 获得DNS provider的地址，并修改配置文件</h4><p>完成这些时候，我们需要对获得的域名进行解析，过程也相当简单，只需要按照步骤，一步一步完成即可。</p>
+<ul>
+<li><p>首先点击管理自己的域名<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy5.png" alt="alt text"></p>
+</li>
+<li><p>进入之后点击管理DNS<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy6.png" alt="alt text"></p>
+</li>
+<li><p>之后我们需要修改两个地方，一个是添加A, 一个是修改CNAME的www部分。在这里点击添加(ADD)<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy7.png" alt="alt text"></p>
+</li>
+</ul>
+<p>添加类型A<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/jimdo6.png" alt="alt text"></p>
+<p>其中类型A的地址是需要根据自己的Github仓库来定义的。需要自己进行查询，查询的方法如下：</p>
+<pre><code>dig chenx376.github.io +noall +answer
+</code></pre><p>之后就可以查询结果了<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/result.png" alt="alt text"></p>
+<p>修改CNAME的www部分，地址为自己的github.io<br><img src="https://raw.githubusercontent.com/chenx376/Pictures/master/images/godaddy8.png" alt="alt text"></p>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>在完成这一系列操作之后，便可以拥有以自己域名为地址的个人博客了。例如陈肖的<a href="http://xiaochensj.com/" target="_blank" rel="external">博客</a>，全程如果耐心的话，大概需要5个小时的时间。</p>
+<p>除此之外，以下是一些相关的连接，可以帮助大家学习Github, Markdown等写博客需要的知识。</p>
+<p><a href="https://github.com/younghz/Markdown" target="_blank" rel="external">Markdown 学习</a></p>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Github 入门</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+            <a href="/tags/Godaddy/" rel="tag"># Godaddy</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/08/第一篇博客/" rel="next" title="第一篇博客">
+                <i class="fa fa-chevron-left"></i> 第一篇博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/09/5-6号刷题/" rel="prev" title="5.6号刷题">
+                5.6号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JimDo-制作个人主页"><span class="nav-number">2.</span> <span class="nav-text">JimDo 制作个人主页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完成注册"><span class="nav-number">2.1.</span> <span class="nav-text">完成注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据模板制作个人主页"><span class="nav-number">2.2.</span> <span class="nav-text">根据模板制作个人主页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计完成"><span class="nav-number">2.3.</span> <span class="nav-text">设计完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-io-制作个人主页"><span class="nav-number">3.</span> <span class="nav-text">Github.io 制作个人主页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要步骤"><span class="nav-number">3.1.</span> <span class="nav-text">主要步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js-与Hexo框架-以及-Github创建"><span class="nav-number">3.2.</span> <span class="nav-text">安装Node.js 与Hexo框架 以及 Github创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GoDaddy-购买域名"><span class="nav-number">3.3.</span> <span class="nav-text">GoDaddy 购买域名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-购买域名"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 购买域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在Github的账号中创建CNAME文件"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.在Github的账号中创建CNAME文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-获得DNS-provider的地址，并修改配置文件"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 获得DNS provider的地址，并修改配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/05/08/7元3小时快速创建自己博客/';
+          this.page.identifier = '2017/05/08/7元3小时快速创建自己博客/';
+          this.page.title = '快速创建自己博客';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

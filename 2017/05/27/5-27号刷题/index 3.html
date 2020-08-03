@@ -1,0 +1,885 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 15. 3Sum算法自己的先将整个数组进行排序，然后在数组中找下一个，然后再找最后一个。自己的方法与别人的整个思路大致相似，但是由于没利用数组已经是sort过这个条件，导致复杂度是O(n^3)相当慢  重点，当一个Array是排序过的时候，找寻合适的数字的时候可以考虑从双向查找，尾到头同时头到尾。这样时间复杂度会减少很多">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.27号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/05/27/5-27号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 15. 3Sum算法自己的先将整个数组进行排序，然后在数组中找下一个，然后再找最后一个。自己的方法与别人的整个思路大致相似，但是由于没利用数组已经是sort过这个条件，导致复杂度是O(n^3)相当慢  重点，当一个Array是排序过的时候，找寻合适的数字的时候可以考虑从双向查找，尾到头同时头到尾。这样时间复杂度会减少很多">
+<meta property="og:updated_time" content="2017-05-29T14:33:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5.27号刷题">
+<meta name="twitter:description" content="第一题 15. 3Sum算法自己的先将整个数组进行排序，然后在数组中找下一个，然后再找最后一个。自己的方法与别人的整个思路大致相似，但是由于没利用数组已经是sort过这个条件，导致复杂度是O(n^3)相当慢  重点，当一个Array是排序过的时候，找寻合适的数字的时候可以考虑从双向查找，尾到头同时头到尾。这样时间复杂度会减少很多">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/27/5-27号刷题/"/>
+
+
+
+
+
+  <title>5.27号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/27/5-27号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">5.27号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T08:14:53-07:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/27/5-27号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/05/27/5-27号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-15-3Sum"><a href="#第一题-15-3Sum" class="headerlink" title="第一题 15. 3Sum"></a>第一题 <a href="https://leetcode.com/problems/3sum/#/description" target="_blank" rel="external">15. 3Sum</a></h3><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><h5 id="自己的"><a href="#自己的" class="headerlink" title="自己的"></a>自己的</h5><p>先将整个数组进行排序，然后在数组中找下一个，然后再找最后一个。自己的方法与别人的整个思路大致相似，但是由于没利用数组已经是sort过这个条件，导致复杂度是O(n^3)相当慢</p>
+<ul>
+<li>重点，当一个Array是排序过的时候，找寻合适的数字的时候可以考虑从双向查找，尾到头同时头到尾。这样时间复杂度会减少很多<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">threeSum15</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length - <span class="number">1</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[j] &gt; <span class="number">0</span> &amp;&amp; nums[j] &gt; -nums[i]) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">int</span> target = - nums[i] - nums[j];</div><div class="line">                <span class="keyword">if</span> (nums[j] &gt; target) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">int</span> position = find(nums, target);</div><div class="line">                <span class="keyword">if</span> (position &gt; <span class="number">0</span> &amp;&amp; position != j &amp;&amp; position != i) &#123;</div><div class="line">                    result.add(Arrays.asList(nums[i], nums[j], nums[position]));</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">while</span>(nums[j] == nums[j+<span class="number">1</span>] &amp;&amp; j &lt; nums.length - <span class="number">2</span>) j++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">while</span>(nums[i] == nums[i+<span class="number">1</span>] &amp;&amp; i &lt; nums.length - <span class="number">3</span>) i++;</div><div class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[i] == target) <span class="keyword">return</span> i;</div><div class="line">            <span class="keyword">if</span> (nums[i] &lt; target) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="别人的"><a href="#别人的" class="headerlink" title="别人的"></a>别人的</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">threeSum15</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum2(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> result;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || (i &gt; <span class="number">0</span> &amp;&amp; nums[i-<span class="number">1</span>] != nums[i])) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">int</span> low = i + <span class="number">1</span>, high = nums.length - <span class="number">1</span>;</div><div class="line">                <span class="keyword">int</span> sum = <span class="number">0</span> - nums[i];</div><div class="line">                <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">                    <span class="keyword">if</span> (nums[low] + nums[high] == sum) &#123;</div><div class="line">                        result.add(Arrays.asList(nums[i], nums[low], nums[high]));</div><div class="line">                        <span class="keyword">while</span> (low &lt; high &amp;&amp; nums[low] == nums[low + <span class="number">1</span>]) low++;</div><div class="line">                        <span class="keyword">while</span> (low &lt; high &amp;&amp; nums[high] == nums[high - <span class="number">1</span>]) high--;</div><div class="line">                        low++;</div><div class="line">                        high--;</div><div class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[low] + nums[high] &gt; sum) &#123;</div><div class="line">                        high--;</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        low++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><ul>
+<li>对一个数组进行排序 Arrays.sort即可</li>
+<li>对于List<list<integer>&gt;可以多个一次性用Arrays.asList进行添加</list<integer></li>
+</ul>
+<h3 id="第二题-16-3Sum-Closest"><a href="#第二题-16-3Sum-Closest" class="headerlink" title="第二题 16. 3Sum Closest"></a>第二题 <a href="https://leetcode.com/problems/3sum-closest/#/description" target="_blank" rel="external">16. 3Sum Closest</a></h3><h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>思路与前一题相似，都是排序之后再通过两个指针的推进，查看是否接近于理想的target值<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">int</span> sum = nums[<span class="number">0</span>] + nums[<span class="number">1</span>] + nums[<span class="number">2</span>], previous = sum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> low = i + <span class="number">1</span>, high = nums.length - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">                <span class="keyword">int</span> tempSum = nums[i] + nums[low] + nums[high];</div><div class="line">                <span class="keyword">if</span> (Math.abs(sum - target) &gt; Math.abs(tempSum - target)) sum = tempSum;</div><div class="line">                </div><div class="line">                <span class="keyword">if</span> (tempSum &gt; target) high--;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (tempSum &lt; target) low++;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> target;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">while</span> (i &lt; nums.length - <span class="number">3</span> &amp;&amp; nums[i] == nums[i+<span class="number">1</span>]) i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-259-3Sum-Smaller"><a href="#第三题-259-3Sum-Smaller" class="headerlink" title="第三题 259. 3Sum Smaller"></a>第三题 <a href="https://leetcode.com/problems/3sum-smaller/#/description" target="_blank" rel="external">259. 3Sum Smaller</a></h3><h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><h5 id="自己的O-n-3"><a href="#自己的O-n-3" class="headerlink" title="自己的O(n^3)"></a>自己的O(n^3)</h5><p>！！！！记住sort之后的一定要考虑是否能用两个指针减少计算的数量级<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">threeSumSmaller259</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumSmaller</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length - <span class="number">1</span>; j++) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; nums.length; k++) &#123;</div><div class="line">                    <span class="keyword">int</span> tempSum = nums[i] + nums[j] + nums[k];</div><div class="line">                    <span class="keyword">if</span> (tempSum &lt; target) sum++;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="参考O-n-2"><a href="#参考O-n-2" class="headerlink" title="参考O(n^2)"></a>参考O(n^2)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">threeSumSmaller259</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumSmaller2</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> low = i + <span class="number">1</span>, high = nums.length - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span>(low &lt; high) &#123;</div><div class="line">                <span class="keyword">int</span> tempSum = nums[i] + nums[low] + nums[high];</div><div class="line">                <span class="keyword">if</span> (tempSum &lt; target) &#123;</div><div class="line">                    sum += high - low + <span class="number">1</span>;</div><div class="line">                    low++;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    high--;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-128-Longest-Consecutive-Sequence"><a href="#第四题-128-Longest-Consecutive-Sequence" class="headerlink" title="第四题 128. Longest Consecutive Sequence"></a>第四题 <a href="https://leetcode.com/problems/longest-consecutive-sequence/#/description" target="_blank" rel="external">128. Longest Consecutive Sequence</a></h3><h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>这道题的主要算法是用一个Hashmap将已经出现的数字存下来，key: 对应的是数字，value: 连续的长度。如果是没有出现的，例如n，查看其左边n-1和n+1是否存在。如果存在，获得value即已经有的连续的长度，然后计算出现在新的长度。<br><br>比较关键的一步是每次结束的时候，put(n+value_left, value_new),和put(n+value_right, value_new)更新新的边界值.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">longestConsecutive128</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> maxSec = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</div><div class="line">            <span class="keyword">if</span> (!map.containsKey(num)) &#123;</div><div class="line">                <span class="keyword">int</span> left = map.containsKey(num - <span class="number">1</span>) ? map.get(num - <span class="number">1</span>) : <span class="number">0</span>;</div><div class="line">                <span class="keyword">int</span> right = map.containsKey(num + <span class="number">1</span>) ? map.get(num + <span class="number">1</span>) : <span class="number">0</span>;</div><div class="line">                <span class="keyword">int</span> sum = left + right + <span class="number">1</span>;</div><div class="line">                maxSec = Math.max(maxSec, sum);</div><div class="line"></div><div class="line">                map.put(num, sum);</div><div class="line">                map.put(num - left, sum);</div><div class="line">                map.put(num + right, sum);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxSec;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-162-Find-Peak-Element"><a href="#第五题-162-Find-Peak-Element" class="headerlink" title="第五题 162. Find Peak Element"></a>第五题 <a href="https://leetcode.com/problems/find-peak-element/#/description" target="_blank" rel="external">162. Find Peak Element</a></h3><h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><h5 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h5><p>从后面向前推进，如果是peak就进行输出。复杂度O(n)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findPeakElement162</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">2</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[<span class="number">0</span>] &gt; nums[<span class="number">1</span>]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; nums[i-<span class="number">1</span>] &gt; nums[i]) <span class="keyword">return</span> i - <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (i == nums.length - <span class="number">2</span> &amp;&amp; nums[i] &lt; nums[i+<span class="number">1</span>]) <span class="keyword">return</span> i + <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[i-<span class="number">1</span>] &amp;&amp; nums[i] &gt; nums[i+<span class="number">1</span>]) <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h5><p>二分查找和回溯，将时间复杂度降为O(n)<br>利用的原理是：</p>
+<ul>
+<li>If num[i-1] &lt; num[i] &gt; num[i+1], then num[i] is peak</li>
+<li>If num[i-1] &lt; num[i] &lt; num[i+1], then num[i+1…n-1] must contains a peak</li>
+<li>If num[i-1] &gt; num[i] &gt; num[i+1], then num[0…i-1] must contains a peak</li>
+<li>If num[i-1] &gt; num[i] &lt; num[i+1], then both sides have peak<br>(n is num.length)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findPeakElement162</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> helpFunction(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helpFunction</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> mid = begin + (end - begin) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (begin == end) &#123;</div><div class="line">            <span class="keyword">return</span> begin;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (begin + <span class="number">1</span> == end) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[begin] &gt; nums[end]) <span class="keyword">return</span> begin;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> end;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &gt; nums[mid + <span class="number">1</span>] &amp;&amp; nums[mid] &gt; nums[mid - <span class="number">1</span>]) &#123;</div><div class="line">            <span class="keyword">return</span> mid;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid + <span class="number">1</span>] &gt; nums[mid]) &#123;</div><div class="line">            <span class="keyword">return</span> helpFunction(nums, mid, end);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid - <span class="number">1</span>] &gt; nums[mid]) &#123;</div><div class="line">            <span class="keyword">return</span> helpFunction(nums, begin, mid);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/26/5-26号刷题/" rel="next" title="5.26号刷题">
+                <i class="fa fa-chevron-left"></i> 5.26号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/28/CloudComputing总结/" rel="prev" title="CloudComputing总结">
+                CloudComputing总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/05/27/5-27号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-15-3Sum"><span class="nav-number">1.</span> <span class="nav-text">第一题 15. 3Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自己的"><span class="nav-number">1.1.1.</span> <span class="nav-text">自己的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#别人的"><span class="nav-number">1.1.2.</span> <span class="nav-text">别人的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">1.2.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-16-3Sum-Closest"><span class="nav-number">2.</span> <span class="nav-text">第二题 16. 3Sum Closest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-259-3Sum-Smaller"><span class="nav-number">3.</span> <span class="nav-text">第三题 259. 3Sum Smaller</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自己的O-n-3"><span class="nav-number">3.1.1.</span> <span class="nav-text">自己的O(n^3)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考O-n-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">参考O(n^2)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-128-Longest-Consecutive-Sequence"><span class="nav-number">4.</span> <span class="nav-text">第四题 128. Longest Consecutive Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-162-Find-Peak-Element"><span class="nav-number">5.</span> <span class="nav-text">第五题 162. Find Peak Element</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算法一"><span class="nav-number">5.1.1.</span> <span class="nav-text">算法一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法二"><span class="nav-number">5.1.2.</span> <span class="nav-text">算法二</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/05/27/5-27号刷题/';
+          this.page.identifier = '2017/05/27/5-27号刷题/';
+          this.page.title = '5.27号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

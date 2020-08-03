@@ -1,0 +1,908 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 51. N-Queens题目描述解决N 皇后问题 算法主要利用回溯, 本题由于要求String格式进行输出，因此比较麻烦">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.20号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/7-20号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 51. N-Queens题目描述解决N 皇后问题 算法主要利用回溯, 本题由于要求String格式进行输出，因此比较麻烦">
+<meta property="og:updated_time" content="2017-08-03T10:50:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.20号刷题">
+<meta name="twitter:description" content="第一题 51. N-Queens题目描述解决N 皇后问题 算法主要利用回溯, 本题由于要求String格式进行输出，因此比较麻烦">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/31/7-20号刷题/"/>
+
+
+
+
+
+  <title>7.20号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/7-20号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.20号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T21:10:09-07:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/31/7-20号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/07/31/7-20号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-51-N-Queens"><a href="#第一题-51-N-Queens" class="headerlink" title="第一题 51. N-Queens"></a>第一题 <a href="https://leetcode.com/problems/n-queens/description/" target="_blank" rel="external">51. N-Queens</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>解决N 皇后问题</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>主要利用回溯, 本题由于要求String格式进行输出，因此比较麻烦</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">solveNQueens51</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; solveNQueens(<span class="keyword">int</span> n) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[][] board = inital(n);</div><div class="line">        nQueens(board, <span class="number">0</span>, res);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">char</span>[][] inital(<span class="keyword">int</span> n) &#123;</div><div class="line">        <span class="keyword">char</span>[][] place = <span class="keyword">new</span> <span class="keyword">char</span>[n][n];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</div><div class="line">                place[i][j] = <span class="string">'.'</span>;</div><div class="line">        <span class="keyword">return</span> place;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nQueens</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> colNumber, List&lt;List&lt;String&gt;&gt; res)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (colNumber == board.length) &#123;</div><div class="line">            res.add(construct(board));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (isValid(board, i, colNumber)) &#123;</div><div class="line">                board[i][colNumber] = <span class="string">'Q'</span>;</div><div class="line">                nQueens(board, colNumber + <span class="number">1</span>, res);</div><div class="line">                board[i][colNumber] = <span class="string">'.'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">construct</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            String s = <span class="keyword">new</span> String(board[i]);</div><div class="line">            res.add(s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(<span class="keyword">char</span>[][] places, <span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; places.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (places[row][i] == <span class="string">'Q'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span> (places[i][col] == <span class="string">'Q'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = row, j = col; i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</div><div class="line">            <span class="keyword">if</span> (places[i][j] == <span class="string">'Q'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = row, j = col; i &lt; places.length &amp;&amp; j &gt;= <span class="number">0</span>; i++, j--) &#123;</div><div class="line">            <span class="keyword">if</span> (places[i][j] == <span class="string">'Q'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-52-N-Queens-II"><a href="#第二题-52-N-Queens-II" class="headerlink" title="第二题 52. N-Queens II"></a>第二题 <a href="https://leetcode.com/problems/n-queens-ii/description/" target="_blank" rel="external">52. N-Queens II</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>与上题一样，只不过现在只需要统计出n皇后满足的数字即可</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">totalNQueens52</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">totalNQueens</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1</span>];</div><div class="line">        <span class="keyword">int</span>[][] board = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</div><div class="line">        solve(board, <span class="number">0</span>, res);</div><div class="line">        <span class="keyword">return</span> res[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span>[][] board, <span class="keyword">int</span> colNum, <span class="keyword">int</span>[] res)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (colNum == board.length) &#123;</div><div class="line">            res[<span class="number">0</span>]++;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (isValid(board, i, colNum)) &#123;</div><div class="line">                board[i][colNum] = <span class="number">1</span>;</div><div class="line">                solve(board, colNum + <span class="number">1</span>, res);</div><div class="line">                board[i][colNum] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(<span class="keyword">int</span>[][] board, <span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (board[i][col] == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span> (board[row][i] == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = row, j = col; i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</div><div class="line">            <span class="keyword">if</span> (board[i][j] == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = row, j = col; i &lt; board.length &amp;&amp; j &gt;= <span class="number">0</span>; i++, j--) &#123;</div><div class="line">            <span class="keyword">if</span> (board[i][j] == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-31-Next-Permutation"><a href="#第三题-31-Next-Permutation" class="headerlink" title="第三题 31. Next Permutation"></a>第三题 <a href="https://leetcode.com/problems/next-permutation/description/" target="_blank" rel="external">31. Next Permutation</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>求下一个最大的数</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><ol>
+<li>首先先找到从右边起的，往左边数的第一个打破逆序的数字num</li>
+<li>然后找到右边起的第一个比num大的数字</li>
+<li>交换他们的位置</li>
+<li>之后交换所有从num的下一个数字起的所有的位置</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">nextPermutation31</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">int</span> i = nums.length - <span class="number">2</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[i + <span class="number">1</span>]) i--;</div><div class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> j = nums.length - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (nums[i] &gt;= nums[j]) j--;</div><div class="line">            swap(nums, i, j);</div><div class="line">        &#125;</div><div class="line">        reverse(nums, i + <span class="number">1</span>, nums.length - <span class="number">1</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> temp = nums[i];</div><div class="line">        nums[i] = nums[j];</div><div class="line">        nums[j] = temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> low = begin, high = end;</div><div class="line">        <span class="keyword">while</span> (low &lt;= high) swap(nums, low++, high--);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-60-Permutation-Sequence"><a href="#第四题-60-Permutation-Sequence" class="headerlink" title="第四题 60. Permutation Sequence"></a>第四题 <a href="https://leetcode.com/problems/permutation-sequence/description/" target="_blank" rel="external">60. Permutation Sequence</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>一个数字有很多种排列方式，求出对于1 - n组成的数字中，第k种排列方式</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>对于n，如果拿去n，那么剩下有(n - 1)!种的排列方式。这样，比如对于1，2，3，4。我们需要第23种排列，那么22 / 3! = 3。我们可以知道，1 - 6对应位置0，即开头是1 剩下的所有组合是 {2，3，4}的排列。7 - 12对应位置1， 即开头是2，剩下对应的是{1，3，4}的排列。现在对应位置是3，那么即第一个数字是4，剩下{1，2，3}的排列。</p>
+<p>根据这种方法，循环直到找到最后一个数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] factorial = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">        factorial[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">            factorial[i] = factorial[i - <span class="number">1</span>] * i;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        List&lt;Integer&gt; nums = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">            nums.add(i);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</div><div class="line">        k--;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">int</span> index = k / factorial[i - <span class="number">1</span>];</div><div class="line">            res.append(nums.get(index));</div><div class="line">            k -= index * factorial[i - <span class="number">1</span>];</div><div class="line">            nums.remove(index);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-77-Combinations"><a href="#第五题-77-Combinations" class="headerlink" title="第五题 77. Combinations"></a>第五题 <a href="https://leetcode.com/problems/combinations/description/" target="_blank" rel="external">77. Combinations</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>求一个1 ~ n的所有数字中，有所少种长度为n的组合方式</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>还是基本的回溯的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">combine77</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combine(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">        backtrack(n, k, <span class="number">1</span>, <span class="keyword">new</span> ArrayList&lt;&gt;(), res);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> start, List&lt;Integer&gt; cur, List&lt;List&lt;Integer&gt;&gt; res)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</div><div class="line">           res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(cur));</div><div class="line">           <span class="keyword">return</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= n; i++) &#123;</div><div class="line">           cur.add(i);</div><div class="line">           backtrack(n, k - <span class="number">1</span>, i + <span class="number">1</span>, cur, res);</div><div class="line">           cur.remove(cur.size() - <span class="number">1</span>);</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-79-Word-Search"><a href="#第六题-79-Word-Search" class="headerlink" title="第六题 79. Word Search"></a>第六题 <a href="https://leetcode.com/problems/word-search/description/" target="_blank" rel="external">79. Word Search</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个二维矩阵中，查看是否存在一个指定单词。规则是，只能在二维矩阵中上下左右移动，并进行寻找</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>使用DFS进行搜索</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">exist79</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[][] dirs = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (word.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (board.length == <span class="number">0</span> || board[<span class="number">0</span>].length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (board[i][j] == word.charAt(<span class="number">0</span>)) &#123;</div><div class="line">                    <span class="keyword">char</span> origin = board[i][j];</div><div class="line">                    board[i][j] = <span class="string">'*'</span>;</div><div class="line">                    <span class="keyword">if</span> (DFS(board, word.substring(<span class="number">1</span>), i, j)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">else</span> board[i][j] = origin;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">DFS</span><span class="params">(<span class="keyword">char</span>[][] board, String word, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (word.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : dirs) &#123;</div><div class="line">            <span class="keyword">int</span> xx = x + dir[<span class="number">0</span>];</div><div class="line">            <span class="keyword">int</span> yy = y + dir[<span class="number">1</span>];</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (xx &gt;= <span class="number">0</span> &amp;&amp; yy &gt;= <span class="number">0</span> &amp;&amp; xx &lt; board.length &amp;&amp; yy &lt; board[<span class="number">0</span>].length &amp;&amp; board[xx][yy] == word.charAt(<span class="number">0</span>)) &#123;</div><div class="line">                <span class="keyword">char</span> origin = board[xx][yy];</div><div class="line">                board[xx][yy] = <span class="string">'*'</span>;</div><div class="line">                <span class="keyword">if</span> (DFS(board, word.substring(<span class="number">1</span>), xx, yy)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">else</span> board[xx][yy] = origin;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-212-Word-Search-II"><a href="#第七题-212-Word-Search-II" class="headerlink" title="第七题 212. Word Search II"></a>第七题 <a href="https://leetcode.com/problems/word-search-ii/description/" target="_blank" rel="external">212. Word Search II</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定二维格板和一组单词，在格板中找出这些单词。</p>
+<p>每一个单词必须通过顺序邻接的单元格中的字母构成，“邻接”是指水平或者竖直方向相邻。同一个单元格中的字母在构建某个单词时最多只能使用一次。</p>
+<p>测试用例见题目描述。</p>
+<p>注意：</p>
+<p>你可以假设输入只包含小写字母a-z</p>
+<p>你需要最优化你的回溯策略，以通过数据规模比较大的测试样例。能不能尽可能早的停止回溯？</p>
+<p>提示：</p>
+<p>如果当前的候选单词在所有的单词前缀中都不存在，就可以立即停止回溯。什么样的数据结构可以更加有效地响应这种查询？哈希表可以吗？为什么可以或者不行？字典树怎么样？如果要了解字典树的基础知识，可以先完成这道题目：Implement Trie (Prefix Tree) ，实现字典树（前缀树）</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用字典树，进行DFS。 否则会timeout</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findWords</span><span class="params">(<span class="keyword">char</span>[][] board, String[] words)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        TrieNode root = buildTrie(words);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                dfs(board, i, j, root, res);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j, TrieNode p, List&lt;String&gt; res)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span> c = board[i][j];</div><div class="line">        <span class="keyword">if</span> (c == <span class="string">'*'</span> || p.next[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        </div><div class="line">        p = p.next[c - <span class="string">'a'</span>];</div><div class="line">        <span class="keyword">if</span> (p.word != <span class="keyword">null</span>) &#123;</div><div class="line">            res.add(p.word);</div><div class="line">            p.word = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        board[i][j] = <span class="string">'*'</span>;</div><div class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span>) dfs(board, i - <span class="number">1</span>, j, p, res);</div><div class="line">        <span class="keyword">if</span> (j &gt; <span class="number">0</span>) dfs(board, i, j - <span class="number">1</span>, p, res);</div><div class="line">        <span class="keyword">if</span> (i &lt; board.length - <span class="number">1</span>) dfs(board, i + <span class="number">1</span>, j, p, res);</div><div class="line">        <span class="keyword">if</span> (j &lt; board[<span class="number">0</span>].length - <span class="number">1</span>) dfs(board, i, j + <span class="number">1</span>, p, res);</div><div class="line">        board[i][j] = c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</div><div class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</div><div class="line">        String word;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">buildTrie</span><span class="params">(String[] words)</span> </span>&#123;</div><div class="line">        TrieNode root = <span class="keyword">new</span> TrieNode();</div><div class="line">        <span class="keyword">for</span> (String word : words) &#123;</div><div class="line">            TrieNode p = root;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</div><div class="line">                <span class="keyword">int</span> i = c - <span class="string">'a'</span>;</div><div class="line">                <span class="keyword">if</span> (p.next[i] == <span class="keyword">null</span>) p.next[i] = <span class="keyword">new</span> TrieNode();</div><div class="line">                p = p.next[i];</div><div class="line">            &#125;</div><div class="line">            p.word = word;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-208-Implement-Trie-Prefix-Tree"><a href="#第八题-208-Implement-Trie-Prefix-Tree" class="headerlink" title="第八题 208. Implement Trie (Prefix Tree)"></a>第八题 <a href="https://leetcode.com/problems/implement-trie-prefix-tree/description/" target="_blank" rel="external">208. Implement Trie (Prefix Tree)</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>实现字典树，包含插入，查找和前缀查找方法。</p>
+<p>注意：</p>
+<p>你可以假设所有的输入只包含小写字母a-z</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>下面这个是自己的版本的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</div><div class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</div><div class="line">        String word;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    TrieNode root;</div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Trie</span><span class="params">()</span> </span>&#123;</div><div class="line">        root = <span class="keyword">new</span> TrieNode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Inserts a word into the trie. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] chars = word.toCharArray();</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> index = chars[i] - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span> (cur.next[index] == <span class="keyword">null</span>) &#123;</div><div class="line">                cur.next[index] = <span class="keyword">new</span> TrieNode();</div><div class="line">            &#125;</div><div class="line">            cur = cur.next[index];</div><div class="line">        &#125;</div><div class="line">        cur.word = word;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Returns if the word is in the trie. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</div><div class="line">            <span class="keyword">int</span> index = c - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span> (cur.next[index] == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            cur = cur.next[index];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cur.word != <span class="keyword">null</span> &amp;&amp; cur.word.equals(word);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String prefix)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] chars = prefix.toCharArray();</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> index = chars[i] - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span> (cur.next[index] == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            cur = cur.next[index];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> index = chars[chars.length - <span class="number">1</span>] - <span class="string">'a'</span>;</div><div class="line">        <span class="keyword">return</span> cur.next[index] == <span class="keyword">null</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-211-Add-and-Search-Word-Data-structure-design"><a href="#第九题-211-Add-and-Search-Word-Data-structure-design" class="headerlink" title="第九题 211. Add and Search Word - Data structure design"></a>第九题 <a href="https://leetcode.com/problems/add-and-search-word-data-structure-design/description/" target="_blank" rel="external">211. Add and Search Word - Data structure design</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>设计一个数据结构支持下列两种操作：</p>
+<pre><code>void addWord(word)
+bool search(word)
+</code></pre><p>search(word)可以搜索一个普通字符串或者一个只包含字母a-z或者.的正则表达式。符号.代表任意单个字母。</p>
+<p>测试用例见题目描述。</p>
+<p>注意：<br>你可以假设所有的单词只包含小写字母a-z</p>
+<p>提示：<br>完成此题目之前，最好先做Implement Trie (Prefix Tree)</p>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>还是使用Trie的思想</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordDictionary</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</div><div class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</div><div class="line">        <span class="keyword">boolean</span> isword = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    TrieNode root;</div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WordDictionary</span><span class="params">()</span> </span>&#123;</div><div class="line">        root = <span class="keyword">new</span> TrieNode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Adds a word into the data structure. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWord</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] chars = word.toCharArray();</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> index = chars[i] - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span> (cur.next[index] == <span class="keyword">null</span>) &#123;</div><div class="line">                cur.next[index] = <span class="keyword">new</span> TrieNode();</div><div class="line">            &#125;</div><div class="line">            cur = cur.next[index];</div><div class="line">        &#125;</div><div class="line">        cur.isword = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] wordChars = word.toCharArray();</div><div class="line">        <span class="keyword">return</span> backtrack(wordChars, <span class="number">0</span>, root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">char</span>[] word, <span class="keyword">int</span> start, TrieNode cur)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start &gt;= word.length)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">char</span> c = word[start];</div><div class="line">        <span class="keyword">int</span> index = c - <span class="string">'a'</span>;</div><div class="line">        <span class="keyword">if</span> (c == <span class="string">'.'</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (cur.next[i] != <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (cur.next[i].isword &amp;&amp; start + <span class="number">1</span> == word.length)</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">boolean</span> tag = backtrack(word, start + <span class="number">1</span>, cur.next[i]);</div><div class="line">                    <span class="keyword">if</span> (tag)</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == word[start]) &#123;</div><div class="line">            <span class="keyword">if</span> (cur.next[index] != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (cur.next[index].isword &amp;&amp; start + <span class="number">1</span> == word.length)</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">return</span> backtrack(word, start + <span class="number">1</span>, cur.next[index]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your WordDictionary object will be instantiated and called as such:</div><div class="line"> * WordDictionary obj = new WordDictionary();</div><div class="line"> * obj.addWord(word);</div><div class="line"> * boolean param_2 = obj.search(word);</div><div class="line"> */</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/28/7-19号刷题/" rel="next" title="7.19号刷题">
+                <i class="fa fa-chevron-left"></i> 7.19号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/03/7-21号刷题/" rel="prev" title="7.21号刷题">
+                7.21号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/07/31/7-20号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-51-N-Queens"><span class="nav-number">1.</span> <span class="nav-text">第一题 51. N-Queens</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-52-N-Queens-II"><span class="nav-number">2.</span> <span class="nav-text">第二题 52. N-Queens II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-31-Next-Permutation"><span class="nav-number">3.</span> <span class="nav-text">第三题 31. Next Permutation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-60-Permutation-Sequence"><span class="nav-number">4.</span> <span class="nav-text">第四题 60. Permutation Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-77-Combinations"><span class="nav-number">5.</span> <span class="nav-text">第五题 77. Combinations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-79-Word-Search"><span class="nav-number">6.</span> <span class="nav-text">第六题 79. Word Search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-212-Word-Search-II"><span class="nav-number">7.</span> <span class="nav-text">第七题 212. Word Search II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-208-Implement-Trie-Prefix-Tree"><span class="nav-number">8.</span> <span class="nav-text">第八题 208. Implement Trie (Prefix Tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-211-Add-and-Search-Word-Data-structure-design"><span class="nav-number">9.</span> <span class="nav-text">第九题 211. Add and Search Word - Data structure design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/31/7-20号刷题/';
+          this.page.identifier = '2017/07/31/7-20号刷题/';
+          this.page.title = '7.20号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 231. Power of Two题目描述给定一个整数，编写函数判断它是否是2的幂。">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.24号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/24/6-24号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 231. Power of Two题目描述给定一个整数，编写函数判断它是否是2的幂。">
+<meta property="og:updated_time" content="2017-06-25T02:46:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.24号刷题">
+<meta name="twitter:description" content="第一题 231. Power of Two题目描述给定一个整数，编写函数判断它是否是2的幂。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/24/6-24号刷题/"/>
+
+
+
+
+
+  <title>6.24号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/24/6-24号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.24号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-24T10:01:50-07:00">
+                2017-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/24/6-24号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/06/24/6-24号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-231-Power-of-Two"><a href="#第一题-231-Power-of-Two" class="headerlink" title="第一题 231. Power of Two"></a>第一题 <a href="https://leetcode.com/problems/power-of-two/#/description" target="_blank" rel="external">231. Power of Two</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数，编写函数判断它是否是2的幂。</p>
+<a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><h5 id="正常算法"><a href="#正常算法" class="headerlink" title="正常算法"></a>正常算法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isPowerOfTwo231</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">int</span> remain = <span class="number">0</span>, num = n;</div><div class="line">        <span class="keyword">while</span> (num != <span class="number">0</span>) &#123;</div><div class="line">            num = num / <span class="number">2</span>;</div><div class="line">            remain = num % <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (remain == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Bit"><a href="#Bit" class="headerlink" title="Bit"></a>Bit</h5><p>如果是2的幂，那么最高位数字的最高位是1，且只有一个1</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isPowerOfTwo231</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfTwo2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> n &gt; <span class="number">0</span> &amp;&amp; Integer.bitCount(n) == <span class="number">1</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-342-Power-of-Four"><a href="#第二题-342-Power-of-Four" class="headerlink" title="第二题 342. Power of Four"></a>第二题 <a href="https://leetcode.com/problems/power-of-four/#/description" target="_blank" rel="external">342. Power of Four</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数（32位有符号），编写函数判断它是否是4的幂。</p>
+<p>测试用例如题目描述。</p>
+<p>进一步思考：你可以不用循环/递归解决问题吗？</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>如果这个数为4的幂，那么其满足3个条件:</p>
+<ol>
+<li><blockquote>
+<p>0</p>
+</blockquote>
+</li>
+<li>是2的幂 (num &amp; (num - 1)) == 0 或 Integer.bitCount(num) == 1</li>
+<li>(num - 1) % 3 == 0</li>
+</ol>
+<p>对于第三条证明</p>
+<pre><code>对于 2^n - 1 如果 n为偶数，那么2^n就是4的幂，如果n为奇数，就不是。
+如果n为偶那么：
+2^n - 1 = (2^(n/2) + 1)*(2^(n/2) - 1)对于三个连续的数，(2^(n/2) + 1),2^(n/2),(2^(n/2) - 1)必有一个能被3整除
+如果n为奇数
+那么2^(n/2) + 1是个小数，必然不能被3整除。
+即，如果(num - 1) % 3 == 0, 那么n为偶，num为4的幂
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isPowerOfFour342</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfFour</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> num &gt; <span class="number">0</span> &amp;&amp; Integer.bitCount(num) == <span class="number">1</span> &amp;&amp; (num - <span class="number">1</span>) % <span class="number">3</span> == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-326-Power-of-Three"><a href="#第三题-326-Power-of-Three" class="headerlink" title="第三题 326. Power of Three"></a>第三题 <a href="https://leetcode.com/problems/power-of-three/#/description" target="_blank" rel="external">326. Power of Three</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数，编写函数判断它是否是3的幂。</p>
+<p>进一步思考：</p>
+<p>你可以不用循环/递归解出本题吗？</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isPowerOfThree326</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &gt; <span class="number">1</span>)</div><div class="line">            <span class="keyword">while</span> (n % <span class="number">3</span> == <span class="number">0</span>) n /= <span class="number">3</span>;</div><div class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-247-Strobogrammatic-Number-II"><a href="#第四题-247-Strobogrammatic-Number-II" class="headerlink" title="第四题 247. Strobogrammatic Number II"></a>第四题 <a href="https://leetcode.com/problems/strobogrammatic-number-ii/#/description" target="_blank" rel="external">247. Strobogrammatic Number II</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>找出所有长度为n且这个数字旋转180°等于本身的数字</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><h5 id="直接计算"><a href="#直接计算" class="headerlink" title="直接计算"></a>直接计算</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findStrobogrammatic247</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findStrobogrammatic</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">        <span class="keyword">int</span> countend = (<span class="keyword">int</span>) Math.pow(<span class="number">10</span>, n);</div><div class="line">        <span class="keyword">int</span> countStart = (<span class="keyword">int</span>) Math.pow(<span class="number">10</span>, n - <span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> (countStart == <span class="number">1</span>) countStart = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = countStart; i &lt; countend; i++) &#123;</div><div class="line">            String num = String.valueOf(i);</div><div class="line">            <span class="keyword">int</span> left = <span class="number">0</span>, right = num.length() - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">                <span class="keyword">if</span> (!<span class="string">"00 11 88 696"</span>.contains(num.charAt(left) + <span class="string">""</span> + num.charAt(right)))</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    left++; right--;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (left &gt; right) &#123;</div><div class="line">                res.add(num);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="利用单双对称（非递归）"><a href="#利用单双对称（非递归）" class="headerlink" title="利用单双对称（非递归）"></a>利用单双对称（非递归）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findStrobogrammatic247</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findStrobogrammatic2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; odd = Arrays.asList(<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"8"</span>),</div><div class="line">                even = Arrays.asList(<span class="string">""</span>),</div><div class="line">                r = even;</div><div class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) r = odd;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; i ++) &#123;</div><div class="line">            List&lt;String&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">            <span class="keyword">for</span> (String str : r) &#123;</div><div class="line">                <span class="keyword">if</span> (i != n / <span class="number">2</span> - <span class="number">1</span>) &#123;</div><div class="line">                    temp.add(<span class="string">"0"</span> + str + <span class="string">"0"</span>);</div><div class="line">                &#125;</div><div class="line">                temp.add(<span class="string">"1"</span> + str + <span class="string">"1"</span>);</div><div class="line">                temp.add(<span class="string">"6"</span> + str + <span class="string">"9"</span>);</div><div class="line">                temp.add(<span class="string">"8"</span> + str + <span class="string">"8"</span>);</div><div class="line">                temp.add(<span class="string">"9"</span> + str + <span class="string">"6"</span>);</div><div class="line">            &#125;</div><div class="line">            r = temp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> r;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="利用单双对称-递归"><a href="#利用单双对称-递归" class="headerlink" title="利用单双对称 (递归)"></a>利用单双对称 (递归)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findStrobogrammatic</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> recur(n, n);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">recur</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">""</span>));</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"8"</span>));</div><div class="line"></div><div class="line">        List&lt;String&gt; list = recur(n - <span class="number">2</span>, m);</div><div class="line">        List&lt;String&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (String str : list) &#123;</div><div class="line">            <span class="keyword">if</span> (n != m) &#123;</div><div class="line">                temp.add(<span class="string">"0"</span> + str + <span class="string">"0"</span>);</div><div class="line">            &#125;</div><div class="line">            temp.add(<span class="string">"1"</span> + str + <span class="string">"1"</span>);</div><div class="line">            temp.add(<span class="string">"6"</span> + str + <span class="string">"9"</span>);</div><div class="line">            temp.add(<span class="string">"8"</span> + str + <span class="string">"8"</span>);</div><div class="line">            temp.add(<span class="string">"9"</span> + str + <span class="string">"6"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> temp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-248-Strobogrammatic-Number-III"><a href="#第五题-248-Strobogrammatic-Number-III" class="headerlink" title="第五题 248. Strobogrammatic Number III"></a>第五题 <a href="https://leetcode.com/problems/strobogrammatic-number-iii/#/description" target="_blank" rel="external">248. Strobogrammatic Number III</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定数字的起始和结束，统计这个区间中，满足数字旋转180°等于本身的数字</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>由于有时间复杂度的限制，不能直接循环，我们可以通过上一题的递归方法，在加上循环，进行统计。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strobogrammaticInRange</span><span class="params">(String low, String high)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> end = high.length();</div><div class="line">        <span class="keyword">int</span> start = low.length();</div><div class="line"></div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</div><div class="line">            List&lt;String&gt; res = recur(i, i);</div><div class="line">            count += getCount(res, Long.valueOf(low), Long.valueOf(high));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">(List&lt;String&gt; res1, <span class="keyword">long</span> low, <span class="keyword">long</span> high)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res1.size(); i++)&#123;</div><div class="line">            String str = res1.get(i);</div><div class="line">            <span class="keyword">long</span> num = Long.valueOf(str);</div><div class="line">            <span class="keyword">if</span> (num &gt;= low &amp;&amp; num &lt;= high) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">recur</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">""</span>));</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"8"</span>));</div><div class="line"></div><div class="line">        List&lt;String&gt; list = recur(n - <span class="number">2</span>, m);</div><div class="line">        List&lt;String&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (String str : list) &#123;</div><div class="line">            <span class="keyword">if</span> (n != m) &#123;</div><div class="line">                temp.add(<span class="string">"0"</span> + str + <span class="string">"0"</span>);</div><div class="line">            &#125;</div><div class="line">            temp.add(<span class="string">"1"</span> + str + <span class="string">"1"</span>);</div><div class="line">            temp.add(<span class="string">"6"</span> + str + <span class="string">"9"</span>);</div><div class="line">            temp.add(<span class="string">"8"</span> + str + <span class="string">"8"</span>);</div><div class="line">            temp.add(<span class="string">"9"</span> + str + <span class="string">"6"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> temp;</div><div class="line">    &#125;        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-263-Ugly-Number"><a href="#第六题-263-Ugly-Number" class="headerlink" title="第六题 263. Ugly Number"></a>第六题 <a href="https://leetcode.com/problems/ugly-number/#/solutions" target="_blank" rel="external">263. Ugly Number</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>编写程序判断一个给定的数字是否为“丑陋数” ugly number</p>
+<p>丑陋数是指只包含质因子2, 3, 5的正整数。例如，6, 8是丑陋数而14不是，因为它包含额外的质因子7</p>
+<p>注意，数字1也被视为丑陋数</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isUgly263</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isUgly</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (num &gt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> == <span class="number">0</span>) num /= <span class="number">2</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (num % <span class="number">3</span> == <span class="number">0</span>) num /= <span class="number">3</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (num % <span class="number">5</span> == <span class="number">0</span>) num /= <span class="number">5</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> num == <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-264-Ugly-Number-II"><a href="#第七题-264-Ugly-Number-II" class="headerlink" title="第七题 264. Ugly Number II"></a>第七题 <a href="https://leetcode.com/problems/ugly-number-ii/#/description" target="_blank" rel="external">264. Ugly Number II</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>编写程序寻找第n个“丑陋数” ugly number</p>
+<p>丑陋数是指只包含质因子2, 3, 5的正整数。例如，1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前10个丑陋数。</p>
+<p>注意，数字1也被视为丑陋数</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用数组循环找出当前最小值，并指定3个指针分别指向当前2，3，5所在的位置，不断循环。知道找到第k个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">nthUglyNumber264</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        <span class="keyword">int</span> two = <span class="number">0</span>, three = <span class="number">0</span>, five = <span class="number">0</span>;</div><div class="line">        res[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            res[i] = Math.min(Math.min(res[two] * <span class="number">2</span>, res[three] * <span class="number">3</span>), res[five] * <span class="number">5</span>);</div><div class="line">            <span class="keyword">if</span> (res[i] == res[two] * <span class="number">2</span>) two++;</div><div class="line">            <span class="keyword">if</span> (res[i] == res[three] * <span class="number">3</span>) three++;</div><div class="line">            <span class="keyword">if</span> (res[i] == res[five] * <span class="number">5</span>) five++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res[n - <span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-313-Super-Ugly-Number"><a href="#第八题-313-Super-Ugly-Number" class="headerlink" title="第八题 313. Super Ugly Number"></a>第八题 <a href="https://leetcode.com/problems/super-ugly-number/#/description" target="_blank" rel="external">313. Super Ugly Number</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>编写程序寻找第n个“超级丑陋数”</p>
+<p>超级丑陋数是指只包含给定的k个质因子的正数。例如，给定长度为4的质数序列primes = [2, 7, 13, 19]，前12个超级丑陋数序列为：[1, 2, 4, 7, 8, 13, 14, 16, 19, 26, 28, 32]</p>
+<p>注意：</p>
+<p>(1) 1 被认为是超级丑陋数，无论给定怎样的质数列表.</p>
+<p>(2) 给定的质数列表以升序排列.</p>
+<p>(3) 0 &lt; k ≤ 100, 0 &lt; n ≤ 106, 0 &lt; primes[i] &lt; 1000.</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>与之前的找到第n个一样，只是现在换成矩阵形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">nthSuperUglyNumber313</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthSuperUglyNumber</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] primes)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        res[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span>[] point = <span class="keyword">new</span> <span class="keyword">int</span>[primes.length];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">int</span> min = primes[<span class="number">0</span>] * res[point[<span class="number">0</span>]];</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; primes.length; j++) &#123;</div><div class="line">                min = Math.min(min, primes[j] * res[point[j]]);</div><div class="line">            &#125;</div><div class="line">            res[i] = min;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; primes.length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (res[i] == primes[j] * res[point[j]]) point[j]++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res[n - <span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-69-Sqrt-x"><a href="#第九题-69-Sqrt-x" class="headerlink" title="第九题 69. Sqrt(x)"></a>第九题 <a href="https://leetcode.com/problems/sqrtx/#/description" target="_blank" rel="external">69. Sqrt(x)</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>求平方根</p>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>牛顿法和二分法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">mySqrt69</span> </span>&#123;</div><div class="line">    <span class="comment">//NewTon</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">long</span> r = x;</div><div class="line">        <span class="keyword">while</span> (r * r &gt; x) &#123;</div><div class="line">            r = (r + x / r) / <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) r;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Binary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt2</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> left = <span class="number">1</span>, right = x, ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">            <span class="keyword">long</span> mid = left + (right - left) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (mid * mid &lt;= x) &#123;</div><div class="line">                left = (<span class="keyword">int</span>)mid + <span class="number">1</span>;</div><div class="line">                ans = (<span class="keyword">int</span>) mid;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                right = (<span class="keyword">int</span>) mid - <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十题-367-Valid-Perfect-Square"><a href="#第十题-367-Valid-Perfect-Square" class="headerlink" title="第十题 367. Valid Perfect Square"></a>第十题 <a href="https://leetcode.com/problems/valid-perfect-square/#/description" target="_blank" rel="external">367. Valid Perfect Square</a></h3><h4 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个正整数num，编写函数：如果num是完全平方数，返回True，否则返回False。</p>
+<p>注意：不要使用任何内建函数，例如sqrt。</p>
+<p>测试用例如题目描述。</p>
+<h4 id="算法-9"><a href="#算法-9" class="headerlink" title="算法"></a>算法</h4><p>同样利用之前的两种算法进行计算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isPerfectSquare367</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (num == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">long</span> r = num;</div><div class="line">        <span class="keyword">while</span> (r * r &gt; num) &#123;</div><div class="line">            r = (r + num / r) / <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (r * r == num) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare2</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (num == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">int</span> low = <span class="number">1</span>, high = num, ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</div><div class="line">            <span class="keyword">long</span> mid = low + (high - low) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (mid * mid &lt;= num) &#123;</div><div class="line">                low = (<span class="keyword">int</span>) mid + <span class="number">1</span>;</div><div class="line">                ans = (<span class="keyword">int</span>) mid;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                high = (<span class="keyword">int</span>) mid - <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ans * ans == num) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/6-23号刷题/" rel="next" title="6.23号刷题">
+                <i class="fa fa-chevron-left"></i> 6.23号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/6-25号刷题/" rel="prev" title="6.25号刷题">
+                6.25号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/06/24/6-24号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-231-Power-of-Two"><span class="nav-number">1.</span> <span class="nav-text">第一题 231. Power of Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正常算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">正常算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bit"><span class="nav-number">1.2.2.</span> <span class="nav-text">Bit</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-342-Power-of-Four"><span class="nav-number">2.</span> <span class="nav-text">第二题 342. Power of Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-326-Power-of-Three"><span class="nav-number">3.</span> <span class="nav-text">第三题 326. Power of Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-247-Strobogrammatic-Number-II"><span class="nav-number">4.</span> <span class="nav-text">第四题 247. Strobogrammatic Number II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接计算"><span class="nav-number">4.2.1.</span> <span class="nav-text">直接计算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用单双对称（非递归）"><span class="nav-number">4.2.2.</span> <span class="nav-text">利用单双对称（非递归）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用单双对称-递归"><span class="nav-number">4.2.3.</span> <span class="nav-text">利用单双对称 (递归)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-248-Strobogrammatic-Number-III"><span class="nav-number">5.</span> <span class="nav-text">第五题 248. Strobogrammatic Number III</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-263-Ugly-Number"><span class="nav-number">6.</span> <span class="nav-text">第六题 263. Ugly Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-264-Ugly-Number-II"><span class="nav-number">7.</span> <span class="nav-text">第七题 264. Ugly Number II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-313-Super-Ugly-Number"><span class="nav-number">8.</span> <span class="nav-text">第八题 313. Super Ugly Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-69-Sqrt-x"><span class="nav-number">9.</span> <span class="nav-text">第九题 69. Sqrt(x)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十题-367-Valid-Perfect-Square"><span class="nav-number">10.</span> <span class="nav-text">第十题 367. Valid Perfect Square</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-9"><span class="nav-number">10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-9"><span class="nav-number">10.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/24/6-24号刷题/';
+          this.page.identifier = '2017/06/24/6-24号刷题/';
+          this.page.title = '6.24号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

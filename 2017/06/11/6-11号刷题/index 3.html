@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 535. Encode and Decode TinyURL题目描述将一个较长的URL 编译为较短的TinyURL, 之后又可以解码回来原来的URL">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.11号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/6-11号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 535. Encode and Decode TinyURL题目描述将一个较长的URL 编译为较短的TinyURL, 之后又可以解码回来原来的URL">
+<meta property="og:updated_time" content="2017-06-11T16:09:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.11号刷题">
+<meta name="twitter:description" content="第一题 535. Encode and Decode TinyURL题目描述将一个较长的URL 编译为较短的TinyURL, 之后又可以解码回来原来的URL">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/11/6-11号刷题/"/>
+
+
+
+
+
+  <title>6.11号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/6-11号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.11号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T12:02:52-07:00">
+                2017-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/11/6-11号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/06/11/6-11号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-535-Encode-and-Decode-TinyURL"><a href="#第一题-535-Encode-and-Decode-TinyURL" class="headerlink" title="第一题 535. Encode and Decode TinyURL"></a>第一题 <a href="https://leetcode.com/problems/encode-and-decode-tinyurl/#/description" target="_blank" rel="external">535. Encode and Decode TinyURL</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>将一个较长的URL 编译为较短的TinyURL, 之后又可以解码回来原来的URL</p>
+<a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</div><div class="line">    List&lt;String&gt; urls = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// Encodes a URL to a shortened URL.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">encode</span><span class="params">(String longUrl)</span> </span>&#123;</div><div class="line">        urls.add(longUrl);</div><div class="line">        <span class="keyword">return</span> String.valueOf(urls.size() - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Decodes a shortened URL to its original URL.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">decode</span><span class="params">(String shortUrl)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = Integer.valueOf(shortUrl);</div><div class="line">        <span class="keyword">return</span> index &gt; urls.size() ? <span class="string">""</span> : urls.get(index);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-438-Find-All-Anagrams-in-a-String"><a href="#第二题-438-Find-All-Anagrams-in-a-String" class="headerlink" title="第二题 438. Find All Anagrams in a String"></a>第二题 <a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/#/description" target="_blank" rel="external">438. Find All Anagrams in a String</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个字符串s与一个非空字符串p，寻找s中所有p的字谜变换的起始下标。</p>
+<p>字符串只包含小写英文字母并且s和p的长度均不超过20100。</p>
+<p>输出顺序无所谓。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>很重要的一道题目，可以帮助熟悉寻找Substring类型的题目<br><br>主要有两种算法，一种是利用HashMap，一种是使用char [256]。原理都是HashMap，处理的方式是使用一个窗口，窗口有Left和right，如果窗口中的情况满足要求了，则输出。如果并不满足，整个窗口移动，并对left边缘的值进行操作</p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>hashmap这个思路是找到一个满足要求的长序列，即在这个长序列中，肯定包含了目标String的所有Character但是我们需要对这些character的情况进行验证。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findAnagrams438</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findAnagrams</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; p.length()) <span class="keyword">return</span> result;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : p.toCharArray()) map.put(c, map.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, rightPoint = <span class="number">0</span>, count = map.size();</div><div class="line">        <span class="keyword">while</span>(rightPoint &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> cur = s.charAt(rightPoint);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(cur)) &#123;</div><div class="line">                map.put(cur, map.get(cur) - <span class="number">1</span>);</div><div class="line">                <span class="keyword">if</span> (map.get(cur) == <span class="number">0</span>) count--;</div><div class="line">            &#125;</div><div class="line">            rightPoint++;</div><div class="line"></div><div class="line">            <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">char</span> left = s.charAt(leftPoint);</div><div class="line">                <span class="keyword">if</span> (map.containsKey(left)) &#123;</div><div class="line">                    map.put(left, map.get(left) + <span class="number">1</span>);</div><div class="line">                    <span class="keyword">if</span> (map.get(left) &gt; <span class="number">0</span>) count++;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (rightPoint - leftPoint == p.length()) result.add(leftPoint);</div><div class="line">                leftPoint++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h5><p>同样的方法，但是这个的窗口大小是固定的，算法思路相似<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findAnagrams</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; p.length()) <span class="keyword">return</span> result;</div><div class="line">        <span class="keyword">int</span>[] hash = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : p.toCharArray()) hash[c]++;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, righPoint = <span class="number">0</span>, count = p.length();</div><div class="line">        <span class="keyword">while</span> (righPoint &lt; s.length()) &#123;</div><div class="line">            </div><div class="line">            <span class="keyword">char</span> c = s.charAt(righPoint);</div><div class="line">            hash[c]--;</div><div class="line">            <span class="keyword">if</span> (hash[c] &gt;= <span class="number">0</span>) count--;</div><div class="line">            </div><div class="line">            righPoint++;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (count == <span class="number">0</span>) result.add(leftPoint);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (righPoint - leftPoint == p.length()) &#123;</div><div class="line">                <span class="keyword">char</span> charLeft = s.charAt(leftPoint);</div><div class="line">                hash[charLeft]++;</div><div class="line">                <span class="keyword">if</span> (hash[charLeft] &gt; <span class="number">0</span>) count++;</div><div class="line">                leftPoint++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-76-Minimum-Window-Substring"><a href="#第三题-76-Minimum-Window-Substring" class="headerlink" title="第三题 76. Minimum Window Substring"></a>第三题 <a href="https://leetcode.com/problems/minimum-window-substring/#/description" target="_blank" rel="external">76. Minimum Window Substring</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个String中寻找一个Substring包含目标String的所有字符。如果存在多个Substring，找最小的那一个</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>与之前的题目相似，两种方法，同样利用一个窗口。可以使用相同的模板，只是在细微的地方有所变化</p>
+<h5 id="HashMap-1"><a href="#HashMap-1" class="headerlink" title="HashMap"></a>HashMap</h5><p>利用HashMap的模板是先找到所有包含在LeftPoint 和RightPoint的Substring的范围，然后再按照要求，修改count部分<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">minWindow76</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">minWindow</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; t.length()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        String result = <span class="keyword">new</span> String();</div><div class="line">        Integer minimum = Integer.MAX_VALUE;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : t.toCharArray())</div><div class="line">            map.put(c, map.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, rightPoint = <span class="number">0</span>, count = map.size();</div><div class="line">        <span class="keyword">while</span> (rightPoint &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> cRight = s.charAt(rightPoint);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(cRight)) &#123;</div><div class="line">                map.put(cRight, map.get(cRight) - <span class="number">1</span>);</div><div class="line">                <span class="keyword">if</span> (map.get(cRight) == <span class="number">0</span>) count--;</div><div class="line">            &#125;</div><div class="line">            rightPoint++;</div><div class="line">            <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (rightPoint - leftPoint &lt; minimum) &#123;</div><div class="line">                    minimum = rightPoint - leftPoint;</div><div class="line">                    result = s.substring(leftPoint, rightPoint);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">char</span> cLeft = s.charAt(leftPoint);</div><div class="line">                <span class="keyword">if</span> (map.containsKey(cLeft)) &#123;</div><div class="line">                    map.put(cLeft, map.get(cLeft) + <span class="number">1</span>);</div><div class="line">                    <span class="keyword">if</span> (map.get(cLeft) &gt; <span class="number">0</span>) count++;</div><div class="line">                &#125;</div><div class="line">                leftPoint++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="Array-1"><a href="#Array-1" class="headerlink" title="Array"></a>Array</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">minWindow</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; t.length()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        Integer minimum = Integer.MAX_VALUE;</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] hash = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : t.toCharArray()) hash[c]++;</div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, rightPoint = <span class="number">0</span>, count = t.length();</div><div class="line">        <span class="keyword">int</span> resRight = <span class="number">0</span>, resLeft = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (rightPoint &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> cRight = s.charAt(rightPoint);</div><div class="line">            hash[cRight]--;</div><div class="line">            <span class="keyword">if</span> (hash[cRight] &gt;= <span class="number">0</span>) count--;</div><div class="line">            rightPoint++;</div><div class="line">            <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (rightPoint - leftPoint &lt; minimum) &#123;</div><div class="line">                    minimum = rightPoint - leftPoint;</div><div class="line">                    resRight = rightPoint; resLeft = leftPoint;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">char</span> cLeft = s.charAt(leftPoint);</div><div class="line">                hash[cLeft]++;</div><div class="line">                <span class="keyword">if</span> (hash[cLeft] &gt; <span class="number">0</span>) count++;</div><div class="line">                leftPoint++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> minimum == Integer.MAX_VALUE ? <span class="string">""</span> : s.substring(resLeft, resRight);        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-3-Longest-Substring-Without-Repeating-Characters"><a href="#第四题-3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="第四题 3. Longest Substring Without Repeating Characters"></a>第四题 <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description" target="_blank" rel="external">3. Longest Substring Without Repeating Characters</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个字符串，从中找出不含重复字符的最长子串的长度。例如，”abcabcbb”的不含重复字母的最长子串为”abc”，其长度是3。”bbbbb”的最长子串是”b”，长度为1。</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>仍然采用滑动窗口的方法，分别用HashMap和Array解决这个问题</p>
+<h5 id="HashMap-2"><a href="#HashMap-2" class="headerlink" title="HashMap"></a>HashMap</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lengthOfLongestSubstring3</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, rightPoint = <span class="number">0</span>, max = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (rightPoint &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> cRight = s.charAt(rightPoint);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(cRight)) &#123;</div><div class="line">                map.put(cRight, map.get(cRight) + <span class="number">1</span>);</div><div class="line">                <span class="keyword">int</span> count = map.get(cRight);</div><div class="line">                <span class="keyword">while</span>(count != <span class="number">1</span>) &#123;</div><div class="line">                    max = Math.max(max, rightPoint - leftPoint);</div><div class="line">                    <span class="keyword">char</span> cLeft = s.charAt(leftPoint);</div><div class="line">                    map.put(cLeft, map.get(cLeft) - <span class="number">1</span>);</div><div class="line">                    count = map.get(cRight);</div><div class="line">                    leftPoint++;</div><div class="line">                &#125;</div><div class="line">                rightPoint++;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                map.put(cRight, <span class="number">1</span>);</div><div class="line">                rightPoint++;</div><div class="line">            &#125;</div><div class="line">            max = Math.max(max, rightPoint - leftPoint);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Array-2"><a href="#Array-2" class="headerlink" title="Array"></a>Array</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] hash = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">int</span> leftPoint = <span class="number">0</span>, rightPoint = <span class="number">0</span>, max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (rightPoint &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> cRight = s.charAt(rightPoint);</div><div class="line">            hash[cRight]++;</div><div class="line">            rightPoint++;</div><div class="line">            <span class="keyword">while</span> (hash[cRight] != <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">char</span> cLefg = s.charAt(leftPoint);</div><div class="line">                hash[cLefg]--;</div><div class="line">                leftPoint++;</div><div class="line">            &#125;</div><div class="line">            max = Math.max(max, rightPoint - leftPoint);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-30-Substring-with-Concatenation-of-All-Words"><a href="#第五题-30-Substring-with-Concatenation-of-All-Words" class="headerlink" title="第五题 30. Substring with Concatenation of All Words"></a>第五题 <a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/#/description" target="_blank" rel="external">30. Substring with Concatenation of All Words</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>主字符串S，模式字符串list：L（L中的元素等长，有可能重复），寻找L以任意顺序拼接后得到的字符串在S中的索引。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><h5 id="速度快的复杂的"><a href="#速度快的复杂的" class="headerlink" title="速度快的复杂的"></a>速度快的复杂的</h5><p>还没搞懂，鸡儿</p>
+<h5 id="利用两个HashMap"><a href="#利用两个HashMap" class="headerlink" title="利用两个HashMap"></a>利用两个HashMap</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findSubstring</span><span class="params">(String s, String[] words)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> n = words.length, len = words[<span class="number">0</span>].length();</div><div class="line"></div><div class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (String str : words) map.put(str, map.getOrDefault(str, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= s.length() - words.length * len; i++) &#123;</div><div class="line">            Map&lt;String, Integer&gt; temp = <span class="keyword">new</span> HashMap&lt;&gt;(map);</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; words.length; j++) &#123;</div><div class="line">                String str = s.substring(i + j * len, i + j * len + len);</div><div class="line">                <span class="keyword">if</span> (temp.containsKey(str)) &#123;</div><div class="line">                    <span class="keyword">int</span> count = temp.get(str);</div><div class="line">                    <span class="keyword">if</span> (count == <span class="number">1</span>) temp.remove(str);</div><div class="line">                    <span class="keyword">else</span> temp.put(str, count - <span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (temp.isEmpty()) res.add(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-380-Insert-Delete-GetRandom-O-1"><a href="#第六题-380-Insert-Delete-GetRandom-O-1" class="headerlink" title="第六题 380. Insert Delete GetRandom O(1)"></a>第六题 <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/#/description" target="_blank" rel="external">380. Insert Delete GetRandom O(1)</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>设计一个数据结构支持在O(1)时间内完成如下操作：</p>
+<p>insert(val): 如果集合中不包含val，则插入val</p>
+<p>remove(val): 如果集合中包含val，则移除val</p>
+<p>getRandom: 从现有集合中随机返回一个元素，每个元素被返回的概率应该相等</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>哈希表 + 数组 （HashMap + Array）</p>
+<p>利用数组存储元素，利用哈希表维护元素在数组中的下标</p>
+<p>由于哈希表的新增/删除操作是O(1)，而数组的随机访问操作开销也是O(1)，因此满足题设要求</p>
+<p>记数组为dataList，哈希表为dataMap</p>
+<pre><code>insert(val): 将val添至dataList末尾，并在dataMap中保存val的下标idx
+
+remove(val): 记val的下标为idx，dataList末尾元素为tail，弹出tail并将其替换至idx处，在dataMap中更新tail的下标为idx，最后从dataMap中移除val
+
+getRandom: 从dataList中随机选取元素返回
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet380</span> </span>&#123;</div><div class="line">    List&lt;Integer&gt; list;</div><div class="line">    Map&lt;Integer, Integer&gt; map;</div><div class="line">    Random rand;</div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedSet380</span><span class="params">()</span> </span>&#123;</div><div class="line">        list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        rand = <span class="keyword">new</span> Random();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (map.containsKey(val)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        map.put(val, list.size());</div><div class="line">        list.add(val);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Removes a value from the set. Returns true if the set contained the specified element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!map.containsKey(val)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> index = map.get(val);</div><div class="line">        <span class="keyword">if</span> (index != list.size() - <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> num = list.get(list.size() - <span class="number">1</span>);</div><div class="line">            list.set(index, num);</div><div class="line">            map.put(num, index);</div><div class="line">        &#125;</div><div class="line">        map.remove(val);</div><div class="line">        list.remove(list.size() - <span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Get a random element from the set. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> list.get(rand.nextInt(list.size()));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/10/6-10号刷题/" rel="next" title="6.10号刷题">
+                <i class="fa fa-chevron-left"></i> 6.10号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/12/6-12号刷题/" rel="prev" title="6.12号刷题">
+                6.12号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/06/11/6-11号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-535-Encode-and-Decode-TinyURL"><span class="nav-number">1.</span> <span class="nav-text">第一题 535. Encode and Decode TinyURL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-438-Find-All-Anagrams-in-a-String"><span class="nav-number">2.</span> <span class="nav-text">第二题 438. Find All Anagrams in a String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap"><span class="nav-number">2.2.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Array"><span class="nav-number">2.2.2.</span> <span class="nav-text">Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-76-Minimum-Window-Substring"><span class="nav-number">3.</span> <span class="nav-text">第三题 76. Minimum Window Substring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Array-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-3-Longest-Substring-Without-Repeating-Characters"><span class="nav-number">4.</span> <span class="nav-text">第四题 3. Longest Substring Without Repeating Characters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Array-2"><span class="nav-number">4.2.2.</span> <span class="nav-text">Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-30-Substring-with-Concatenation-of-All-Words"><span class="nav-number">5.</span> <span class="nav-text">第五题 30. Substring with Concatenation of All Words</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#速度快的复杂的"><span class="nav-number">5.2.1.</span> <span class="nav-text">速度快的复杂的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用两个HashMap"><span class="nav-number">5.2.2.</span> <span class="nav-text">利用两个HashMap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-380-Insert-Delete-GetRandom-O-1"><span class="nav-number">6.</span> <span class="nav-text">第六题 380. Insert Delete GetRandom O(1)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/11/6-11号刷题/';
+          this.page.identifier = '2017/06/11/6-11号刷题/';
+          this.page.title = '6.11号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

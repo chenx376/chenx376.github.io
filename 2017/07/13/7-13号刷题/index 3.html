@@ -1,0 +1,906 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 503. Next Greater Element II题目描述在一个有圈的数组中，找到每个数对应的下一个最大的数 算法利用Stack 存储每个数的index，如果是降序，那么下一个最大的数是之前小于这个数的下一个最大数。 遍历两遍数组，找到答案">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.13号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/7-13号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 503. Next Greater Element II题目描述在一个有圈的数组中，找到每个数对应的下一个最大的数 算法利用Stack 存储每个数的index，如果是降序，那么下一个最大的数是之前小于这个数的下一个最大数。 遍历两遍数组，找到答案">
+<meta property="og:updated_time" content="2017-07-18T02:58:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.13号刷题">
+<meta name="twitter:description" content="第一题 503. Next Greater Element II题目描述在一个有圈的数组中，找到每个数对应的下一个最大的数 算法利用Stack 存储每个数的index，如果是降序，那么下一个最大的数是之前小于这个数的下一个最大数。 遍历两遍数组，找到答案">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/13/7-13号刷题/"/>
+
+
+
+
+
+  <title>7.13号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/7-13号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.13号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T17:57:28-07:00">
+                2017-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/13/7-13号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/07/13/7-13号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-503-Next-Greater-Element-II"><a href="#第一题-503-Next-Greater-Element-II" class="headerlink" title="第一题 503. Next Greater Element II"></a>第一题 <a href="https://leetcode.com/problems/next-greater-element-ii/#/description" target="_blank" rel="external">503. Next Greater Element II</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个有圈的数组中，找到每个数对应的下一个最大的数</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用Stack 存储每个数的index，如果是降序，那么下一个最大的数是之前小于这个数的下一个最大数。</p>
+<p>遍历两遍数组，找到答案<br><a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">nextGreaterElements503</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElements(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        <span class="keyword">int</span> n = nums.length;</div><div class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">        Arrays.fill(res, -<span class="number">1</span>);</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length * <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> num = nums[i % n];</div><div class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[stack.peek()] &lt; num)</div><div class="line">                res[stack.pop()] = num;</div><div class="line">            <span class="keyword">if</span> (i &lt; n) stack.push(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-556-Next-Greater-Element-III"><a href="#第二题-556-Next-Greater-Element-III" class="headerlink" title="第二题 556. Next Greater Element III"></a>第二题 <a href="https://leetcode.com/problems/next-greater-element-iii/#/description" target="_blank" rel="external">556. Next Greater Element III</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个32位正整数n，寻找大于n，并且所含数字与n中各位数字相等的最小32位正整数。若不存在，返回-1。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p><a href="https://leetcode.com/problems/next-greater-element-iii/#/discuss" target="_blank" rel="external">链接</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">nextGreaterElement556</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextGreaterElement</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] numbers = (n + <span class="string">""</span>).toCharArray();</div><div class="line"></div><div class="line">        <span class="keyword">int</span> changeIndex = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = numbers.length - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">if</span> (numbers[i] &lt; numbers[i + <span class="number">1</span>]) &#123;</div><div class="line">                changeIndex = i;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (changeIndex == -<span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> nextTochange = <span class="number">0</span>, min = Integer.MAX_VALUE;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = changeIndex + <span class="number">1</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (numbers[i] &gt; numbers[changeIndex] &amp;&amp; numbers[i] - numbers[changeIndex] &lt; min) &#123;</div><div class="line">                min = numbers[i] - numbers[changeIndex];</div><div class="line">                nextTochange = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">char</span> temp = numbers[changeIndex];</div><div class="line">        numbers[changeIndex] = numbers[nextTochange];</div><div class="line">        numbers[nextTochange] = temp;</div><div class="line"></div><div class="line">        Arrays.sort(numbers, changeIndex + <span class="number">1</span>, numbers.length);</div><div class="line">        <span class="keyword">long</span> val = Long.valueOf(<span class="keyword">new</span> String(numbers));</div><div class="line">        <span class="keyword">return</span> val &lt;= Integer.MAX_VALUE ? (<span class="keyword">int</span>) val : -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-439-Ternary-Expression-Parser"><a href="#第三题-439-Ternary-Expression-Parser" class="headerlink" title="第三题 439. Ternary Expression Parser"></a>第三题 <a href="https://leetcode.com/problems/ternary-expression-parser/#/description" target="_blank" rel="external">439. Ternary Expression Parser</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个字符串表示一个任意嵌套的三目表达式，计算表达式的结果。你可以假设表达式一定有效，并且只包含数字0-9,?, :, T 和 F (T 和 F 分别表示 True 和 False)</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><h5 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parseTernary</span><span class="params">(String expression)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (expression.isEmpty()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span>[] chars = expression.toCharArray();</div><div class="line">        <span class="keyword">return</span> String.valueOf(helper(chars, <span class="number">0</span>, chars.length - <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">helper</span><span class="params">(<span class="keyword">char</span>[] exp, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start == end) <span class="keyword">return</span> exp[start];</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> i = start, count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i &lt;= end) &#123;</div><div class="line">            <span class="keyword">if</span> (exp[i] == <span class="string">'?'</span>) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (exp[i] == <span class="string">':'</span>) &#123;</div><div class="line">                count--;</div><div class="line">                <span class="keyword">if</span> (count == <span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> exp[start] == <span class="string">'T'</span> ? helper(exp, start + <span class="number">2</span>, i - <span class="number">1</span>) : helper(exp, i + <span class="number">1</span>, end);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Substring"><a href="#Substring" class="headerlink" title="Substring"></a>Substring</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">parseTernary439</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parseTernary3</span><span class="params">(String expression)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (expression.length() != <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> index = expression.lastIndexOf(<span class="string">"?"</span>);</div><div class="line">            <span class="keyword">char</span> temp;</div><div class="line">            <span class="keyword">if</span> (expression.charAt(index - <span class="number">1</span>) == <span class="string">'T'</span>) &#123;</div><div class="line">                temp = expression.charAt(index + <span class="number">1</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                temp = expression.charAt(index + <span class="number">3</span>);</div><div class="line">            &#125;</div><div class="line">            expression = expression.substring(<span class="number">0</span>, index - <span class="number">1</span>) + temp + expression.substring(index + <span class="number">4</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> expression;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">parseTernary439</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parseTernary2</span><span class="params">(String expression)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (expression.isEmpty()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = expression.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">char</span> c = expression.charAt(i);</div><div class="line">            <span class="keyword">if</span> (!stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">'?'</span>) &#123;</div><div class="line">                stack.pop();</div><div class="line">                <span class="keyword">char</span> first = stack.pop();</div><div class="line">                stack.pop();</div><div class="line">                <span class="keyword">char</span> second = stack.pop();</div><div class="line">                <span class="keyword">if</span> (c == <span class="string">'T'</span>) stack.push(first);</div><div class="line">                <span class="keyword">else</span> stack.push(second);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                stack.push(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> stack.pop().toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-385-Mini-Parser"><a href="#第四题-385-Mini-Parser" class="headerlink" title="第四题 385. Mini Parser"></a>第四题 <a href="https://leetcode.com/problems/mini-parser/#/description" target="_blank" rel="external">385. Mini Parser</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个以字符串表示的嵌套整数列表，实现一个反序列化的解析器。</p>
+<p>每一个元素或者是一个整数，或者是一个列表 – 其元素也可能是一个整数，或者又是一个列表。</p>
+<p>注意：你可以假设字符串是格式良好的。</p>
+<ul>
+<li>字符串非空</li>
+<li>字符串不包含空白字符。</li>
+<li>字符串只包含数字0-9, [, - ,, ]</li>
+</ul>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>利用stack，将每一个NestInter依次加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">deserialize385</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> NestedInteger <span class="title">deserialize</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.charAt(<span class="number">0</span>) != <span class="string">'['</span>) <span class="keyword">return</span> <span class="keyword">new</span> NestedInteger(Integer.valueOf(s));</div><div class="line"></div><div class="line">        Stack&lt;NestedInteger&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        NestedInteger cur = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; s.length(); r++) &#123;</div><div class="line">            <span class="keyword">char</span> c = s.charAt(r);</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'['</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (cur != <span class="keyword">null</span>) &#123;</div><div class="line">                    stack.push(cur);</div><div class="line">                &#125;</div><div class="line">                cur = <span class="keyword">new</span> NestedInteger();</div><div class="line">                l = r + <span class="number">1</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</div><div class="line">                String n = s.substring(l, r);</div><div class="line">                <span class="keyword">if</span> (!n.isEmpty()) &#123;</div><div class="line">                    <span class="keyword">int</span> num = Integer.valueOf(n);</div><div class="line">                    cur.add(<span class="keyword">new</span> NestedInteger(num));</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (!stack.isEmpty()) &#123;</div><div class="line">                    NestedInteger last = stack.pop();</div><div class="line">                    last.add(cur);</div><div class="line">                    cur = last;</div><div class="line">                &#125;</div><div class="line">                l = r + <span class="number">1</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">','</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (s.charAt(r - <span class="number">1</span>) != <span class="string">']'</span>) &#123;</div><div class="line">                    String n = s.substring(l, r);</div><div class="line">                    <span class="keyword">if</span> (!n.isEmpty()) &#123;</div><div class="line">                        <span class="keyword">int</span> num = Integer.valueOf(n);</div><div class="line">                        cur.add(<span class="keyword">new</span> NestedInteger(num));</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                l = r + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cur;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-341-Flatten-Nested-List-Iterator"><a href="#第五题-341-Flatten-Nested-List-Iterator" class="headerlink" title="第五题 341. Flatten Nested List Iterator"></a>第五题 <a href="https://leetcode.com/problems/flatten-nested-list-iterator/#/description" target="_blank" rel="external">341. Flatten Nested List Iterator</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个嵌套的整数列表，实现一个迭代器将其展开。</p>
+<p>每一个元素或者是一个整数，或者是一个列表 – 其元素也是一个整数或者其他列表。</p>
+<p>测试用例如题目描述。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>用两个stack,一个NestedInteger, 另一个存Integer的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NestedIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    Stack&lt;NestedInteger&gt; stacklist = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    Stack&lt;Integer&gt; res = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NestedIterator</span><span class="params">(List&lt;NestedInteger&gt; nestedList)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nestedList.isEmpty()) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">int</span> n = nestedList.size();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            NestedInteger cur = nestedList.get(i);</div><div class="line">            <span class="keyword">if</span> (cur.isInteger()) &#123;</div><div class="line">                res.push(cur.getInteger());</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                stacklist.push(cur);</div><div class="line">                helper();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (!stacklist.isEmpty()) &#123;</div><div class="line">            NestedInteger cur = stacklist.pop();</div><div class="line">            List&lt;NestedInteger&gt; list = cur.getList();</div><div class="line">            <span class="keyword">int</span> size = list.size();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">                <span class="keyword">if</span> (list.get(i).isInteger()) &#123;</div><div class="line">                    res.push(list.get(i).getInteger());</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    stacklist.push(list.get(i));</div><div class="line">                    helper();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">next</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> res.pop();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> !res.isEmpty();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-364-Nested-List-Weight-Sum-II"><a href="#第六题-364-Nested-List-Weight-Sum-II" class="headerlink" title="第六题 364. Nested List Weight Sum II"></a>第六题 <a href="https://leetcode.com/problems/nested-list-weight-sum-ii/#/description" target="_blank" rel="external">364. Nested List Weight Sum II</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>求一个Nested List中，所有值的和的大小</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>如果检测到是List则将他们全部推入下一层的List中。如果不是，则相加获得当前层的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">depthSumInverse364</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">depthSumInverse</span><span class="params">(List&lt;NestedInteger&gt; nestedList)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!nestedList.isEmpty()) &#123;</div><div class="line">            List&lt;NestedInteger&gt; next = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">            <span class="keyword">int</span> layerSum = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (NestedInteger nest : nestedList) &#123;</div><div class="line">                <span class="keyword">if</span> (nest.isInteger()) &#123;</div><div class="line">                    layerSum += nest.getInteger();</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    next.addAll(nest.getList());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            nestedList = next;</div><div class="line">            res.add(<span class="number">0</span>, layerSum);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">1</span>, sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (Integer num : res) &#123;</div><div class="line">            sum += num * (count++);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-394-Decode-String"><a href="#第七题-394-Decode-String" class="headerlink" title="第七题 394. Decode String"></a>第七题 <a href="https://leetcode.com/problems/decode-string/#/description" target="_blank" rel="external">394. Decode String</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个经过编码的字符串，返回其解码字符串。</p>
+<p>编码规则为：k[encoded_string]，其中中括号内的encoded_string被重复k次。注意k一定是正整数。</p>
+<p>你可以假设输入字符串总是有效的；没有额外的空白字符，中括号也是格式良好的，等等。</p>
+<p>另外，你可以假设原始数据不包含数字，并且数字只用来表示重复的次数，k。例如，输入不会出现3a或者2[4]等等。</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用两个stack进行存储，一个存储所有需要重复的数字，一个存储之前的String。</p>
+<p>之后循环向后，对每一种情况做出if的情况判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">decodeString</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        Stack&lt;Integer&gt; countStack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">        String res = <span class="string">""</span>;</div><div class="line">        <span class="keyword">while</span> (index &lt; s.length()) &#123;</div><div class="line">            <span class="keyword">char</span> c = chars[index];</div><div class="line">            <span class="keyword">if</span> (Character.isDigit(c)) &#123;</div><div class="line">                <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (Character.isDigit(chars[index])) &#123;</div><div class="line">                    count = count * <span class="number">10</span> + chars[index++] - <span class="string">'0'</span>;</div><div class="line">                &#125;</div><div class="line">                index--;</div><div class="line">                countStack.push(count);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'['</span>) &#123;</div><div class="line">                stack.push(res);</div><div class="line">                res = <span class="string">""</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</div><div class="line">                <span class="keyword">int</span> times = countStack.pop();</div><div class="line">                StringBuilder sb = <span class="keyword">new</span> StringBuilder(stack.pop());</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; times; i++) sb.append(res);</div><div class="line">                res = sb.toString();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                res += c;</div><div class="line">            &#125;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-136-Single-Number"><a href="#第八题-136-Single-Number" class="headerlink" title="第八题 136. Single Number"></a>第八题 <a href="https://leetcode.com/problems/single-number/#/description" target="_blank" rel="external">136. Single Number</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数数组，除一个元素只出现一次外，其余各元素均出现两次。找出那个只出现一次的元素。</p>
+<p>注意：</p>
+<p>你的算法应该满足线性时间复杂度。可以不使用额外的空间完成此题吗？</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">singleNumber136</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) res ^= num;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-137-Single-Number-II"><a href="#第九题-137-Single-Number-II" class="headerlink" title="第九题 137. Single Number II"></a>第九题 <a href="https://leetcode.com/problems/single-number-ii/#/description" target="_blank" rel="external">137. Single Number II</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个数组中，某个数字出现了1次，其余数字都是出现了3次。找出那个只出现1次的数字</p>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>对于每一位，我们使用一个计数器进行计数。那么，对于这一位，当其个数到达k（本题中为3）的时候，我们需要将其清0,其余时候保持不变。</p>
+<p>对于到达k清0的运算，我们用!(y1 &amp; y2 …  &amp; yn)来表示。如果x1 = 1,那么y1 = 1。x1 = 0, y1 = ~x1</p>
+<p>通过这样对每一位进行计数，即可得到答案。非常巧妙，建议看下<a href="https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers/16" target="_blank" rel="external">链接</a>中的图解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">singleNumber137</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> x1 = <span class="number">0</span>, x2 = <span class="number">0</span>, mask = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</div><div class="line">            x2 ^= x1 &amp; i;</div><div class="line">            x1 ^= i;</div><div class="line">            mask = ~(x1 &amp; x2);</div><div class="line">            x1 &amp;= mask;</div><div class="line">            x2 &amp;= mask;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> x1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/12/7-12号刷题/" rel="next" title="7.12号刷题">
+                <i class="fa fa-chevron-left"></i> 7.12号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/18/7-14号刷题/" rel="prev" title="7.14号刷题">
+                7.14号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/07/13/7-13号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-503-Next-Greater-Element-II"><span class="nav-number">1.</span> <span class="nav-text">第一题 503. Next Greater Element II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-556-Next-Greater-Element-III"><span class="nav-number">2.</span> <span class="nav-text">第二题 556. Next Greater Element III</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-439-Ternary-Expression-Parser"><span class="nav-number">3.</span> <span class="nav-text">第三题 439. Ternary Expression Parser</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DFS"><span class="nav-number">3.2.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Substring"><span class="nav-number">3.2.2.</span> <span class="nav-text">Substring</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Stack"><span class="nav-number">3.2.3.</span> <span class="nav-text">Stack</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-385-Mini-Parser"><span class="nav-number">4.</span> <span class="nav-text">第四题 385. Mini Parser</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-341-Flatten-Nested-List-Iterator"><span class="nav-number">5.</span> <span class="nav-text">第五题 341. Flatten Nested List Iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-364-Nested-List-Weight-Sum-II"><span class="nav-number">6.</span> <span class="nav-text">第六题 364. Nested List Weight Sum II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-394-Decode-String"><span class="nav-number">7.</span> <span class="nav-text">第七题 394. Decode String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-136-Single-Number"><span class="nav-number">8.</span> <span class="nav-text">第八题 136. Single Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-137-Single-Number-II"><span class="nav-number">9.</span> <span class="nav-text">第九题 137. Single Number II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/13/7-13号刷题/';
+          this.page.identifier = '2017/07/13/7-13号刷题/';
+          this.page.title = '7.13号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
