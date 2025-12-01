@@ -1,0 +1,921 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 366. Find Leaves of Binary Tree题目描述将树的叶节点进行集合输出，每次输出当前最底下的叶节点">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.5号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/7-5号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 366. Find Leaves of Binary Tree题目描述将树的叶节点进行集合输出，每次输出当前最底下的叶节点">
+<meta property="og:updated_time" content="2017-07-06T03:00:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.5号刷题">
+<meta name="twitter:description" content="第一题 366. Find Leaves of Binary Tree题目描述将树的叶节点进行集合输出，每次输出当前最底下的叶节点">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/05/7-5号刷题/"/>
+
+
+
+
+
+  <title>7.5号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/05/7-5号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.5号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T09:51:56-07:00">
+                2017-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/05/7-5号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/07/05/7-5号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-366-Find-Leaves-of-Binary-Tree"><a href="#第一题-366-Find-Leaves-of-Binary-Tree" class="headerlink" title="第一题 366. Find Leaves of Binary Tree"></a>第一题 <a href="https://leetcode.com/problems/find-leaves-of-binary-tree/#/description" target="_blank" rel="external">366. Find Leaves of Binary Tree</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>将树的叶节点进行集合输出，每次输出当前最底下的叶节点</p>
+<a id="more"></a>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; findLeaves(TreeNode root) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        helper(res, root);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftDepth = helper(res, root.left);</div><div class="line">        <span class="keyword">int</span> rightDepth = helper(res, root.right);</div><div class="line">        <span class="keyword">int</span> depth = Math.max(leftDepth, rightDepth) + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (depth == res.size()) &#123;</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">        &#125;</div><div class="line">        res.get(depth).add(root.val);</div><div class="line">        root.left = <span class="keyword">null</span>; root.right = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">return</span> depth;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-515-Find-Largest-Value-in-Each-Tree-Row"><a href="#第二题-515-Find-Largest-Value-in-Each-Tree-Row" class="headerlink" title="第二题 515. Find Largest Value in Each Tree Row"></a>第二题 <a href="https://leetcode.com/problems/find-largest-value-in-each-tree-row/#/description" target="_blank" rel="external">515. Find Largest Value in Each Tree Row</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定二叉树，返回其每一行的最大元素。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><h5 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">largestValues515</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">largestValues</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</div><div class="line"></div><div class="line">        Queue&lt;Element&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        queue.add(<span class="keyword">new</span> Element(<span class="number">0</span>, root));</div><div class="line"></div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, max = root.val;</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            Element e = queue.poll();</div><div class="line">            <span class="keyword">if</span> (l != e.layer) &#123;</div><div class="line">                res.add(max);</div><div class="line">                l = e.layer;</div><div class="line">                max = e.cur.val;</div><div class="line">                <span class="keyword">if</span> (e.cur.left != <span class="keyword">null</span>) queue.add(<span class="keyword">new</span> Element(l + <span class="number">1</span>, e.cur.left));</div><div class="line">                <span class="keyword">if</span> (e.cur.right != <span class="keyword">null</span>) queue.add(<span class="keyword">new</span> Element(l + <span class="number">1</span>,e.cur.right));</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                max = Math.max(e.cur.val, max);</div><div class="line">                <span class="keyword">if</span> (e.cur.left != <span class="keyword">null</span>) queue.add(<span class="keyword">new</span> Element(l + <span class="number">1</span>, e.cur.left));</div><div class="line">                <span class="keyword">if</span> (e.cur.right != <span class="keyword">null</span>) queue.add(<span class="keyword">new</span> Element(l + <span class="number">1</span>, e.cur.right));</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (queue.isEmpty()) res.add(max);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Element</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> layer;</div><div class="line">        TreeNode cur;</div><div class="line">        Element (<span class="keyword">int</span> l, TreeNode cur) &#123;</div><div class="line">            <span class="keyword">this</span>.layer = l;</div><div class="line">            <span class="keyword">this</span>.cur = cur;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">largestValues</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        helper(root, res, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, List&lt;Integer&gt; res, <span class="keyword">int</span> depth)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> val = root.val;</div><div class="line">        <span class="keyword">if</span> (depth == res.size()) &#123;</div><div class="line">            res.add(val);</div><div class="line">        &#125; <span class="keyword">else</span>  &#123;</div><div class="line">            res.set(depth, Math.max(res.get(depth), val));</div><div class="line">        &#125;</div><div class="line">        helper(root.left, res, depth + <span class="number">1</span>);</div><div class="line">        helper(root.right, res, depth + <span class="number">1</span>);        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-538-Convert-BST-to-Greater-Tree"><a href="#第三题-538-Convert-BST-to-Greater-Tree" class="headerlink" title="第三题 538. Convert BST to Greater Tree"></a>第三题 <a href="https://leetcode.com/problems/convert-bst-to-greater-tree/#/description" target="_blank" rel="external">538. Convert BST to Greater Tree</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一棵二叉查找树（BST），将其转化为“Greater Tree”，原始BST中的每一个节点都替换为不小于其本身的各节点的和。</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>从右开始遍历节点，并计算现在总共的sum值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">convertBST538</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        helper(root);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        helper(root.right);</div><div class="line">        root.val += sum;</div><div class="line">        sum = root.val;</div><div class="line">        helper(root.left);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-104-Maximum-Depth-of-Binary-Tree"><a href="#第四题-104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="第四题 104. Maximum Depth of Binary Tree"></a>第四题 <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/#/description" target="_blank" rel="external">104. Maximum Depth of Binary Tree</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>求一棵树的最深的深度</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>利用回溯的方法进行求取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">maxDepth104</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftDepth = maxDepth(root.left);</div><div class="line">        <span class="keyword">int</span> rightDepth = maxDepth(root.right);</div><div class="line">        <span class="keyword">int</span> depth = Math.max(leftDepth, rightDepth) + <span class="number">1</span>;</div><div class="line">        <span class="keyword">return</span> depth;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-110-Balanced-Binary-Tree"><a href="#第五题-110-Balanced-Binary-Tree" class="headerlink" title="第五题 110. Balanced Binary Tree"></a>第五题 <a href="https://leetcode.com/problems/balanced-binary-tree/#/description" target="_blank" rel="external">110. Balanced Binary Tree</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>查看一棵树是不是平衡树</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>与之前的题目相似</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isBalanced110</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> tag = <span class="keyword">true</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        helper(root);</div><div class="line">        <span class="keyword">return</span> tag;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span> || !tag) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftDepth = helper(root.left);</div><div class="line">        <span class="keyword">int</span> rightDepth = helper(root.right);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (Math.abs(leftDepth - rightDepth) &gt; <span class="number">1</span>) tag = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> Math.max(leftDepth, rightDepth) + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><p>关于java值传递： <a href="https://www.zhihu.com/question/31203609" target="_blank" rel="external">链接</a></p>
+<pre><code>如果传入的是普通数据 -&gt; 出来不会改变
+如果传入的是数据类型 -&gt; 传入的实际上是数据类型的地址，如果数据类型本身提供了对自身的改变，那么可以改变值。 如果没有，就不不会改变。
+</code></pre><h3 id="第六题-111-Minimum-Depth-of-Binary-Tree"><a href="#第六题-111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="第六题 111. Minimum Depth of Binary Tree"></a>第六题 <a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/#/description" target="_blank" rel="external">111. Minimum Depth of Binary Tree</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>求到最近的叶节点的最短距离</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">minDepth111</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> leftDepth, rightDepth;</div><div class="line">        <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> minDepth(root.left) + <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> minDepth(root.right) + <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            leftDepth = minDepth(root.left);</div><div class="line">            rightDepth = minDepth(root.right);</div><div class="line">            <span class="keyword">return</span> Math.min(leftDepth, rightDepth) + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//Refectory</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepthRe</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> leftDepth = minDepthRe(root.left);</div><div class="line">        <span class="keyword">int</span> rightDepth = minDepthRe(root.right);</div><div class="line">        <span class="keyword">return</span> (leftDepth == <span class="number">0</span> || rightDepth == <span class="number">0</span>) ? rightDepth + leftDepth + <span class="number">1</span> : Math.min(rightDepth, leftDepth) + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-226-Invert-Binary-Tree"><a href="#第七题-226-Invert-Binary-Tree" class="headerlink" title="第七题 226. Invert Binary Tree"></a>第七题 <a href="https://leetcode.com/problems/invert-binary-tree/#/description" target="_blank" rel="external">226. Invert Binary Tree</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>反转一棵树</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><h5 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        </div><div class="line">        Queue&lt;TreeNode&gt; pq = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        pq.add(root);</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (!pq.isEmpty()) &#123;</div><div class="line">            TreeNode cur = pq.poll();</div><div class="line">            </div><div class="line">            TreeNode temp = cur.left;</div><div class="line">            cur.left = cur.right;</div><div class="line">            cur.right = temp;</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>) pq.add(cur.left);</div><div class="line">            <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) pq.add(cur.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> root;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="DFS-1"><a href="#DFS-1" class="headerlink" title="DFS"></a>DFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">invertTree226</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        TreeNode cur = <span class="keyword">new</span> TreeNode(root.val);</div><div class="line">        cur.left = invertTree(root.right);</div><div class="line">        cur.right = invertTree(root.left);</div><div class="line">        <span class="keyword">return</span> cur;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-582-Kill-Process"><a href="#第八题-582-Kill-Process" class="headerlink" title="第八题 582. Kill Process"></a>第八题 <a href="https://leetcode.com/problems/kill-process/#/description" target="_blank" rel="external">582. Kill Process</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定n个进程，进程ID为PID，父进程ID为PPID。</p>
+<p>当杀死一个进程时，其子进程也会被杀死。</p>
+<p>给定进程列表和其对应的父进程列表，以及被杀死的进程ID，求所有被杀死的进程ID。</p>
+<p>注意：</p>
+<ol>
+<li>给定被杀死的进程ID一定在进程列表之中</li>
+<li>n &gt;= 1</li>
+</ol>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>先用hashmap找出一个节点所有的孩子，再进行检查和删除。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">killProcess</span><span class="params">(List&lt;Integer&gt; pid, List&lt;Integer&gt; ppid, <span class="keyword">int</span> kill)</span> </span>&#123;</div><div class="line">        Map&lt;Integer, List&lt;Integer&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ppid.size(); i++) &#123;</div><div class="line">            map.putIfAbsent(ppid.get(i), <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">            map.get(ppid.get(i)).add(pid.get(i));</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Queue&lt;Integer&gt; pq = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        pq.offer(kill);</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!pq.isEmpty()) &#123;</div><div class="line">            <span class="keyword">int</span> cur = pq.poll();</div><div class="line">            res.add(cur);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(cur)) &#123;</div><div class="line">                pq.addAll(map.get(cur));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-563-Binary-Tree-Tilt"><a href="#第九题-563-Binary-Tree-Tilt" class="headerlink" title="第九题 563. Binary Tree Tilt"></a>第九题 <a href="https://leetcode.com/problems/binary-tree-tilt/#/description" target="_blank" rel="external">563. Binary Tree Tilt</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定二叉树，计算二叉树的“倾斜值”（tilt）</p>
+<p>二叉树节点的倾斜值是指其左右子树和的差的绝对值。空节点的倾斜值为0。</p>
+<p>注意：</p>
+<ol>
+<li>节点和不超过32位整数范围</li>
+<li>倾斜值不超过32位整数范围</li>
+</ol>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findTilt563</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTilt</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        helper(root);</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> leftNum = helper(root.left);</div><div class="line">        <span class="keyword">int</span> rightNum = helper(root.right);</div><div class="line"></div><div class="line">        System.out.println(leftNum + <span class="string">" "</span> + rightNum);</div><div class="line">        sum += Math.abs(leftNum - rightNum);</div><div class="line">        <span class="keyword">return</span> leftNum + rightNum + root.val;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十题-623-Add-One-Row-to-Tree"><a href="#第十题-623-Add-One-Row-to-Tree" class="headerlink" title="第十题 623. Add One Row to Tree"></a>第十题 <a href="https://leetcode.com/problems/add-one-row-to-tree/#/description" target="_blank" rel="external">623. Add One Row to Tree</a></h3><h4 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定二叉树，根节点为第1层，在其第d层追加一行值为v的节点。将第d层各左孩子节点链接为新节点的左孩子，各右孩子节点链接为新节点的右孩子。</p>
+<p>若d为1，则将原来的根节点链接为新节点的左孩子。</p>
+<h4 id="算法-9"><a href="#算法-9" class="headerlink" title="算法"></a>算法</h4><h5 id="DFS-2"><a href="#DFS-2" class="headerlink" title="DFS"></a>DFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addOneRow623</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">addOneRow</span><span class="params">(TreeNode root, <span class="keyword">int</span> v, <span class="keyword">int</span> d)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (d == <span class="number">1</span>) &#123;</div><div class="line">            TreeNode cur = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            cur.left = root;</div><div class="line">            <span class="keyword">return</span> cur;</div><div class="line">        &#125;</div><div class="line">        helper(root, v, d, <span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, <span class="keyword">int</span> v, <span class="keyword">int</span> d, <span class="keyword">int</span> depNow)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (depNow == d - <span class="number">1</span>) &#123;</div><div class="line">            TreeNode curLeft = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            curLeft.left = root.left;</div><div class="line">            root.left = curLeft;</div><div class="line"></div><div class="line">            TreeNode curRight = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            curRight.right = root.right;</div><div class="line">            root.right = curRight;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        helper(root.left, v, d, depNow + <span class="number">1</span>);</div><div class="line">        helper(root.right, v, d, depNow + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="BFS-2"><a href="#BFS-2" class="headerlink" title="BFS"></a>BFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">addOneRow</span><span class="params">(TreeNode root, <span class="keyword">int</span> v, <span class="keyword">int</span> d)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (d == <span class="number">1</span>) &#123;</div><div class="line">            TreeNode newroot = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            newroot.left = root;</div><div class="line">            <span class="keyword">return</span> newroot;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> size = queue.size();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; size; j++) &#123;</div><div class="line">                TreeNode temp = queue.poll();</div><div class="line">                <span class="keyword">if</span> (temp.left != <span class="keyword">null</span>) queue.add(temp.left);</div><div class="line">                <span class="keyword">if</span> (temp.right != <span class="keyword">null</span>) queue.add(temp.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            TreeNode cur = queue.poll();</div><div class="line">            TreeNode curLeft = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            curLeft.left = cur.left;</div><div class="line">            cur.left = curLeft;</div><div class="line">            </div><div class="line">            TreeNode curRight = <span class="keyword">new</span> TreeNode(v);</div><div class="line">            curRight.right = cur.right;</div><div class="line">            cur.right = curRight;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> root;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十一题-404-Sum-of-Left-Leaves"><a href="#第十一题-404-Sum-of-Left-Leaves" class="headerlink" title="第十一题 404. Sum of Left Leaves"></a>第十一题 <a href="https://leetcode.com/problems/sum-of-left-leaves/#/description" target="_blank" rel="external">404. Sum of Left Leaves</a></h3><h4 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定二叉树，计算其所有左叶子的和。</p>
+<h4 id="算法-10"><a href="#算法-10" class="headerlink" title="算法"></a>算法</h4><h5 id="BFS-3"><a href="#BFS-3" class="headerlink" title="BFS"></a>BFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        queue.add(root);</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            TreeNode cur = queue.poll();</div><div class="line">            <span class="keyword">if</span> (cur.left != <span class="keyword">null</span> &amp;&amp; cur.left.left == <span class="keyword">null</span> &amp;&amp; cur.left.right == <span class="keyword">null</span>) res += cur.left.val;</div><div class="line">            <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>) queue.add(cur.left);</div><div class="line">            <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) queue.add(cur.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="DFS-3"><a href="#DFS-3" class="headerlink" title="DFS"></a>DFS</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">sumOfLeftLeaves404</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        helper(root, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, <span class="keyword">boolean</span> tag)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span> &amp;&amp; tag) &#123;</div><div class="line">            sum += root.val;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        helper(root.left, <span class="keyword">true</span>);</div><div class="line">        helper(root.right, <span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十二题-100-Same-Tree"><a href="#第十二题-100-Same-Tree" class="headerlink" title="第十二题 100. Same Tree"></a>第十二题 <a href="https://leetcode.com/problems/same-tree/#/description" target="_blank" rel="external">100. Same Tree</a></h3><h4 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两棵二叉树，编写函数检查它们是否相等。</p>
+<p>当且仅当两棵二叉树的结构相同并且节点值也相同时，判定为相等。</p>
+<h4 id="算法-11"><a href="#算法-11" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">isSameTree100</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) <span class="keyword">return</span> p == q;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (p.val != q.val) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十三题-144-Binary-Tree-Preorder-Traversal"><a href="#第十三题-144-Binary-Tree-Preorder-Traversal" class="headerlink" title="第十三题 144. Binary Tree Preorder Traversal"></a>第十三题 <a href="https://leetcode.com/problems/binary-tree-preorder-traversal/#/description" target="_blank" rel="external">144. Binary Tree Preorder Traversal</a></h3><h4 id="题目描述-12"><a href="#题目描述-12" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一棵二叉树，返回节点值的先序遍历结果（尽量使用非递归算法）。</p>
+<h4 id="算法-12"><a href="#算法-12" class="headerlink" title="算法"></a>算法</h4><h5 id="自己的-比较傻"><a href="#自己的-比较傻" class="headerlink" title="自己的(比较傻)"></a>自己的(比较傻)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">preorderTraversal144</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</div><div class="line"></div><div class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        stack.push(root);</div><div class="line">        TreeNode cur;</div><div class="line">        <span class="keyword">boolean</span> tag = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">            <span class="keyword">if</span> (tag) &#123;</div><div class="line">                cur = stack.peek();</div><div class="line">                res.add(cur.val);</div><div class="line">                <span class="keyword">while</span> (cur.left != <span class="keyword">null</span>) &#123;</div><div class="line">                    cur = cur.left;</div><div class="line">                    stack.push(cur);</div><div class="line">                    res.add(cur.val);</div><div class="line">                &#125;</div><div class="line">                stack.push(cur);</div><div class="line">                res.add(cur.val);</div><div class="line">                System.out.println(res);</div><div class="line">                tag = <span class="keyword">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                cur = stack.pop();</div><div class="line">                <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) &#123;</div><div class="line">                    stack.push(cur.right);</div><div class="line">                    tag = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="别人的"><a href="#别人的" class="headerlink" title="别人的"></a>别人的</h5><p>先将右边的几点全部推入stack中，在进行挨个遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        Stack&lt;TreeNode&gt; rights = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (root != <span class="keyword">null</span>) &#123;</div><div class="line">            res.add(root.val);</div><div class="line">            <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) rights.push(root.right);</div><div class="line">            root = root.left;</div><div class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span> &amp;&amp; !rights.isEmpty()) &#123;</div><div class="line">                root = rights.pop();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十四题-255-Verify-Preorder-Sequence-in-Binary-Search-Tree"><a href="#第十四题-255-Verify-Preorder-Sequence-in-Binary-Search-Tree" class="headerlink" title="第十四题 255. Verify Preorder Sequence in Binary Search Tree"></a>第十四题 <a href="https://leetcode.com/problems/verify-preorder-sequence-in-binary-search-tree/#/description" target="_blank" rel="external">255. Verify Preorder Sequence in Binary Search Tree</a></h3><h4 id="题目描述-13"><a href="#题目描述-13" class="headerlink" title="题目描述"></a>题目描述</h4><p>查看一个数组能否正确的组成一课排序树</p>
+<h4 id="算法-13"><a href="#算法-13" class="headerlink" title="算法"></a>算法</h4><p>利用stack，在进入每个右边节点的时候，查看右边节点中的所有节点是否都小于部分根节点</p>
+<h5 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">verifyPreorder255</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verifyPreorder</span><span class="params">(<span class="keyword">int</span>[] preorder)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> min = Integer.MIN_VALUE;</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : preorder) &#123;</div><div class="line">            <span class="keyword">if</span> (num &lt; min) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; num &gt; stack.peek()) &#123;</div><div class="line">                min = stack.pop();</div><div class="line">            &#125;</div><div class="line">            stack.push(num);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">verifyPreorder255</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verifyPreorder</span><span class="params">(<span class="keyword">int</span>[] preorder)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> min = Integer.MIN_VALUE;</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : preorder) &#123;</div><div class="line">            <span class="keyword">if</span> (num &lt; min) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; num &gt; stack.peek()) &#123;</div><div class="line">                min = stack.pop();</div><div class="line">            &#125;</div><div class="line">            stack.push(num);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verifyPreorder2</span><span class="params">(<span class="keyword">int</span>[] preorder)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> low = Integer.MIN_VALUE, i = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> p : preorder) &#123;</div><div class="line">            <span class="keyword">if</span> (p &lt; low)</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; p &gt; preorder[i])</div><div class="line">            &#123;</div><div class="line">                low = preorder[i--];</div><div class="line">            &#125;</div><div class="line">            preorder[++i] = p;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第十五题-230-Kth-Smallest-Element-in-a-BST"><a href="#第十五题-230-Kth-Smallest-Element-in-a-BST" class="headerlink" title="第十五题 230. Kth Smallest Element in a BST"></a>第十五题 <a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description" target="_blank" rel="external">230. Kth Smallest Element in a BST</a></h3><h4 id="题目描述-14"><a href="#题目描述-14" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一棵二叉搜索树（BST），编写一个函数kthSmallest找出其中第k小的元素。</p>
+<h4 id="算法-14"><a href="#算法-14" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">kthSmallest230</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        count = k;</div><div class="line">        helper(root);</div><div class="line">        <span class="keyword">return</span> number;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) helper(root.left);</div><div class="line"></div><div class="line">        count--;</div><div class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</div><div class="line">            number = root.val;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) helper(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/04/7-4号刷题/" rel="next" title="7.4号刷题">
+                <i class="fa fa-chevron-left"></i> 7.4号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/06/7-6号刷题/" rel="prev" title="7.6号刷题">
+                7.6号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/07/05/7-5号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-366-Find-Leaves-of-Binary-Tree"><span class="nav-number">1.</span> <span class="nav-text">第一题 366. Find Leaves of Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-515-Find-Largest-Value-in-Each-Tree-Row"><span class="nav-number">2.</span> <span class="nav-text">第二题 515. Find Largest Value in Each Tree Row</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BFS"><span class="nav-number">2.2.1.</span> <span class="nav-text">BFS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DFS"><span class="nav-number">2.3.</span> <span class="nav-text">DFS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-538-Convert-BST-to-Greater-Tree"><span class="nav-number">3.</span> <span class="nav-text">第三题 538. Convert BST to Greater Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-104-Maximum-Depth-of-Binary-Tree"><span class="nav-number">4.</span> <span class="nav-text">第四题 104. Maximum Depth of Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-110-Balanced-Binary-Tree"><span class="nav-number">5.</span> <span class="nav-text">第五题 110. Balanced Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">5.3.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-111-Minimum-Depth-of-Binary-Tree"><span class="nav-number">6.</span> <span class="nav-text">第六题 111. Minimum Depth of Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-226-Invert-Binary-Tree"><span class="nav-number">7.</span> <span class="nav-text">第七题 226. Invert Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BFS-1"><span class="nav-number">7.2.1.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DFS-1"><span class="nav-number">7.2.2.</span> <span class="nav-text">DFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-582-Kill-Process"><span class="nav-number">8.</span> <span class="nav-text">第八题 582. Kill Process</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-563-Binary-Tree-Tilt"><span class="nav-number">9.</span> <span class="nav-text">第九题 563. Binary Tree Tilt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十题-623-Add-One-Row-to-Tree"><span class="nav-number">10.</span> <span class="nav-text">第十题 623. Add One Row to Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-9"><span class="nav-number">10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-9"><span class="nav-number">10.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DFS-2"><span class="nav-number">10.2.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BFS-2"><span class="nav-number">10.2.2.</span> <span class="nav-text">BFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十一题-404-Sum-of-Left-Leaves"><span class="nav-number">11.</span> <span class="nav-text">第十一题 404. Sum of Left Leaves</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-10"><span class="nav-number">11.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-10"><span class="nav-number">11.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BFS-3"><span class="nav-number">11.2.1.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DFS-3"><span class="nav-number">11.2.2.</span> <span class="nav-text">DFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十二题-100-Same-Tree"><span class="nav-number">12.</span> <span class="nav-text">第十二题 100. Same Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-11"><span class="nav-number">12.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-11"><span class="nav-number">12.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三题-144-Binary-Tree-Preorder-Traversal"><span class="nav-number">13.</span> <span class="nav-text">第十三题 144. Binary Tree Preorder Traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-12"><span class="nav-number">13.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-12"><span class="nav-number">13.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自己的-比较傻"><span class="nav-number">13.2.1.</span> <span class="nav-text">自己的(比较傻)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#别人的"><span class="nav-number">13.2.2.</span> <span class="nav-text">别人的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十四题-255-Verify-Preorder-Sequence-in-Binary-Search-Tree"><span class="nav-number">14.</span> <span class="nav-text">第十四题 255. Verify Preorder Sequence in Binary Search Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-13"><span class="nav-number">14.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-13"><span class="nav-number">14.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Stack"><span class="nav-number">14.2.1.</span> <span class="nav-text">Stack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Array"><span class="nav-number">14.2.2.</span> <span class="nav-text">Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十五题-230-Kth-Smallest-Element-in-a-BST"><span class="nav-number">15.</span> <span class="nav-text">第十五题 230. Kth Smallest Element in a BST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-14"><span class="nav-number">15.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-14"><span class="nav-number">15.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/05/7-5号刷题/';
+          this.page.identifier = '2017/07/05/7-5号刷题/';
+          this.page.title = '7.5号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

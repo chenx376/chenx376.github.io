@@ -1,0 +1,961 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="技能树,CFA 相关," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="这部分主要整理一下CFA计算器相关的内容，CFA能够使用两种计算器：  德州仪器的BA II Plus(or Professional) 惠普的12C(or Platinum)  这篇文章仅对第一种计算器做介绍，需要注意的是，BA计算器与大家能够熟练使用的Casio计算机还是有一定不同。如果真的想备战CFA，还是需要认真的尝试着按几次。  介绍教程这部分仅给出金程网校的关于如何使用计算器的视频教程">
+<meta name="keywords" content="技能树,CFA 相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CFA计算器使用">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/CFA计算器使用/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="这部分主要整理一下CFA计算器相关的内容，CFA能够使用两种计算器：  德州仪器的BA II Plus(or Professional) 惠普的12C(or Platinum)  这篇文章仅对第一种计算器做介绍，需要注意的是，BA计算器与大家能够熟练使用的Casio计算机还是有一定不同。如果真的想备战CFA，还是需要认真的尝试着按几次。  介绍教程这部分仅给出金程网校的关于如何使用计算器的视频教程">
+<meta property="og:image" content="http://image.gfedu.net/Folder27/0301_webp.jpg">
+<meta property="og:image" content="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP209304T06.png">
+<meta property="og:image" content="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP2093220645.png">
+<meta property="og:image" content="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP209324H44.png">
+<meta property="og:updated_time" content="2018-05-11T18:49:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CFA计算器使用">
+<meta name="twitter:description" content="这部分主要整理一下CFA计算器相关的内容，CFA能够使用两种计算器：  德州仪器的BA II Plus(or Professional) 惠普的12C(or Platinum)  这篇文章仅对第一种计算器做介绍，需要注意的是，BA计算器与大家能够熟练使用的Casio计算机还是有一定不同。如果真的想备战CFA，还是需要认真的尝试着按几次。  介绍教程这部分仅给出金程网校的关于如何使用计算器的视频教程">
+<meta name="twitter:image" content="http://image.gfedu.net/Folder27/0301_webp.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/CFA计算器使用/"/>
+
+
+
+
+
+  <title>CFA计算器使用 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/CFA计算器使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CFA计算器使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T11:03:26-07:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技能树/" itemprop="url" rel="index">
+                    <span itemprop="name">技能树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/25/CFA计算器使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2018/04/25/CFA计算器使用/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这部分主要整理一下CFA计算器相关的内容，CFA能够使用两种计算器：</p>
+<ol>
+<li>德州仪器的BA II Plus(or Professional)</li>
+<li>惠普的12C(or Platinum)</li>
+</ol>
+<p>这篇文章仅对第一种计算器做介绍，需要注意的是，BA计算器与大家能够熟练使用的Casio计算机还是有一定不同。如果真的想备战CFA，还是需要认真的尝试着按几次。</p>
+<p><img src="http://image.gfedu.net/Folder27/0301_webp.jpg" alt="alt text"></p>
+<h2 id="介绍教程"><a href="#介绍教程" class="headerlink" title="介绍教程"></a>介绍教程</h2><p>这部分仅给出金程网校的关于如何使用计算器的视频教程，因为讲的比较好，就不再过多赘述了：</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=021StD8G5_A" target="_blank" rel="external">金程网校如何使用计算器-教程一</a></li>
+<li><a href="https://www.youtube.com/watch?v=DnYeVR05zWk" target="_blank" rel="external">金程网校如何使用计算器-教程二</a></li>
+<li><a href="https://www.youtube.com/watch?v=WUmZxz0vZyA" target="_blank" rel="external">金程网校如何使用计算器-教程三</a></li>
+<li><a href="https://www.youtube.com/watch?v=9M82i6wo2OU" target="_blank" rel="external">金程网校如何使用计算器-教程四</a></li>
+<li><a href="https://www.youtube.com/watch?v=2nJfe6OQMzM" target="_blank" rel="external">金程网校如何使用计算器-教程五</a></li>
+<li><a href="https://www.youtube.com/watch?v=grGBYbeSeKA" target="_blank" rel="external">金程网校如何使用计算器-教程六</a></li>
+<li><a href="https://www.youtube.com/watch?v=VrHBXu9bIIM" target="_blank" rel="external">金程网校如何使用计算器-教程七</a></li>
+</ul>
+<h2 id="自己的笔记"><a href="#自己的笔记" class="headerlink" title="自己的笔记"></a>自己的笔记</h2><p>与卡西欧计算器类似的是，德州的计算器也支持公式运算。但是不支持公式显示，所以运算的时候还是按照正常的公式运算按键，具体的公式，需要自己存储在脑子中。</p>
+<ol>
+<li><p>第二排的2ND按钮是启动第二级运算用的</p>
+</li>
+<li><p>如何暂时储存：算出的结果可以使用STO + 数字，暂时存储起来，方便下一次使用。还需要使用的时候，用RCL + 数字调出; 这个时候直接Clear Work 并不会消去在暂存中的数据。这个时候，也可以通过 2ND + 0，查看memory 中的数字。可以通过↑和↓进行查看，进入这种模式下，再按clear work,所有数据会被清零</p>
+</li>
+<li><p>如何计算时间间隔：2ND + 1可以进入计算Date的漠视，例如7-14-2005的输入方法是7.1405。注意：2005的20是默认的（什么愚蠢的设定，服了）。另外需要注意的地方是，数字数据不是按=号，而是按ENTER,第一排第二个键，然后利用↓进行日期输入。计算也是按CPT，第一排第一个键进行结果计算</p>
+</li>
+<li><p>如何使用ICONV模式进行EFF(Effictive Annual Rate)计算，2ND + 2进入此模式，NOM 是Normal Rate, C/Y 是每年计息次数，之后与之前时间的是一样的。C/Y进入之后，还可以按照之前普通计算的方法，例如24/5等的计算方法进行计算</p>
+</li>
+<li><p>如何计算Time Value of Money:</p>
+<ul>
+<li>N : Number of Years or number or payments</li>
+<li>I/Y : Interest rate per period</li>
+<li>PV : Present Value</li>
+<li>FV : Future Value</li>
+<li>PMT : Payments(for annuities) </li>
+</ul>
+</li>
+</ol>
+<p>注意：这个地方对计算器的使用与之前不一样，对于计算器第三排的按钮。都是先按数字，然后再按按钮进行赋值，比如N = 4，那么就先按4再按N。</p>
+<p>注意：有End model和begin model表示每期结算发生在结束还是开始，两种情况必须分开来看。如果想要切换，先2ND + PMT(第三排倒数第二个) + 2ND + Enter进行模式切换</p>
+<p>注意：FV 与 PMT，PV的正负号关系，至今还没搞懂什么时候正，什么时候负</p>
+<h2 id="一级常用的三种方法"><a href="#一级常用的三种方法" class="headerlink" title="一级常用的三种方法"></a>一级常用的三种方法</h2><p>此部分内容转自<a href="https://www.gaodun.com/cfa/1064166.html" target="_blank" rel="external">高顿网校</a></p>
+<h3 id="货币时间价值5要素"><a href="#货币时间价值5要素" class="headerlink" title="货币时间价值5要素"></a>货币时间价值5要素</h3><p>货币时间价值解决了不同时间点的等价关系，现在的钱在时间的作用下，未来会有不同的价值，而未来的到手的钱也可以通过一定的折现率得到一个现在的货币价值。</p>
+<p>那么我们在计算器计算时就会涉及到相关的货币时间价值5要素哦，有哪五要素呢？掏出你的德州计算器来，第三行的那一排白色按键 就是货币时间价值5要素。</p>
+<ul>
+<li>N 是现值到终值一共隔了多少期</li>
+<li>I/Y 每期利率</li>
+<li>PV 现值就是最开始0时刻对应的现金流或者说价值</li>
+<li>PMT 每期期间现金流</li>
+<li>FV 终值</li>
+<li>时间轴可以帮助你很好的理解货币时间价值5要素，如图:</li>
+</ul>
+<p><img src="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP209304T06.png" alt="alt text"></p>
+<p>来，看一道例题：An investor will receive an annuity of $4000 a year for ten years. The payment is to be received at the end of the first year. At an annual interest rate of 9%, what is this annuity’s worth at the end of ten years?  这就是一道普通年金的题目，每年年末支付?4000，付10年，年利率9%，问10年后终值是多少？</p>
+<p>计算器：</p>
+<ol>
+<li>[10] [N]</li>
+<li>[9] <a href="注意哦，计算器默认了利率的％，所以直接输入数字即可">I/Y</a></li>
+<li>[0] [PV]</li>
+<li>[4000] [PMT]</li>
+<li>[CPT] [FV]  = - 60771.718</li>
+</ol>
+<h3 id="NPV-amp-IRR"><a href="#NPV-amp-IRR" class="headerlink" title="NPV&amp;IRR"></a>NPV&amp;IRR</h3><p>这两个是在资本项目预算的时候会用到的两个评估方法。</p>
+<p>根据时间轴给出的条件求NPV（净现值）</p>
+<p>好，做一个项目期初要投一笔钱，这里期初时投了175， 后面4期每期得到不等额的回报，然后呢我们求净现值，就要考虑货币的时间价值，所以会需要一个折现率＝10%，求NPV。</p>
+<p><img src="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP2093220645.png" alt="alt text"></p>
+<p>计算器：</p>
+<ol>
+<li>[CF] [2ND] [CE/C]</li>
+<li>[175] [+/-]  [ENTER]</li>
+<li>[↓] [25] [ENTER]</li>
+<li>[↓][↓][100] [ENTER]</li>
+<li>[↓][↓] [75] [ENTER]</li>
+<li>[↓][↓][50] [ENTER]</li>
+<li>[NPV] [10] [ENTER]</li>
+<li>[↓][CPT] =20.87</li>
+</ol>
+<p>　　那么其实在这里，我们除了可以用计算器的第二行这个NPV求期间不等额现金流的现值，只要让CF0=0，然后后面算法一样哦。<br>　　<br>求IRR</p>
+<p>　　IRR是使得净现值NPV=0时刻的折现率，那么计算器的用法上现金流输入方法相同，最后求IRR,直接IRR CPT即可。</p>
+<p><img src="https://wwwupload.gaodunwangxiao.com/uploads/allimg/170802/5999-1FP209324H44.png" alt="alt text"></p>
+<p>　计算器：
+　</p>
+<ol>
+<li>[CF] [2ND] [CE/C]</li>
+<li>[175] [+/-] [ENTER</li>
+<li>[↓][25] [ENTER]</li>
+<li>[↓][↓][100] [ENTER]</li>
+<li>[↓][↓] [75] [ENTER]</li>
+<li>[↓][↓][50] [ENTER]</li>
+<li>[IRR] [CPT] = 15.067</li>
+</ol>
+<h3 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h3><p>　　这个很简单就是告诉大家排列和组合在计算器的哪里怎么按，这样就可以不记公式。</p>
+<p>　　比如吧你有五只股票，卖三只，问对于这三只股票有多少种组合方法。</p>
+<p>　　[5] [2ND][+] [3] = 10 （组合符号在加号上面哦 按2ND就可以把它调出来）</p>
+<p>　　还是上面的题干，稍微改一下，股票买卖的先后顺序是有关系的，那么问依次卖掉三只股票有多少种方法。</p>
+<p>　　[5] [2ND] [–] [3] = 60 （同理，排列在减号上面！）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技能树/" rel="tag"># 技能树</a>
+          
+            <a href="/tags/CFA-相关/" rel="tag"># CFA 相关</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/24/CFA-The-Time-Value-Of-Money/" rel="next" title="CFA-The-Time-Value-Of-Money">
+                <i class="fa fa-chevron-left"></i> CFA-The-Time-Value-Of-Money
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/01/CFA道德考试重点/" rel="prev" title="CFA道德考试重点">
+                CFA道德考试重点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2018/04/25/CFA计算器使用/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍教程"><span class="nav-number">1.</span> <span class="nav-text">介绍教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己的笔记"><span class="nav-number">2.</span> <span class="nav-text">自己的笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一级常用的三种方法"><span class="nav-number">3.</span> <span class="nav-text">一级常用的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#货币时间价值5要素"><span class="nav-number">3.1.</span> <span class="nav-text">货币时间价值5要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPV-amp-IRR"><span class="nav-number">3.2.</span> <span class="nav-text">NPV&IRR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排列组合"><span class="nav-number">3.3.</span> <span class="nav-text">排列组合</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/04/25/CFA计算器使用/';
+          this.page.identifier = '2018/04/25/CFA计算器使用/';
+          this.page.title = 'CFA计算器使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

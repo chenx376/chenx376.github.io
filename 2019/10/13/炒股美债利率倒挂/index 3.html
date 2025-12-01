@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="美股,炒股,投资,美债," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="本篇文章主要是总结美债收益率为什么会发生倒挂。   为了弄清楚这个问题，首先需要一些基础的金融知识，那就是债券的价格和利率成反比。简而言之，如果买的人越多，那么债券价格越高，那么回报率反而降低。背后的原理感兴趣的可以在知乎相关链接进行查看。  什么是美债收益率倒挂一般而言，如果有人找你借钱，借的时间越长，你要收的利息也应该越高。这点很好理解，因为钱要放在那边比较长时间，多收点钱也是应该的嘛。举个例">
+<meta name="keywords" content="美股,炒股,投资,美债">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美债利率倒挂">
+<meta property="og:url" content="http://yoursite.com/2019/10/13/炒股美债利率倒挂/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="本篇文章主要是总结美债收益率为什么会发生倒挂。   为了弄清楚这个问题，首先需要一些基础的金融知识，那就是债券的价格和利率成反比。简而言之，如果买的人越多，那么债券价格越高，那么回报率反而降低。背后的原理感兴趣的可以在知乎相关链接进行查看。  什么是美债收益率倒挂一般而言，如果有人找你借钱，借的时间越长，你要收的利息也应该越高。这点很好理解，因为钱要放在那边比较长时间，多收点钱也是应该的嘛。举个例">
+<meta property="og:updated_time" content="2019-10-22T03:30:47.738Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="美债利率倒挂">
+<meta name="twitter:description" content="本篇文章主要是总结美债收益率为什么会发生倒挂。   为了弄清楚这个问题，首先需要一些基础的金融知识，那就是债券的价格和利率成反比。简而言之，如果买的人越多，那么债券价格越高，那么回报率反而降低。背后的原理感兴趣的可以在知乎相关链接进行查看。  什么是美债收益率倒挂一般而言，如果有人找你借钱，借的时间越长，你要收的利息也应该越高。这点很好理解，因为钱要放在那边比较长时间，多收点钱也是应该的嘛。举个例">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/13/炒股美债利率倒挂/"/>
+
+
+
+
+
+  <title>美债利率倒挂 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/炒股美债利率倒挂/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">美债利率倒挂</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-13T22:24:08-07:00">
+                2019-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/投资/" itemprop="url" rel="index">
+                    <span itemprop="name">投资</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/13/炒股美债利率倒挂/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2019/10/13/炒股美债利率倒挂/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font size="4"><br>本篇文章主要是总结美债收益率为什么会发生倒挂。<br></font>
+
+<p><strong> 为了弄清楚这个问题，首先需要一些基础的金融知识，那就是债券的价格和利率成反比。简而言之，如果买的人越多，那么债券价格越高，那么回报率反而降低。背后的原理感兴趣的可以在<a href="https://www.zhihu.com/question/20276427" target="_blank" rel="external">知乎相关链接</a>进行查看。 </strong></p>
+<h2 id="什么是美债收益率倒挂"><a href="#什么是美债收益率倒挂" class="headerlink" title="什么是美债收益率倒挂"></a>什么是美债收益率倒挂</h2><p>一般而言，如果有人找你借钱，借的时间越长，你要收的利息也应该越高。这点很好理解，因为钱要放在那边比较长时间，多收点钱也是应该的嘛。举个例子，你借100元给小明，如果小明一年内还款，你说OK，但是我要5%的利息。如果小明要借10年，那么你可能会要求每年的利息高一些，每年6%的利息差不多。</p>
+<p>而最近，美债短期的收益率就连续多次和长期收益率发生了倒挂。什么意思呢，就是借2年的年利率反而是比借10年要高。同样的金额，借2年的每年赚的利息反而比10年的要多。结合我之前的黑体字，我们在引申一点，<strong> 说明大家都在较多的购买10年期的美债而不是2年期的。</strong></p>
+<h2 id="为什么会出现倒挂"><a href="#为什么会出现倒挂" class="headerlink" title="为什么会出现倒挂"></a>为什么会出现倒挂</h2><ol>
+<li><p>短端国债收益率上升；</p>
+</li>
+<li><p>长端国债收益率下降；</p>
+</li>
+<li><p>短端国债收益率上升比长端国债收益率上升的速度快。</p>
+</li>
+</ol>
+<p>正如我们之前分析的，这意味着大众对长期债券的兴趣大幅上升。</p>
+<h2 id="美债利率倒挂的影响"><a href="#美债利率倒挂的影响" class="headerlink" title="美债利率倒挂的影响"></a>美债利率倒挂的影响</h2><p>作为一个12万亿多美元的市场，美国国债利率曲线的影响极为深远。这个曲线是全球金融体系定价的基石，也是全球保险公司计算资产负债配比的核心，还是杠杆类金融产品，包括房地产抵押债券、消费金融、学生贷款等数十万亿美元资产的定价核心。在前一篇文章中也解释过，美债如何影响生活的点点滴滴。</p>
+<ol>
+<li><p>长期利率低于短期利率表明美国金融市场下一步发展放缓。长期经济增长需要长期融资，而美国的长期利率也代表全球经济增长的资金成本，长期利率的下滑表示市场今后5-10年包括美国在内的全球经济增长将会低于今后1-2年。</p>
+</li>
+<li><p>利率曲线倒挂也表明市场预计美联储会降息。由于短期国债不断到期，所以短期利率的复合收益预期应该等于长期国债的收益率。如果目前的短期利率高于长期利率，解决这个数学等式的唯一办法就是今后的短期利率将会下降，也就是美联储降息。</p>
+</li>
+<li><p>美国经济出现衰退的可能性已经不断加强。有很多文章提到了利率曲线倒挂和美国经济衰退的关系，笔者认为有很多哗众取宠的成分。实际上，这两者的关系极为复杂。美国历史上的每一次经济衰退前都有过利率曲线倒挂现象，但并不是每次都会导致经济衰退，甚至有过几次利率曲线倒挂后，美国经济增长放缓，但并没发生衰退。</p>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/National_debt_of_the_United_States" target="_blank" rel="external">Wiki National Debt of America</a></li>
+<li><a href="https://www.zhihu.com/question/20276427" target="_blank" rel="external">知乎 为什么利率上升，债券价格下降？</a></li>
+<li><a href="https://www.zhihu.com/question/48273859" target="_blank" rel="external">知乎 收益率屡创新低的时候，美国国债却面临脱销？</a></li>
+<li><a href="https://www.laohu8.com/post/997314339?invite=XFH68&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="external">美国国债收益率曲线倒挂的真正含义和投资方向</a></li>
+<li><a href="https://finance.sina.com.cn/money/bond/research/2019-08-15/doc-ihytcitm9315704.shtml" target="_blank" rel="external">美国国债收益率倒挂和经济走势有何内在联系？</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/美股/" rel="tag"># 美股</a>
+          
+            <a href="/tags/炒股/" rel="tag"># 炒股</a>
+          
+            <a href="/tags/投资/" rel="tag"># 投资</a>
+          
+            <a href="/tags/美债/" rel="tag"># 美债</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/01/炒股美债/" rel="next" title="美债">
+                <i class="fa fa-chevron-left"></i> 美债
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/02/读后感瓦尔登湖/" rel="prev" title="读后感瓦尔登湖">
+                读后感瓦尔登湖 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2019/10/13/炒股美债利率倒挂/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是美债收益率倒挂"><span class="nav-number">1.</span> <span class="nav-text">什么是美债收益率倒挂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会出现倒挂"><span class="nav-number">2.</span> <span class="nav-text">为什么会出现倒挂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#美债利率倒挂的影响"><span class="nav-number">3.</span> <span class="nav-text">美债利率倒挂的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/10/13/炒股美债利率倒挂/';
+          this.page.identifier = '2019/10/13/炒股美债利率倒挂/';
+          this.page.title = '美债利率倒挂';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

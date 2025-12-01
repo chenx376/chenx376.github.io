@@ -1,0 +1,911 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 369. Plus One Linked List题目描述假设一个Linked List中的每一个数字代表一个整数的一个位，将这个数加1 算法我们首先标记出本位不是9且下一位是9的数字，之后检测最后一位，如果是9.则标记的后面全部置0，本身加1。如果标记位本身为null，说明整个都需要进位，创造新的节点">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.17号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/7-17号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 369. Plus One Linked List题目描述假设一个Linked List中的每一个数字代表一个整数的一个位，将这个数加1 算法我们首先标记出本位不是9且下一位是9的数字，之后检测最后一位，如果是9.则标记的后面全部置0，本身加1。如果标记位本身为null，说明整个都需要进位，创造新的节点">
+<meta property="og:updated_time" content="2017-07-26T08:04:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.17号刷题">
+<meta name="twitter:description" content="第一题 369. Plus One Linked List题目描述假设一个Linked List中的每一个数字代表一个整数的一个位，将这个数加1 算法我们首先标记出本位不是9且下一位是9的数字，之后检测最后一位，如果是9.则标记的后面全部置0，本身加1。如果标记位本身为null，说明整个都需要进位，创造新的节点">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/21/7-17号刷题/"/>
+
+
+
+
+
+  <title>7.17号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/7-17号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.17号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T20:38:49-07:00">
+                2017-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/21/7-17号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/07/21/7-17号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-369-Plus-One-Linked-List"><a href="#第一题-369-Plus-One-Linked-List" class="headerlink" title="第一题 369. Plus One Linked List"></a>第一题 <a href="https://leetcode.com/problems/plus-one-linked-list/#/description" target="_blank" rel="external">369. Plus One Linked List</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>假设一个Linked List中的每一个数字代表一个整数的一个位，将这个数加1</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>我们首先标记出本位不是9且下一位是9的数字，之后检测最后一位，如果是9.则标记的后面全部置0，本身加1。如果标记位本身为null，说明整个都需要进位，创造新的节点</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">plusOne369</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">plusOne</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        ListNode cur = head, preNoNine = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (cur.next != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (cur.val != <span class="number">9</span> &amp;&amp; cur.next.val == <span class="number">9</span>)</div><div class="line">                preNoNine = cur;</div><div class="line">            cur = cur.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (cur.val == <span class="number">9</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (preNoNine == <span class="keyword">null</span>) &#123;</div><div class="line">                ListNode newhead = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">                newhead.next = head;</div><div class="line">                <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">                    head.val = <span class="number">0</span>;</div><div class="line">                    head = head.next;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> newhead;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                preNoNine.val += <span class="number">1</span>;</div><div class="line">                preNoNine = preNoNine.next;</div><div class="line">                <span class="keyword">while</span> (preNoNine != <span class="keyword">null</span>) &#123;</div><div class="line">                    preNoNine.val = <span class="number">0</span>;</div><div class="line">                    preNoNine = preNoNine.next;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            cur.val += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二题-2-Add-Two-Numbers"><a href="#第二题-2-Add-Two-Numbers" class="headerlink" title="第二题 2. Add Two Numbers"></a>第二题 <a href="https://leetcode.com/problems/add-two-numbers/#/description" target="_blank" rel="external">2. Add Two Numbers</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>有两个LinkedList表示两个整数(逆序排序，意味着最高位在最左半边)，求两个LinkedList相加的值</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addTwoNumbers2</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) <span class="keyword">return</span> l2;</div><div class="line">        <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) <span class="keyword">return</span> l1;</div><div class="line"></div><div class="line">        ListNode newNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode cur = newNode;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span> || l2 != <span class="keyword">null</span>) &#123;</div><div class="line">            sum = sum / <span class="number">10</span>;</div><div class="line">            <span class="keyword">if</span> (l1 != <span class="keyword">null</span>) &#123;</div><div class="line">                sum += l1.val;</div><div class="line">                l1 = l1.next;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (l2 != <span class="keyword">null</span>) &#123;</div><div class="line">                sum += l2.val;</div><div class="line">                l2 = l2.next;</div><div class="line">            &#125;</div><div class="line">            cur.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">            cur = cur.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (sum &gt;= <span class="number">10</span>) cur.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> newNode.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第三题-445-Add-Two-Numbers-II"><a href="#第三题-445-Add-Two-Numbers-II" class="headerlink" title="第三题 445. Add Two Numbers II"></a>第三题 <a href="https://leetcode.com/problems/add-two-numbers-ii/#/description" target="_blank" rel="external">445. Add Two Numbers II</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个表示非负整数的链表。链表头部表示高位，尾部表示低位，每一个节点只包含一位数。以链表形式返回两个链表的和。</p>
+<p>你可以假设两个数字都不包含前导0，除非数字本身就是0。</p>
+<p>进一步思考：</p>
+<p>你可以不修改输入链表吗？换言之，不允许反转链表。</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>利用list存储每个数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addTwoNumbers445</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) <span class="keyword">return</span> l2;</div><div class="line">        <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) <span class="keyword">return</span> l1;</div><div class="line"></div><div class="line">        List&lt;Integer&gt; listL1 = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; listL2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span>) &#123;</div><div class="line">            listL1.add(l1.val);</div><div class="line">            l1 = l1.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span> (l2 != <span class="keyword">null</span>) &#123;</div><div class="line">            listL2.add(l2.val);</div><div class="line">            l2 = l2.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ListNode pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = listL1.size() - <span class="number">1</span>, j = listL2.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>;) &#123;</div><div class="line">            sum /= <span class="number">10</span>;</div><div class="line">            <span class="keyword">int</span> first = <span class="number">0</span>, second = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">0</span>)  first = listL1.get(i--);</div><div class="line">            <span class="keyword">if</span> (j &gt;= <span class="number">0</span>) second = listL2.get(j--);</div><div class="line"></div><div class="line">            sum += first + second;</div><div class="line">            pre.val = (sum) % <span class="number">10</span>;</div><div class="line">            ListNode cur = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">            cur.next = pre;</div><div class="line">            pre = cur;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum &gt;= <span class="number">10</span> ? pre : pre.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-379-Design-Phone-Directory"><a href="#第四题-379-Design-Phone-Directory" class="headerlink" title="第四题 379. Design Phone Directory"></a>第四题 <a href="https://leetcode.com/problems/design-phone-directory/#/description" target="_blank" rel="external">379. Design Phone Directory</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>设计一个电话铺</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>Queue + HashSet结合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneDirectory</span> </span>&#123;</div><div class="line"></div><div class="line">    Set&lt;Integer&gt; used = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</div><div class="line">    Queue&lt;Integer&gt; available = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</div><div class="line">    <span class="keyword">int</span> max;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PhoneDirectory</span><span class="params">(<span class="keyword">int</span> maxNumbers)</span> </span>&#123;</div><div class="line">        max = maxNumbers;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxNumbers; i++) &#123;</div><div class="line">            available.offer(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        Integer ret = available.poll();</div><div class="line">        <span class="keyword">if</span> (ret == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        used.add(ret);</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (number &gt;= max || number &lt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> !used.contains(number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (used.remove(number)) &#123;</div><div class="line">            available.offer(number);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第五题-127-Word-Ladder"><a href="#第五题-127-Word-Ladder" class="headerlink" title="第五题 127. Word Ladder"></a>第五题 <a href="https://leetcode.com/problems/word-ladder/#/description" target="_blank" rel="external">127. Word Ladder</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个单词（beginWord 和 endWord），以及一个字典，寻找从 beginWord 到 endWord 的最短转换序列的长度，满足约束条件：</p>
+<p>每次只能改变一个字母</p>
+<p>每一个得到的单词必须存在于字典中</p>
+<p>例如，给定：</p>
+<pre><code>start = &quot;hit&quot;
+end = &quot;cog&quot;
+dict = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]
+</code></pre><p>最短的转换序列为：”hit” -&gt; “hot” -&gt; “dot” -&gt; “dog” -&gt; “cog”，</p>
+<p>返回其长度5。</p>
+<p>注意：</p>
+<p>如果不存在这样的转换序列，返回0。</p>
+<p>所有的单词都是等长的。</p>
+<p>所有的单词都只包含小写字母。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>双向BFS，将beginword和endword分别存入两个set中。不断的替换，找到下一批临近的words, 之后如果在替换过程中发现了合适的word。返回长度，结束搜索。当所有单词都用完后，如果仍然没有发现有合适的答案，返回0.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ladderLength127</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordListOrigin)</span> </span>&#123;</div><div class="line">        Set&lt;String&gt; wordList = <span class="keyword">new</span> HashSet&lt;&gt;(wordListOrigin);</div><div class="line">        <span class="keyword">if</span> (beginWord.equals(endWord)) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (!wordList.contains(endWord)) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        Set&lt;String&gt; beginset = <span class="keyword">new</span> HashSet&lt;&gt;(), endset = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        Set&lt;String&gt; visited = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line">        beginset.add(beginWord); endset.add(endWord);</div><div class="line">        <span class="keyword">while</span> (!beginset.isEmpty() &amp;&amp; !endset.isEmpty()) &#123;</div><div class="line">            <span class="keyword">if</span> (beginset.size() &gt; endset.size()) &#123;</div><div class="line">                Set&lt;String&gt; change = beginset;</div><div class="line">                beginset = endset;</div><div class="line">                endset = change;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Set&lt;String&gt; temp = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">            <span class="keyword">for</span> (String word : beginset) &#123;</div><div class="line">                <span class="keyword">char</span>[] chrs = word.toCharArray();</div><div class="line"></div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chrs.length; i++) &#123;</div><div class="line">                    <span class="keyword">char</span> old = chrs[i];</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">'a'</span>; c &lt;= <span class="string">'z'</span>; c++) &#123;</div><div class="line">                        chrs[i] = c;</div><div class="line">                        String candidate = String.valueOf(chrs);</div><div class="line"></div><div class="line">                        <span class="keyword">if</span> (endset.contains(candidate))</div><div class="line">                            <span class="keyword">return</span> count + <span class="number">1</span>;</div><div class="line">                        <span class="keyword">if</span> (!visited.contains(candidate) &amp;&amp; wordList.contains(candidate)) &#123;</div><div class="line">                            temp.add(candidate);</div><div class="line">                            visited.add(candidate);</div><div class="line">                        &#125;</div><div class="line">                        chrs[i] = old;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            beginset = temp;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第六题-126-Word-Ladder-II"><a href="#第六题-126-Word-Ladder-II" class="headerlink" title="第六题 126. Word Ladder II"></a>第六题 <a href="https://leetcode.com/problems/word-ladder-ii/#/description" target="_blank" rel="external">126. Word Ladder II</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>同上题一样，只是现在需要找出所有的距离最短的路径</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><p>双向BFS（获得所需要节点的所有下一变换的可能） + DFS（找出所有可能的结果）</p>
+<p>算法略复杂，需要花时间理解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; findLadders(String beginWord, String endWord, List&lt;String&gt; wordList) &#123;</div><div class="line">        Set&lt;String&gt; remainWords = <span class="keyword">new</span> HashSet&lt;&gt;(wordList);</div><div class="line">        <span class="keyword">if</span> (!remainWords.contains(endWord)) </div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; neighbors = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        Set&lt;String&gt; begin = <span class="keyword">new</span> HashSet&lt;&gt;(), end = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        begin.add(beginWord); end.add(endWord);</div><div class="line"></div><div class="line">        bfs(beginWord, endWord, begin, end, remainWords, <span class="keyword">true</span>, neighbors);</div><div class="line">        List&lt;List&lt;String&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;String&gt; sol = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(beginWord));</div><div class="line">        dfs(beginWord, endWord, neighbors, res, sol);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">bfs</span><span class="params">(String beginWord, String endWord, Set&lt;String&gt; begin, Set&lt;String&gt; end, Set&lt;String&gt; remainWords, <span class="keyword">boolean</span> forward, Map&lt;String, List&lt;String&gt;&gt; neighbors)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (begin.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (end.size() &gt; begin.size()) &#123;</div><div class="line">            <span class="keyword">return</span> bfs(beginWord, endWord, end, begin, remainWords, !forward, neighbors);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        remainWords.removeAll(begin);</div><div class="line">        remainWords.removeAll(end);</div><div class="line"></div><div class="line">        <span class="keyword">boolean</span> done = <span class="keyword">false</span>;</div><div class="line">        Set&lt;String&gt; temp = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (String word : begin) &#123;</div><div class="line">            <span class="keyword">char</span>[] chars = word.toCharArray();</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length; i++) &#123;</div><div class="line">                <span class="keyword">char</span> old = chars[i];</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">'a'</span>; c &lt;= <span class="string">'z'</span>; c++) &#123;</div><div class="line">                    chars[i] = c;</div><div class="line">                    String candidate = String.valueOf(chars);</div><div class="line"></div><div class="line">                    String key = forward ? word : candidate;</div><div class="line">                    String val = forward ? candidate : word;</div><div class="line"></div><div class="line">                    List&lt;String&gt; listemp = neighbors.getOrDefault(key, <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (end.contains(candidate)) &#123;</div><div class="line">                        done = <span class="keyword">true</span>;</div><div class="line">                        listemp.add(val);</div><div class="line">                        neighbors.put(key, listemp);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (!done &amp;&amp; remainWords.contains(candidate)) &#123;</div><div class="line">                        temp.add(candidate);</div><div class="line">                        listemp.add(val);</div><div class="line">                        neighbors.put(key, listemp);</div><div class="line">                    &#125;</div><div class="line">                    chars[i] = old;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> done || bfs(beginWord, endWord, temp, end, remainWords, forward, neighbors);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(String cur, String endword, Map&lt;String, List&lt;String&gt;&gt; neighbors, List&lt;List&lt;String&gt;&gt; res, List&lt;String&gt; solution)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (cur.equals(endword)) &#123;</div><div class="line">            res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(solution));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!neighbors.containsKey(cur)) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        List&lt;String&gt; pool = neighbors.get(cur);</div><div class="line">        <span class="keyword">for</span> (String word : pool) &#123;</div><div class="line">            solution.add(word);</div><div class="line">            dfs(word, endword, neighbors, res, solution);</div><div class="line">            solution.remove(solution.size() - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第七题-490-The-Maze"><a href="#第七题-490-The-Maze" class="headerlink" title="第七题 490. The Maze"></a>第七题 <a href="https://leetcode.com/problems/the-maze/#/description" target="_blank" rel="external">490. The Maze</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>在一个迷宫里有一个小球，小球可以朝着一个方向滚动，直到碰到墙壁。求小球在迷宫中是否可以到达指定的位置</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用Queue进行存储我们所有需要访问的下一个点的位置，BFS搜索</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hasPath490</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPath</span><span class="params">(<span class="keyword">int</span>[][] maze, <span class="keyword">int</span>[] start, <span class="keyword">int</span>[] destination)</span> </span>&#123;</div><div class="line">        Queue&lt;<span class="keyword">int</span>[]&gt; positions = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        positions.add(start);</div><div class="line">        <span class="keyword">boolean</span>[][] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[maze.length][maze[<span class="number">0</span>].length];</div><div class="line">        <span class="keyword">int</span>[][] directions = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</div><div class="line"></div><div class="line">        visited[start[<span class="number">0</span>]][start[<span class="number">1</span>]] = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">while</span> (!positions.isEmpty()) &#123;</div><div class="line">            <span class="keyword">int</span>[] cur = positions.poll();</div><div class="line">            <span class="keyword">if</span> (cur[<span class="number">0</span>] == destination[<span class="number">0</span>] &amp;&amp; cur[<span class="number">1</span>] == destination[<span class="number">1</span>])</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : directions) &#123;</div><div class="line">                <span class="keyword">int</span> x = cur[<span class="number">0</span>] + dir[<span class="number">0</span>];</div><div class="line">                <span class="keyword">int</span> y = cur[<span class="number">1</span>] + dir[<span class="number">1</span>];</div><div class="line">                <span class="keyword">while</span> (x &gt;= <span class="number">0</span> &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; x &lt; maze.length &amp;&amp; y &lt; maze[<span class="number">0</span>].length &amp;&amp; maze[x][y] == <span class="number">0</span>) &#123;</div><div class="line">                    x += dir[<span class="number">0</span>];</div><div class="line">                    y += dir[<span class="number">1</span>];</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (!visited[x - dir[<span class="number">0</span>]][y - dir[<span class="number">1</span>]]) &#123;</div><div class="line">                    positions.add(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;x - dir[<span class="number">0</span>], y - dir[<span class="number">1</span>]&#125;);</div><div class="line">                    visited[x - dir[<span class="number">0</span>]][y - dir[<span class="number">1</span>]] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第八题-505-The-Maze-II"><a href="#第八题-505-The-Maze-II" class="headerlink" title="第八题 505. The Maze II"></a>第八题 <a href="https://leetcode.com/problems/the-maze-ii/#/description" target="_blank" rel="external">505. The Maze II</a></h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>与上一题相同，只是现在需要找出的是最短的路径长度</p>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><p>依然使用Queue记录每个方向的目的地，但是现在用一个int[][]的二维矩阵记录离初始点的距离</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shortestDistance</span><span class="params">(<span class="keyword">int</span>[][] maze, <span class="keyword">int</span>[] start, <span class="keyword">int</span>[] destination)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[][] distance = <span class="keyword">new</span> <span class="keyword">int</span>[maze.length][maze[<span class="number">0</span>].length];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] row: distance)</div><div class="line">            Arrays.fill(row, Integer.MAX_VALUE);</div><div class="line">        distance[start[<span class="number">0</span>]][start[<span class="number">1</span>]] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[][] dirs=&#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125; ,&#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</div><div class="line">        Queue &lt; <span class="keyword">int</span>[] &gt; queue = <span class="keyword">new</span> LinkedList &lt; &gt; ();</div><div class="line">        queue.add(start);</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            <span class="keyword">int</span>[] s = queue.remove();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] dir: dirs) &#123;</div><div class="line">                <span class="keyword">int</span> x = s[<span class="number">0</span>] + dir[<span class="number">0</span>];</div><div class="line">                <span class="keyword">int</span> y = s[<span class="number">1</span>] + dir[<span class="number">1</span>];</div><div class="line">                <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (x &gt;= <span class="number">0</span> &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; x &lt; maze.length &amp;&amp; y &lt; maze[<span class="number">0</span>].length &amp;&amp; maze[x][y] == <span class="number">0</span>) &#123;</div><div class="line">                    x += dir[<span class="number">0</span>];</div><div class="line">                    y += dir[<span class="number">1</span>];</div><div class="line">                    count++;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (distance[s[<span class="number">0</span>]][s[<span class="number">1</span>]] + count &lt; distance[x - dir[<span class="number">0</span>]][y - dir[<span class="number">1</span>]]) &#123;</div><div class="line">                    distance[x - dir[<span class="number">0</span>]][y - dir[<span class="number">1</span>]] = distance[s[<span class="number">0</span>]][s[<span class="number">1</span>]] + count;</div><div class="line">                    queue.add(<span class="keyword">new</span> <span class="keyword">int</span>[] &#123;x - dir[<span class="number">0</span>], y - dir[<span class="number">1</span>]&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> distance[destination[<span class="number">0</span>]][destination[<span class="number">1</span>]] == Integer.MAX_VALUE ? -<span class="number">1</span> : distance[destination[<span class="number">0</span>]][destination[<span class="number">1</span>]];        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第九题-499-The-Maze-III"><a href="#第九题-499-The-Maze-III" class="headerlink" title="第九题 499. The Maze III"></a>第九题 <a href="https://leetcode.com/problems/the-maze-iii/#/description" target="_blank" rel="external">499. The Maze III</a></h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个二维迷宫，其中包含一个小球和一个洞。小球可以向上（u）、下（d）、左（l）、右（r）四个方向移动。每当小球选择一个方向后，会持续移动直到遇到墙壁为止。小球经过洞时会落入洞中。</p>
+<p>给定小球的初始位置ball，洞的位置hole。二维迷宫maze中1表示墙壁，0表示空地，四周被墙壁包围。求小球到洞的最短路径，如果存在距离相等的多条路径，返回字典序最短的那条。</p>
+<p>注意：</p>
+<ol>
+<li>球和洞各只有1个。</li>
+<li>球和洞只存在于空地上，并且初始位置不同。</li>
+<li>给定的迷宫不包含边界，但迷宫四周都是墙壁。</li>
+<li>迷宫至少包含两个空地，并且迷宫的长度和宽度不超过30。</li>
+</ol>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><p>利用新的Point记录当前点的位置及离初始点的距离等信息，然后利用Priority Queue，不断寻找最短的路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findShortestWay499</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Point</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Point</span>&gt; </span>&#123;</div><div class="line">        <span class="keyword">int</span> x, y, l;</div><div class="line">        String s;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Point</span><span class="params">(<span class="keyword">int</span> _x,<span class="keyword">int</span> _y)</span> </span>&#123;<span class="keyword">this</span>.x = _x; <span class="keyword">this</span>.y = _y; <span class="keyword">this</span>.l = Integer.MAX_VALUE; s = <span class="string">""</span>;&#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Point</span><span class="params">(<span class="keyword">int</span> _x, <span class="keyword">int</span> _y, <span class="keyword">int</span> _l, String _s)</span> </span>&#123;<span class="keyword">this</span>.x = _x; <span class="keyword">this</span>.y = _y; <span class="keyword">this</span>.l = _l; <span class="keyword">this</span>.s = _s;&#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Point p)</span> </span>&#123;<span class="keyword">return</span> l == p.l ? s.compareTo(p.s) : l - p.l;&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findShortestWay</span><span class="params">(<span class="keyword">int</span>[][] maze, <span class="keyword">int</span>[] ball, <span class="keyword">int</span>[] hole)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> m = maze.length, n = maze[<span class="number">0</span>].length;</div><div class="line"></div><div class="line">        Point[][] points = <span class="keyword">new</span> Point[m][n];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m * n; i++)</div><div class="line">            points[i/n][i%n] = <span class="keyword">new</span> Point(i / n, i % n);</div><div class="line">        <span class="keyword">int</span>[][] dir = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,-<span class="number">1</span>&#125;&#125;;</div><div class="line">        String[] ds=<span class="keyword">new</span> String[] &#123;<span class="string">"u"</span>,<span class="string">"r"</span>,<span class="string">"d"</span>,<span class="string">"l"</span>&#125;;</div><div class="line"></div><div class="line">        PriorityQueue&lt;Point&gt; list = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</div><div class="line">        list.offer(<span class="keyword">new</span> Point(ball[<span class="number">0</span>], ball[<span class="number">1</span>], <span class="number">0</span>, <span class="string">""</span>));</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!list.isEmpty()) &#123;</div><div class="line">            Point p = list.poll();</div><div class="line">            <span class="keyword">if</span> (points[p.x][p.y].compareTo(p) &lt;= <span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line"></div><div class="line">            points[p.x][p.y] = p;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</div><div class="line">                <span class="keyword">int</span> xx = p.x, yy = p.y, l = p.l;</div><div class="line">                <span class="keyword">while</span> (xx &gt;= <span class="number">0</span> &amp;&amp; xx &lt; m &amp;&amp; yy &gt;= <span class="number">0</span> &amp;&amp; yy &lt; n &amp;&amp; maze[xx][yy] == <span class="number">0</span> &amp;&amp; (xx != hole[<span class="number">0</span>] || yy != hole[<span class="number">1</span>])) &#123;</div><div class="line">                    xx += dir[i][<span class="number">0</span>];</div><div class="line">                    yy += dir[i][<span class="number">1</span>];</div><div class="line">                    l++;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (xx != hole[<span class="number">0</span>] || yy != hole[<span class="number">1</span>]) &#123;</div><div class="line">                    xx -= dir[i][<span class="number">0</span>];</div><div class="line">                    yy -= dir[i][<span class="number">1</span>];</div><div class="line">                    l--;</div><div class="line">                &#125;</div><div class="line">                list.offer(<span class="keyword">new</span> Point(xx, yy, l, p.s + ds[i]));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> points[hole[<span class="number">0</span>]][hole[<span class="number">1</span>]].l == Integer.MAX_VALUE ? <span class="string">"impossible"</span> : points[hole[<span class="number">0</span>]][hole[<span class="number">1</span>]].s;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/20/7-16号刷题/" rel="next" title="7.16号刷题">
+                <i class="fa fa-chevron-left"></i> 7.16号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/26/7-18号刷题/" rel="prev" title="7.18号刷题">
+                7.18号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/07/21/7-17号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-369-Plus-One-Linked-List"><span class="nav-number">1.</span> <span class="nav-text">第一题 369. Plus One Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-2-Add-Two-Numbers"><span class="nav-number">2.</span> <span class="nav-text">第二题 2. Add Two Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-445-Add-Two-Numbers-II"><span class="nav-number">3.</span> <span class="nav-text">第三题 445. Add Two Numbers II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-379-Design-Phone-Directory"><span class="nav-number">4.</span> <span class="nav-text">第四题 379. Design Phone Directory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-127-Word-Ladder"><span class="nav-number">5.</span> <span class="nav-text">第五题 127. Word Ladder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-126-Word-Ladder-II"><span class="nav-number">6.</span> <span class="nav-text">第六题 126. Word Ladder II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-490-The-Maze"><span class="nav-number">7.</span> <span class="nav-text">第七题 490. The Maze</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-505-The-Maze-II"><span class="nav-number">8.</span> <span class="nav-text">第八题 505. The Maze II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九题-499-The-Maze-III"><span class="nav-number">9.</span> <span class="nav-text">第九题 499. The Maze III</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">9.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/21/7-17号刷题/';
+          this.page.identifier = '2017/07/21/7-17号刷题/';
+          this.page.title = '7.17号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

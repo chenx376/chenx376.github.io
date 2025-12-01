@@ -1,0 +1,876 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 149. Max Points on a Line题目描述平面上有n个点，找出共线的点的最大个数 算法很容易想到O(n^3)的解法，通过起点i，终点j枚举直线，然后枚举中间点k，依次判断k与i,j是否共线，统计最大值。代码还有问题，有一种test case过不了">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.6号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/06/6-6号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 149. Max Points on a Line题目描述平面上有n个点，找出共线的点的最大个数 算法很容易想到O(n^3)的解法，通过起点i，终点j枚举直线，然后枚举中间点k，依次判断k与i,j是否共线，统计最大值。代码还有问题，有一种test case过不了">
+<meta property="og:updated_time" content="2017-06-06T09:28:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.6号刷题">
+<meta name="twitter:description" content="第一题 149. Max Points on a Line题目描述平面上有n个点，找出共线的点的最大个数 算法很容易想到O(n^3)的解法，通过起点i，终点j枚举直线，然后枚举中间点k，依次判断k与i,j是否共线，统计最大值。代码还有问题，有一种test case过不了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/06/6-6号刷题/"/>
+
+
+
+
+
+  <title>6.6号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/06/6-6号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.6号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T13:01:05-07:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/06/6-6号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/06/06/6-6号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-149-Max-Points-on-a-Line"><a href="#第一题-149-Max-Points-on-a-Line" class="headerlink" title="第一题 149. Max Points on a Line"></a>第一题 <a href="https://leetcode.com/problems/max-points-on-a-line/#/description" target="_blank" rel="external">149. Max Points on a Line</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>平面上有n个点，找出共线的点的最大个数</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>很容易想到O(n^3)的解法，通过起点i，终点j枚举直线，然后枚举中间点k，依次判断k与i,j是否共线，统计最大值。<br><br>代码还有问题，有一种test case过不了<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(Point[] points)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (points.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> points.length;</div><div class="line"></div><div class="line">        HashMap&lt;String, String&gt; newmap = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; points.length; i++) &#123;</div><div class="line">            <span class="keyword">long</span> ax = points[i].x, ay = points[i].y;</div><div class="line">            String point = Integer.toString( (<span class="keyword">int</span>) ax) + <span class="string">":"</span> + Integer.toString( (<span class="keyword">int</span>) ay);</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; points.length; j++) &#123;</div><div class="line">                <span class="keyword">long</span> bx = points[j].x, by = points[j].y;</div><div class="line">                <span class="keyword">int</span> tempsum = <span class="number">2</span>;</div><div class="line">                <span class="keyword">if</span> (ax == bx &amp;&amp; ay == by) &#123;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (newmap.containsKey(point)) &#123;</div><div class="line">                        String[] all = newmap.get(point).split(<span class="string">","</span>);</div><div class="line">                        String newindexes = <span class="string">""</span>;</div><div class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> z = <span class="number">0</span>; z &lt; all.length - <span class="number">1</span>; z++) &#123;</div><div class="line">                            newindexes = newindexes + all[z] + <span class="string">","</span>;</div><div class="line">                        &#125;</div><div class="line">                        </div><div class="line">                        <span class="keyword">int</span> num = Integer.parseInt(all[all.length - <span class="number">1</span>]);</div><div class="line"></div><div class="line">                        <span class="keyword">if</span> (newindexes.contains(Integer.toString(j))) &#123;</div><div class="line">                            max = Math.max(tempsum + num - <span class="number">1</span>, max);</div><div class="line">                        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                            max = Math.max(tempsum + num - <span class="number">1</span>, max);</div><div class="line">                            newindexes = j + <span class="string">","</span> + newindexes;</div><div class="line">                            num += <span class="number">1</span>;</div><div class="line">                            newindexes += (num);</div><div class="line">                            System.out.println(newindexes + <span class="string">" "</span> + num);</div><div class="line">                            newmap.put(point, newindexes);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="keyword">continue</span>;</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        max = Math.max(tempsum, max);</div><div class="line">                        String indexes = i + <span class="string">","</span> + j + <span class="string">","</span> + <span class="number">1</span>;</div><div class="line">                        newmap.put(point, indexes);</div><div class="line">                        <span class="keyword">continue</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; points.length; k++) &#123;</div><div class="line">                    <span class="keyword">long</span> cx = points[k].x, cy = points[k].y;</div><div class="line">                    <span class="keyword">long</span> area = (ax - cx) * (by - cy) - (bx - cx) * (ay - cy);</div><div class="line">                    <span class="keyword">if</span> (area == <span class="number">0</span>) &#123;</div><div class="line">                        tempsum++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (newmap.containsKey(point)) &#123;</div><div class="line">                    String[] all = newmap.get(point).split(<span class="string">","</span>);</div><div class="line">                    <span class="keyword">int</span> num = Integer.parseInt(all[all.length - <span class="number">1</span>]);</div><div class="line">                    max =  Math.max(tempsum + num, max);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> max = Math.max(tempsum, max);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第二题-500-Keyboard-Row"><a href="#第二题-500-Keyboard-Row" class="headerlink" title="第二题 500. Keyboard Row"></a>第二题 <a href="https://leetcode.com/problems/keyboard-row/#/description" target="_blank" rel="external">500. Keyboard Row</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一组单词，返回可以用美式键盘中的某一行字母键入的所有单词。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>利用String数组对每一行的字母进行存储，然后使用一个tag作为标示是否为连续的一行元素。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String[] findWords(String[] words) &#123;</div><div class="line">        <span class="keyword">if</span> (words.length &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> String[<span class="number">0</span>];</div><div class="line"></div><div class="line">        String first = <span class="string">"qwertyuiop"</span>;</div><div class="line">        String second = <span class="string">"asdfghjkl"</span>;</div><div class="line">        String third = <span class="string">"zxcvbnm"</span>;</div><div class="line"></div><div class="line">        List&lt;String&gt; store = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (String word : words) &#123;</div><div class="line">            <span class="keyword">int</span> tag = <span class="number">0</span>;</div><div class="line">            String lower = word.toLowerCase();</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</div><div class="line">                <span class="keyword">char</span> al = lower.charAt(i);</div><div class="line">                <span class="keyword">if</span> (first.indexOf(al) &gt;= <span class="number">0</span> &amp;&amp; (tag == <span class="number">0</span> || tag == <span class="number">1</span>)) &#123;</div><div class="line">                    tag = <span class="number">1</span>;</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (second.indexOf(al) &gt;= <span class="number">0</span> &amp;&amp; (tag == <span class="number">0</span> || tag == <span class="number">2</span>)) &#123;</div><div class="line">                    tag = <span class="number">2</span>;</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (third.indexOf(al) &gt;= <span class="number">0</span> &amp;&amp; (tag == <span class="number">0</span> || tag == <span class="number">3</span>)) &#123;</div><div class="line">                    tag = <span class="number">3</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (i == word.length() - <span class="number">1</span>) store.add(word);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        String[] result = store.toArray(<span class="keyword">new</span> String[store.size()]);</div><div class="line">        <span class="keyword">return</span> result;   </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><p>List转Array可以用String[] result = store.toArray(new String[store.size()]);<br>然后Set用Array初始化，new HashSet(Arrays.asList(someArray));</p>
+<h3 id="第三题-575-Distribute-Candies"><a href="#第三题-575-Distribute-Candies" class="headerlink" title="第三题 575. Distribute Candies"></a>第三题 <a href="https://leetcode.com/problems/distribute-candies/#/description" target="_blank" rel="external">575. Distribute Candies</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一组长度为偶数的整数，其中每个数字代表一个糖果的种类标号。</p>
+<p>将糖果均分给哥哥和妹妹，返回妹妹可以得到的最大糖果种类数。</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">distributeCandies</span><span class="params">(<span class="keyword">int</span>[] candies)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (candies.length &lt; <span class="number">2</span> || candies.length % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        Set&lt;Long&gt; dif = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; candies.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (dif.size() &gt;= candies.length / <span class="number">2</span>) <span class="keyword">return</span> candies.length / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (!dif.contains((<span class="keyword">long</span>) candies[i])) dif.add((<span class="keyword">long</span>) candies[i]);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> dif.size();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第四题-359-Logger-Rate-Limiter"><a href="#第四题-359-Logger-Rate-Limiter" class="headerlink" title="第四题 359. Logger Rate Limiter"></a>第四题 <a href="https://leetcode.com/problems/logger-rate-limiter/#/description" target="_blank" rel="external">359. Logger Rate Limiter</a></h3><h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><p>用hashmap存数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger359</span> </span>&#123;</div><div class="line"></div><div class="line">    Map&lt;String, Integer&gt; store;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Logger359</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.store = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldPrintMessage</span><span class="params">(<span class="keyword">int</span> timestamp, String message)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (store.containsKey(message)) &#123;</div><div class="line">            <span class="keyword">int</span> temp = store.get(message);</div><div class="line">            <span class="keyword">if</span> (timestamp - temp &gt;= <span class="number">10</span>) &#123;</div><div class="line">                store.put(message, timestamp);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            store.put(message, timestamp);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-463-Island-Perimeter"><a href="#第五题-463-Island-Perimeter" class="headerlink" title="第五题 463. Island Perimeter"></a>第五题 <a href="https://leetcode.com/problems/island-perimeter/#/description" target="_blank" rel="external">463. Island Perimeter</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个二维地图，1表示陆地，0表示水域。单元格水平或者竖直相连（不含对角线）。地图完全被水域环绕，只包含一个岛屿（也就是说，一个或者多个相连的陆地单元格）。岛屿没有湖泊（岛屿内部环绕的水域）。单元格是边长为1的正方形。地图是矩形，长宽不超过100。计算岛屿的周长。</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>遍历一遍整个矩阵，查看有多少个岛。每个岛有4条边，如果存在相邻的陆地，那么需要减去2条边。最后计算出结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> row = grid.length;</div><div class="line">        <span class="keyword">if</span> (row &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> col = grid[<span class="number">0</span>].length;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> island = <span class="number">0</span>, neighbor = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) &#123;</div><div class="line">                    island ++;</div><div class="line">                    <span class="keyword">if</span> (i &lt; row - <span class="number">1</span> &amp;&amp; grid[i + <span class="number">1</span>][j] == <span class="number">1</span>) neighbor++;</div><div class="line">                    <span class="keyword">if</span> (j &lt; col - <span class="number">1</span> &amp;&amp; grid[i][j + <span class="number">1</span>] == <span class="number">1</span>) neighbor++;</div><div class="line">                    </div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> island * <span class="number">4</span> - neighbor * <span class="number">2</span>;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第六题-266-Palindrome-Permutation"><a href="#第六题-266-Palindrome-Permutation" class="headerlink" title="第六题 266. Palindrome Permutation"></a>第六题 <a href="https://leetcode.com/problems/palindrome-permutation/#/description" target="_blank" rel="external">266. Palindrome Permutation</a></h3><h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>利用hashmap存储出现过的数，并检查最后是奇数还是偶数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Hash606;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by xiaochen on 6/6/17.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">canPermutePalindrome266</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPermutePalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> sumOdd = <span class="number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; store = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (store.containsKey(c)) &#123;</div><div class="line">                <span class="keyword">int</span> num = store.get(c);</div><div class="line">                <span class="keyword">if</span> (num % <span class="number">2</span> == <span class="number">0</span>) sumOdd++;</div><div class="line">                <span class="keyword">else</span> sumOdd--;</div><div class="line">                store.put(c, ++num);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                sumOdd++;</div><div class="line">                store.put(c, <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sumOdd &lt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><p>方法相似<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">canPermutePalindrome266</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPermutePalindrome2</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; store = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (store.contains(c)) store.remove(c);</div><div class="line">            <span class="keyword">else</span> store.add(c);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> store.size() &lt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第七题-609-Find-Duplicate-File-in-System"><a href="#第七题-609-Find-Duplicate-File-in-System" class="headerlink" title="第七题 609. Find Duplicate File in System"></a>第七题 <a href="https://leetcode.com/problems/find-duplicate-file-in-system/#/description" target="_blank" rel="external">609. Find Duplicate File in System</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一组文件信息，包含目录路径，以及目录下包含的文件。将所有内容重复的文件分组输出。</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>算法比较简单，存储下所有相同的内容，最后查看，如果大于2的话就进行输出。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; findDuplicate(String[] paths) &#123;</div><div class="line">        <span class="keyword">if</span> (paths == <span class="keyword">null</span> || paths.length &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="comment">// Map &lt;Content, List&lt;path&gt;&gt;</span></div><div class="line">        Map &lt;String, List&lt;String&gt;&gt; store = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; paths.length; i++) &#123;</div><div class="line">            String[] mixContent = paths[i].split(<span class="string">"\\s+"</span>);</div><div class="line">            String path = mixContent[<span class="number">0</span>];</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; mixContent.length; j++) &#123;</div><div class="line">                String[] file = mixContent[j].split(<span class="string">"\\("</span>);</div><div class="line">                String fileName = file[<span class="number">0</span>];</div><div class="line">                String content = file[<span class="number">1</span>].split(<span class="string">"\\)"</span>)[<span class="number">0</span>];</div><div class="line">                List&lt;String&gt; tempList = store.getOrDefault(content, <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">                StringBuilder wholePath = <span class="keyword">new</span> StringBuilder(path);</div><div class="line">                wholePath.append(<span class="string">"/"</span> + fileName);</div><div class="line">                tempList.add(wholePath.toString());</div><div class="line">                store.put(content, tempList);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//Get all the path</span></div><div class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (String key : store.keySet()) &#123;</div><div class="line">            List&lt;String&gt; temp = store.get(key);</div><div class="line">            <span class="keyword">if</span> (temp.size() &gt;= <span class="number">2</span>) result.add(temp);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;       </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/05/6-5号刷题/" rel="next" title="6.5号刷题">
+                <i class="fa fa-chevron-left"></i> 6.5号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/6-7号刷题/" rel="prev" title="6.7号刷题">
+                6.7号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/06/06/6-6号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-149-Max-Points-on-a-Line"><span class="nav-number">1.</span> <span class="nav-text">第一题 149. Max Points on a Line</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-500-Keyboard-Row"><span class="nav-number">2.</span> <span class="nav-text">第二题 500. Keyboard Row</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">2.3.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-575-Distribute-Candies"><span class="nav-number">3.</span> <span class="nav-text">第三题 575. Distribute Candies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-359-Logger-Rate-Limiter"><span class="nav-number">4.</span> <span class="nav-text">第四题 359. Logger Rate Limiter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-463-Island-Perimeter"><span class="nav-number">5.</span> <span class="nav-text">第五题 463. Island Perimeter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-266-Palindrome-Permutation"><span class="nav-number">6.</span> <span class="nav-text">第六题 266. Palindrome Permutation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">6.1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap"><span class="nav-number">6.1.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet"><span class="nav-number">6.1.2.</span> <span class="nav-text">HashSet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-609-Find-Duplicate-File-in-System"><span class="nav-number">7.</span> <span class="nav-text">第七题 609. Find Duplicate File in System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/06/6-6号刷题/';
+          this.page.identifier = '2017/06/06/6-6号刷题/';
+          this.page.title = '6.6号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

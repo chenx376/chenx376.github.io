@@ -1,0 +1,905 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一题 49. Group Anagrams题目描述给定一个字符串数组，返回所有互为字谜（anagram，变位词）的字符串的分组。 注意：所有输入只包含小写字母">
+<meta name="keywords" content="LeetCode,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.10号刷题">
+<meta property="og:url" content="http://yoursite.com/2017/06/10/6-10号刷题/index.html">
+<meta property="og:site_name" content="陈浮云">
+<meta property="og:description" content="第一题 49. Group Anagrams题目描述给定一个字符串数组，返回所有互为字谜（anagram，变位词）的字符串的分组。 注意：所有输入只包含小写字母">
+<meta property="og:updated_time" content="2017-06-10T16:12:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6.10号刷题">
+<meta name="twitter:description" content="第一题 49. Group Anagrams题目描述给定一个字符串数组，返回所有互为字谜（anagram，变位词）的字符串的分组。 注意：所有输入只包含小写字母">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/10/6-10号刷题/"/>
+
+
+
+
+
+  <title>6.10号刷题 | 陈浮云</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈浮云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/2018/03/14/导航科技园导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            科技园
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-skill">
+          <a href="/2018/03/14/导航技能树导航界面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-codepen"></i> <br />
+            
+            技能树
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-readingresponse">
+          <a href="/2018/03/14/导航书影摘导航页面/#more" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br />
+            
+            书影摘
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-travel">
+          <a href="/categories/行游记/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-marker"></i> <br />
+            
+            行游记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/categories/杂谈/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-key"></i> <br />
+            
+            杂谈
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/10/6-10号刷题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈肖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浮云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">6.10号刷题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T10:05:02-07:00">
+                2017-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/10/6-10号刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/06/10/6-10号刷题/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一题-49-Group-Anagrams"><a href="#第一题-49-Group-Anagrams" class="headerlink" title="第一题 49. Group Anagrams"></a>第一题 <a href="https://leetcode.com/problems/group-anagrams/#/description" target="_blank" rel="external">49. Group Anagrams</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个字符串数组，返回所有互为字谜（anagram，变位词）的字符串的分组。</p>
+<p>注意：所有输入只包含小写字母<br><a id="more"></a></p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>利用HashMap存储每个单词所包含的字母(进行排序)及所有同素异形的单词。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</div><div class="line">            String str = strs[i];</div><div class="line">            <span class="keyword">char</span>[] chars = str.toCharArray();</div><div class="line">            Arrays.sort(chars);</div><div class="line">            String strsorted = String.valueOf(chars);</div><div class="line">            </div><div class="line">            List&lt;String&gt; list = map.getOrDefault(strsorted, <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">            list.add(str);</div><div class="line">            map.put(strsorted, list);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;(map.values());    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第二题-36-Valid-Sudoku"><a href="#第二题-36-Valid-Sudoku" class="headerlink" title="第二题 36. Valid Sudoku"></a>第二题 <a href="https://leetcode.com/problems/valid-sudoku/#/description" target="_blank" rel="external">36. Valid Sudoku</a></h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个9 * 9的矩阵，查看此矩阵形成的数独游戏是否成立。</p>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><p>对于此题，我们分析题目后，发现我们需要验证的有三个：</p>
+<ul>
+<li>对于9行，每行不含有相同的数字</li>
+<li>对于9列，每列不含有相同的数字</li>
+<li>对于9个小正方形，每个正方形不含有相同的数字</li>
+</ul>
+<p>至此，我们可以进行解题。但是仍需要注意一点：对于[0,8]的循环，如果将其装换成一个二维坐标[0,2][0,2] 我们可以进行这样一个对应： x = i / 3, 纵坐标为 y = i % 3。这样就可以正确的转换为小方块的二维坐标<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (board.length != <span class="number">9</span> || board[<span class="number">0</span>].length != <span class="number">9</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">            Set&lt;Character&gt; row = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">            Set&lt;Character&gt; colunmn = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">            Set&lt;Character&gt; subox = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span> &amp;&amp; !row.add(board[i][j])) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                <span class="keyword">if</span> (board[j][i] != <span class="string">'.'</span> &amp;&amp; !colunmn.add(board[j][i])) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                </div><div class="line">                <span class="keyword">int</span> rowoffset = <span class="number">3</span> * (i / <span class="number">3</span>), coloffset = <span class="number">3</span> * (i % <span class="number">3</span>);</div><div class="line">                <span class="keyword">int</span> boxRowIndex = j / <span class="number">3</span>, boxColIndex = j % <span class="number">3</span>;</div><div class="line">                <span class="keyword">if</span> (board[rowoffset + boxRowIndex][coloffset + boxColIndex] != <span class="string">'.'</span> &amp;&amp; !subox.add(board[rowoffset + boxRowIndex][coloffset + boxColIndex])) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第三题-37-Sudoku-Solver"><a href="#第三题-37-Sudoku-Solver" class="headerlink" title="第三题 37. Sudoku Solver"></a>第三题 <a href="https://leetcode.com/problems/sudoku-solver/#/description" target="_blank" rel="external">37. Sudoku Solver</a></h3><h3 id="第四题-525-Contiguous-Array"><a href="#第四题-525-Contiguous-Array" class="headerlink" title="第四题 525. Contiguous Array"></a>第四题 <a href="https://leetcode.com/problems/contiguous-array/#/description" target="_blank" rel="external">525. Contiguous Array</a></h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个二进制数组，求其中满足0的个数与1的个数相等的最长子数组</p>
+<p>注意：给定二进制数组的长度不超过50,000</p>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><p>将0变为-1，我们将[0,i]的sum及index都放入map中，如果0 和 1的数目是平衡的话。那么他们的和为0，即以前出现过这个sum的和，取出index，计算距离即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">findMaxLength525</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="comment">//Key : presum, value : index</span></div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        map.put(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length + <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> index = i - <span class="number">1</span>, number = nums[index];</div><div class="line">            <span class="keyword">if</span> (number == <span class="number">0</span>) number = -<span class="number">1</span>;</div><div class="line">            sum += number;</div><div class="line">            <span class="keyword">if</span> (map.containsKey(sum)) max = Math.max(max, i - map.get(sum));</div><div class="line">            <span class="keyword">else</span> map.put(sum, i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第五题-299-Bulls-and-Cows"><a href="#第五题-299-Bulls-and-Cows" class="headerlink" title="第五题 299. Bulls and Cows"></a>第五题 <a href="https://leetcode.com/problems/bulls-and-cows/#/description" target="_blank" rel="external">299. Bulls and Cows</a></h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>你和朋友在玩下面的猜数字游戏（Bulls and Cows）：你写下一个4位数的神秘数字然后让朋友来猜，你的朋友每次猜一个数字，你给一个提示，告诉他有多少个数字处在正确的位置上（称为”bulls” 公牛），以及有多少个数字处在错误的位置上（称为”cows” 奶牛），你的朋友使用这些提示找出那个神秘数字。</p>
+<p>例如：</p>
+<pre><code>神秘数字：  1807
+朋友猜测：  7810
+提示信息：  1公牛 3奶牛。（公牛是8， 奶牛是0, 1和7）
+</code></pre><p>根据维基百科：“公牛和奶牛（也称为奶牛和公牛，或者猪和公牛， 或者公牛和Cleots）” 是一歀古老的两人或多人参与的密码破解智力游戏或纸笔游戏，早于与之类似的市售棋牌游戏Mastermind。这款游戏的数字版本通常包含4位数，但也可以是3位或者其他任何位数。”</p>
+<p>编写函数，根据神秘数字与朋友的猜测，返回一个提示信息，使用A表示公牛，B表示母牛，在上例中，你的函数应当返回1A3B。</p>
+<p>你可以假设神秘数字和你朋友的猜测只包含数字，并且长度一定相等。</p>
+<h4 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h4><h5 id="利用int-数组进行处理"><a href="#利用int-数组进行处理" class="headerlink" title="利用int[] 数组进行处理"></a>利用int[] 数组进行处理</h5><p>由于每一位的数字只能是0 - 9，因此我们可以创建一个int [10]的数组存储两个String中出现的字母。如果是在Secret中出现，则+1，反之在Guess中出现，则-1。每次我们查看Secret中的数字是否小于0，如果小于0说明已经在Guess中出现过了。反之同样，如果Guess的数字大于0，则说明在Secret中出现过了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHint</span><span class="params">(String secret, String guess)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (secret.length() != guess.length()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        <span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</div><div class="line"></div><div class="line">        <span class="keyword">int</span> A = <span class="number">0</span>, B = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; secret.length(); i++) &#123;</div><div class="line">            <span class="keyword">int</span> sec = secret.charAt(i) - <span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> gus = guess.charAt(i) - <span class="string">'0'</span>;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (sec == gus) A++;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (numbers[sec] &lt; <span class="number">0</span>) B++;</div><div class="line">                <span class="keyword">if</span> (numbers[gus] &gt; <span class="number">0</span>) B++;</div><div class="line">                numbers[sec]++; numbers[gus]--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder(A + <span class="string">"A"</span> + B + <span class="string">"B"</span>);</div><div class="line">        <span class="keyword">return</span> result.toString();      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>利用HashMap存储出现的数字和其对应的位置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">getHint299</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHint</span><span class="params">(String secret, String guess)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (secret.length() != guess.length()) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        Map&lt;Character, Set&lt;Integer&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; secret.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = secret.charAt(i);</div><div class="line">            Set&lt;Integer&gt; set= map.getOrDefault(c, <span class="keyword">new</span> HashSet&lt;&gt;());</div><div class="line">            set.add(i);</div><div class="line">            map.put(c, set);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//First Loop, find A</span></div><div class="line">        <span class="keyword">int</span> A = <span class="number">0</span>, B = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; guess.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = guess.charAt(i);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(c)) &#123;</div><div class="line">                Set&lt;Integer&gt; set = map.get(c);</div><div class="line">                <span class="keyword">if</span> (set.contains(i)) &#123;</div><div class="line">                    A++;</div><div class="line">                    set.remove(i);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (set.isEmpty()) map.remove(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//Second Lood, find B</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; guess.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = guess.charAt(i);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(c) &amp;&amp; c != secret.charAt(i)) &#123;</div><div class="line">                Set&lt;Integer&gt; set = map.get(c);</div><div class="line">                B++;</div><div class="line">                <span class="keyword">int</span> temp = set.iterator().next();</div><div class="line">                set.remove(temp);</div><div class="line">                <span class="keyword">if</span> (set.isEmpty()) map.remove(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder(A + <span class="string">"A"</span> + B + <span class="string">"B"</span>);</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第六题-290-Word-Pattern"><a href="#第六题-290-Word-Pattern" class="headerlink" title="第六题 290. Word Pattern"></a>第六题 <a href="https://leetcode.com/problems/word-pattern/#/description" target="_blank" rel="external">290. Word Pattern</a></h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个模式pattern和一个字符串str，判断str是否满足相同的pattern。</p>
+<p>测试用例如题目描述。</p>
+<p>注意：</p>
+<p>pattern和str都只包含小写字母。<br>pattern和str不包含前导或者后缀空格。<br>str中的每一个单词之间都由一个空格分开。<br>pattern中的每一个字母都对应一个长度至少为1的单词</p>
+<h4 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h4><p>利用HashMap进行对应<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">wordPattern290</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern</span><span class="params">(String pattern, String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (pattern.isEmpty() || str.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        String[] words = str.split(<span class="string">"\\s+"</span>);</div><div class="line">        <span class="keyword">if</span> (pattern.length() != words.length) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        Map&lt;Character, String &gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; pattern.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = pattern.charAt(i);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(c)) &#123;</div><div class="line">                <span class="keyword">if</span> (!map.get(c).equals(words[i])) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (map.containsValue(words[i])) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                String a = map.put(c, words[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern2</span><span class="params">(String pattern, String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (pattern.isEmpty() || str.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        String[] words = str.split(<span class="string">"\\s+"</span>);</div><div class="line">        <span class="keyword">if</span> (pattern.length() != words.length) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        Map map = <span class="keyword">new</span> HashMap();</div><div class="line">        <span class="keyword">for</span> (Integer i = <span class="number">0</span>; i &lt; pattern.length(); i++)&#123;</div><div class="line">            <span class="keyword">if</span> (map.put(pattern.charAt(i), i) != (map.put(words[i], i))) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="学到的东西"><a href="#学到的东西" class="headerlink" title="学到的东西"></a>学到的东西</h4><p>在使用put方法的时候，put会有返回值，返回的是put之前的map中value的大小</p>
+<h3 id="第七题-274-H-Index"><a href="#第七题-274-H-Index" class="headerlink" title="第七题 274. H-Index"></a>第七题 <a href="https://leetcode.com/problems/h-index/#/description" target="_blank" rel="external">274. H-Index</a></h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定研究人员的文章引用次数的数组（每一篇文章的引用次数都是非负整数），编写函数计算该研究人员的h指数。</p>
+<p>根据维基百科对h指数的定义：“一名科学家的h指数是指其发表的N篇论文中，有h篇论文分别被引用了至少h次，其余N-h篇的引用次数均不超过h次”。</p>
+<p>例如，给定引用次数数组 = [3, 0, 6, 1, 5]，这意味着研究人员总共有5篇论文，每篇分别获得了3, 0, 6, 1, 5次引用。由于研究人员有3篇论文分别至少获得了3次引用，且其余两篇的引用次数不超过3次，因而其h指数是3。</p>
+<p>注意：如果存在多个可能的h值，取最大值作为h指数。</p>
+<h4 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h4><h5 id="利用自带的Array排序"><a href="#利用自带的Array排序" class="headerlink" title="利用自带的Array排序"></a>利用自带的Array排序</h5><p>我们需要保证的有两点</p>
+<ul>
+<li>对于h篇文章，其中每一篇都大于等于h</li>
+<li>对于剩余N - h篇，每篇都小于等于h</li>
+</ul>
+<p>由于是排序，当我们找到满足第一点的最大值时，第二点自然成立<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="keyword">int</span>[] citations)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (citations.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> n = citations.length;</div><div class="line">        <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (citations[i] &gt;= n ) num[n]++;</div><div class="line">            <span class="keyword">else</span> num[citations[i]]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            count += num[i];</div><div class="line">            <span class="keyword">if</span> (count &gt;= i) <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="利用数组进行排序"><a href="#利用数组进行排序" class="headerlink" title="利用数组进行排序"></a>利用数组进行排序</h5><p>由于我们想要求出h篇文章，每篇都大于等于h。</p>
+<p>我们可以将引用次数作为角标，将他们出现的频率放入一个数组中。数组的角标就是引用的次数，记出现次数为0，当出现次数恰好大于等于角标i的时候，说明我们已经有了h篇文章，使得他们的引用次数大于i。由于 h &gt;= i，所以此时是最大值<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="keyword">int</span>[] citations)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (citations.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> n = citations.length;</div><div class="line">        <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (citations[i] &gt;= n ) num[n]++;</div><div class="line">            <span class="keyword">else</span> num[citations[i]]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            count += num[i];</div><div class="line">            <span class="keyword">if</span> (count &gt;= i) <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第八题-314-Binary-Tree-Vertical-Order-Traversal"><a href="#第八题-314-Binary-Tree-Vertical-Order-Traversal" class="headerlink" title="第八题 314. Binary Tree Vertical Order Traversal"></a>第八题 <a href="https://leetcode.com/problems/binary-tree-vertical-order-traversal/#/description" target="_blank" rel="external">314. Binary Tree Vertical Order Traversal</a></h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>将一个二叉树，按照从左到右，从上到下的形状，通过List进行输出。</p>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><p>利用BFS + 两个HashMap分别存储所有垂直线上的点，以及本身的垂直线<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; verticalOrder(TreeNode root) &#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Map&lt;Integer, List&lt;Integer&gt;&gt; store = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        HashMap&lt;TreeNode, Integer&gt; weight = <span class="keyword">new</span> HashMap&lt;TreeNode, Integer&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        weight.put(root, <span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> min = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            TreeNode cur = queue.poll();</div><div class="line">            <span class="keyword">int</span> w = weight.get(cur);</div><div class="line">            List&lt;Integer&gt; list = store.getOrDefault(w, <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">            list.add(cur.val);</div><div class="line">            store.put(w, list);</div><div class="line">            <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.add(cur.left);</div><div class="line">                weight.put(cur.left, w - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.add(cur.right);</div><div class="line">                weight.put(cur.right, w + <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">            min = Math.min(min, w);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span> (store.containsKey(min)) &#123;</div><div class="line">            res.add(store.get(min++));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/09/6-9号刷题/" rel="next" title="6.9号刷题">
+                <i class="fa fa-chevron-left"></i> 6.9号刷题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/11/6-11号刷题/" rel="prev" title="6.11号刷题">
+                6.11号刷题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/06/10/6-10号刷题/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="陈肖" />
+          <p class="site-author-name" itemprop="name">陈肖</p>
+           
+              <p class="site-description motion-element" itemprop="description">才疏学浅，韬光养晦</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenx376" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/xiao-chen-730149133/" target="_blank" title="Linkedln">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedln
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005051993756117/home?from=page_100505&mod=TAB" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题-49-Group-Anagrams"><span class="nav-number">1.</span> <span class="nav-text">第一题 49. Group Anagrams</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题-36-Valid-Sudoku"><span class="nav-number">2.</span> <span class="nav-text">第二题 36. Valid Sudoku</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三题-37-Sudoku-Solver"><span class="nav-number">3.</span> <span class="nav-text">第三题 37. Sudoku Solver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四题-525-Contiguous-Array"><span class="nav-number">4.</span> <span class="nav-text">第四题 525. Contiguous Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">4.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五题-299-Bulls-and-Cows"><span class="nav-number">5.</span> <span class="nav-text">第五题 299. Bulls and Cows</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-3"><span class="nav-number">5.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用int-数组进行处理"><span class="nav-number">5.2.1.</span> <span class="nav-text">利用int[] 数组进行处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap"><span class="nav-number">5.2.2.</span> <span class="nav-text">HashMap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六题-290-Word-Pattern"><span class="nav-number">6.</span> <span class="nav-text">第六题 290. Word Pattern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-4"><span class="nav-number">6.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学到的东西"><span class="nav-number">6.3.</span> <span class="nav-text">学到的东西</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七题-274-H-Index"><span class="nav-number">7.</span> <span class="nav-text">第七题 274. H-Index</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-5"><span class="nav-number">7.2.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用自带的Array排序"><span class="nav-number">7.2.1.</span> <span class="nav-text">利用自带的Array排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用数组进行排序"><span class="nav-number">7.2.2.</span> <span class="nav-text">利用数组进行排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八题-314-Binary-Tree-Vertical-Order-Traversal"><span class="nav-number">8.</span> <span class="nav-text">第八题 314. Binary Tree Vertical Order Traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">8.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈肖</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://your-disqus-shortname.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/10/6-10号刷题/';
+          this.page.identifier = '2017/06/10/6-10号刷题/';
+          this.page.title = '6.10号刷题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://your-disqus-shortname.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
